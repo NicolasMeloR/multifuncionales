@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <title>Terminales de Autoservicio</title>
+        <link rel=stylesheet href="D:\trab\AdminAtm\AdminAtmWEB\web\recursos\estilos\adminAtm.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="D:\trab\AdminAtm\AdminAtmWEB\web\dojo\src\widget\templates\DatePicker.css" />
+        <link rel="stylesheet" type="text/css" href="generator.css" />        
+        
+	<script type="text/javascript">
+		var djConfig = { 
+			   isDebug: true, 
+			   debugAtAllCosts: true 
+			   };
+	</script>
+        
+        <script type="text/javascript" src="../../../../dojo/dojo.js"></script>
+        
+        <script language="javascript">
+  dojo.require("dojo.widget.DebugConsole");
+	dojo.require("dojo.widget.LayoutContainer");
+	dojo.require("dojo.widget.FloatingPane");
+	dojo.require("dojo.widget.ContentPane");
+	dojo.require("dojo.widget.SplitContainer");
+	dojo.require("dojo.widget.ColorPalette");
+	dojo.require("dojo.widget.DatePicker");	
+	dojo.require("dojo.widget.Tree");
+	dojo.require("dojo.widget.TreeSelector");
+	dojo.require("dojo.widget.Button");
+	dojo.require("dojo.widget.ResizeHandle");
+	dojo.require("dojo.widget.FilteringTable");
+	dojo.require("dojo.collections.Store");
+        dojo.hostenv.writeIncludes();
+        </script>
+        
+    </head>
+  <body>
+  	<div dojoType="LayoutContainer" layoutChildPriority='top-bottom' style="border: 2px solid black; width: 90%; height: 300px; padding: 10px;">
+				<div class="cornerCover"></div>
+				<div class="controls-top"></div> 
+    
+    
+    
+    
+    </div>				
+        
+  	<div id="general-header">
+				<div class="cornerCover"></div>
+				<div class="controls-top"></div> 
+				<div id="controls-holder" style="height: 295px;"> 		
+								<div class="sliderArea">
+				
+    			<div class="header"></div>
+    			<div id="sliderContainer" >
+    				<table>
+    					<tr>
+    				</tr>
+    			</table>
+    				</div>
+			</div>	
+			<div id="footer"></div>		
+
+
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicios.impl.procesadortransacciones.davivienda.com/" xmlns:ns0="http://servicios.impl.procesadortransacciones.davivienda.com/" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="AjusteCajerosAutomaticos.xsd2.xsd" namespace="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ajustarFaltanteCajero">
+    <wsdl:part name="parameters" element="xsns:ajustarFaltanteCajero" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ajustarFaltanteCajeroResponse">
+    <wsdl:part name="parameters" element="xsns:ajustarFaltanteCajeroResponse" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ajustarProvisionCajero">
+    <wsdl:part name="parameters" element="xsns:ajustarProvisionCajero" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ajustarProvisionCajeroResponse">
+    <wsdl:part name="parameters" element="xsns:ajustarProvisionCajeroResponse" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ajustarSobranteCajero">
+    <wsdl:part name="parameters" element="xsns:ajustarSobranteCajero" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ajustarSobranteCajeroResponse">
+    <wsdl:part name="parameters" element="xsns:ajustarSobranteCajeroResponse" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ServicioException">
+    <wsdl:part name="fault" element="xsns:ServicioException" xmlns:xsns="http://servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:portType name="AjusteCajerosAutomaticos">
+    <wsdl:operation name="ajustarFaltanteCajero">
+      <wsdl:input name="ajustarFaltanteCajeroRequest" message="ns0:ajustarFaltanteCajero"/>
+      <wsdl:output name="ajustarFaltanteCajeroResponse" message="ns0:ajustarFaltanteCajeroResponse"/>
+      <wsdl:fault name="ServicioException" message="ns0:ServicioException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ajustarProvisionCajero">
+      <wsdl:input name="ajustarProvisionCajeroRequest" message="ns0:ajustarProvisionCajero"/>
+      <wsdl:output name="ajustarProvisionCajeroResponse" message="ns0:ajustarProvisionCajeroResponse"/>
+      <wsdl:fault name="ServicioException" message="ns0:ServicioException"/>
+    </wsdl:operation>
+    <wsdl:operation name="ajustarSobranteCajero">
+      <wsdl:input name="ajustarSobranteCajeroRequest" message="ns0:ajustarSobranteCajero"/>
+      <wsdl:output name="ajustarSobranteCajeroResponse" message="ns0:ajustarSobranteCajeroResponse"/>
+      <wsdl:fault name="ServicioException" message="ns0:ServicioException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AjusteCajerosAutomaticosPortBinding" type="ns0:AjusteCajerosAutomaticos">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="ajustarFaltanteCajero">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="ajustarFaltanteCajeroRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ajustarFaltanteCajeroResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServicioException">
+        <soap11:fault name="ServicioException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajustarProvisionCajero">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="ajustarProvisionCajeroRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ajustarProvisionCajeroResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServicioException">
+        <soap11:fault name="ServicioException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ajustarSobranteCajero">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="ajustarSobranteCajeroRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ajustarSobranteCajeroResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServicioException">
+        <soap11:fault name="ServicioException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AjusteCajerosAutomaticosService">
+    <wsdl:port name="AjusteCajerosAutomaticosPort" binding="ns0:AjusteCajerosAutomaticosPortBinding">
+      <soap11:address location="http://90.4.28.5:80/AjusteCajerosAutomaticosService/AjusteCajerosAutomaticos"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

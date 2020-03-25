@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup id="panelPaginas">
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarPaginasSubMenus}">
+            <div id="ADMDISP" style="margin-top: 124px">
+
+                <!--DIARIOS_ELECTRONICOS-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'TRANSACCION' ? true : false}">
+                    <ui:include src="dispensador/diarioElectronico/transaccion.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'COPIAR_ARCHIVO' ? true : false}">
+                    <ui:include src="dispensador/diarioElectronico/copiarArchivo.xhtml"></ui:include>
+                </h:panelGroup>                
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_DIARIO_E' ? true : false}">
+                    <ui:include src="dispensador/diarioElectronico/cargarDiarioElectronico.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'COPIAR_ARCHIVO_CD' ? true : false}">
+                    <ui:include src="dispensador/diarioElectronico/copiarArchivoCicloDiario.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_ARCHIVO_CD' ? true : false}">
+                    <ui:include src="dispensador/diarioElectronico/cargarArchivoCicloDiario.xhtml"></ui:include>
+                </h:panelGroup>
+
+                <!--CUADRE_CAJEROS-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REALIZAR_AJUSTE' ? true : false}">
+                    <ui:include src="dispensador/cuadreCajeros/realizarAjuste.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONSULTAR_TOTALES' ? true : false}">
+                    <ui:include src="dispensador/cuadreCajeros/consultarTotales.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONSULTAR_AJUSTES' ? true : false}">
+                    <ui:include src="dispensador/cuadreCajeros/consultarAjustes.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CUADRE_CIFRAS' ? true : false}">
+                    <ui:include src="dispensador/cuadreCajeros/cuadreCifras.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CAR_CARCHIVOS_CUADRE' ? true : false}">
+                    <ui:include src="dispensador/cuadreCajeros/cargarArchivoCuadre.xhtml"></ui:include>
+                </h:panelGroup>
+
+
+                <!--REINTEGROS-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CREAR_NOTA_CREDITO' ? true : false}">
+                    <ui:include src="dispensador/reintegros/ingresarNotaCredito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CREAR_NOTA_DEBITO' ? true : false}">
+                    <ui:include src="dispensador/reintegros/ingresarNotaDebito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_ARCHIVO_HOST' ? true : false}">
+                    <ui:include src="dispensador/reintegros/cargarArchivoHost.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CALCULAR_REINTEGROS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/calcularReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'INFORMES_REINTEGROS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/informesReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REVISAR_REINTEGROS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/revisarReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REVERSAR_REINTEGROS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/reversarReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONSULTAR_REINTEGROS_REVERSADOS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/consultarReintegrosReversados.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'AUTORIZAR_REINTEGROS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/autorizarReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REINTEGROS_CREADOS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/reintegrosCreados.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'AUTORIZAR_NOTAS_DEBITO' ? true : false}">
+                    <ui:include src="dispensador/reintegros/autorizarNotasDebito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REVISAR_CREADOS' ? true : false}">
+                    <ui:include src="dispensador/reintegros/revisarCreados.xhtml"></ui:include>
+                </h:panelGroup>
+
+                <!--ADMINISTRACION-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'USUARIOS' ? true : false}">
+                    <ui:include src="dispensador/administracion/admUsuarios.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'PRIVILEGIOS_ACCESO' ? true : false}">
+                    <ui:include src="dispensador/administracion/privilegiosAcceso.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONFIGURACION_MODULOS' ? true : false}">
+                    <ui:include src="dispensador/administracion/configuracionModulos.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CAJERO' ? true : false}">
+                    <ui:include src="dispensador/administracion/cajero.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'TIPO_CAJERO' ? true : false}">
+                    <ui:include src="dispensador/administracion/tipoCajero.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'UBICACION' ? true : false}">
+                    <ui:include src="dispensador/administracion/ubicacion.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'ZONA' ? true : false}">
+                    <ui:include src="dispensador/administracion/zona.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REGIONAL' ? true : false}">
+                    <ui:include src="dispensador/administracion/regional.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'TRANSPORTADORA' ? true : false}">
+                    <ui:include src="dispensador/administracion/transportadora.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'OCCA' ? true : false}">
+                    <ui:include src="dispensador/administracion/occa.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONTIGENCIA_CAJERO' ? true : false}">
+                    <ui:include src="dispensador/administracion/contingenciaCajero.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'OFICINA_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="dispensador/administracion/oficinaMultifuncional.xhtml"></ui:include>
+                </h:panelGroup>
+
+
+
+                <!--CONTINGENCIA-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONTINGENCIA_GENERAL' ? true : false}">
+                    <ui:include src="dispensador/contingencia/contingenciaGeneral.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONT_DIARIOS_ELECTRONICOS' ? true : false}">
+                    <ui:include src="dispensador/contingencia/contingenciaDiarioElectronico.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONS_GENERAL_CONTINGENCIA' ? true : false}">
+                    <ui:include src="dispensador/contingencia/contingenciaConsultaGeneral.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONS_DIARIOSE_CONTINGENCIA' ? true : false}">
+                    <ui:include src="dispensador/contingencia/contingenciaConsultaDiarios.xhtml"></ui:include>
+                </h:panelGroup>
+
+                <!--DIARIOS_ELECTRONICOS MULTIFUNCIONAL-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'TRANSACCION_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/diarioElectronico/mf_transaccion.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'DIARIOKAL_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/diarioElectronico/mf_diariokal.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'COPIAR_ARCHIVO_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/diarioElectronico/mf_copiarArchivo.xhtml"></ui:include>
+                </h:panelGroup>                
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_DIARIO_E_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/diarioElectronico/mf_cargarDiarioElectronico.xhtml"></ui:include>
+                </h:panelGroup>                               
+
+                 <!--CUADRE CIFRAS MULTIFUNCIONAL-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REALIZAR_AJUSTE_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/cuadreCifras/mf_realizarAjuste.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONSULTAR_TOTALES_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/cuadreCifras/mf_consultarTotales.xhtml"></ui:include>
+                </h:panelGroup>                
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CONSULTAR_AJUSTE_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/cuadreCifras/mf_consultarAjustes.xhtml"></ui:include>
+                </h:panelGroup>                               
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CUADRE_CIFRAS_SUB_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/cuadreCifras/mf_cuadreCifras.xhtml"></ui:include>
+                </h:panelGroup> 
+                
+                <!--REINTEGROS MULTIFUNCIONAL-->
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CREAR_NOTA_CREDITO_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_ingresarNotaCredito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CREAR_NOTA_DEBITO_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_ingresarNotaDebito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'INFORMES_REINTEGROS_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_informesReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+               <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'REVISAR_REINTEGROS_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_revisarReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'AUTORIZAR_REINTEGROS_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_autorizarReintegros.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'AUTORIZAR_NOTAS_DEBITO_MULTIFUNCIONAL' ? true : false}">
+                    <ui:include src="multifuncional/reintegros/mf_autorizarNotasDebito.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_ARCHIVO_REINTEGROS' ? true : false}">
+                    <ui:include src="carguesMasivos/reintegros/cargarReintegrosMasivos.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_ARCHIVO_TIMBRES' ? true : false}">
+                    <ui:include src="carguesMasivos/reintegros/cargarTimbresMasivos.xhtml"></ui:include>
+                </h:panelGroup>
+                <h:panelGroup layout="block" rendered="#{initBean.opcionPaginaSubMenu == 'CARGAR_ARCHIVO_NOTAS_DEBITO' ? true : false}">
+                    <ui:include src="carguesMasivos/reintegros/cargarNotasDebitoMasivos.xhtml"></ui:include>
+                </h:panelGroup>
+
+                 <!-- 
+                    Boton para enviar al bean el valor respectivo de la fechaInicial y fechaFinal
+                  -->
+                <h:commandButton value="BTN  HIDDEN" style="display: none" styleClass="botonAPPADM" id="btnDatePicker" onclick="return true;" >
+                </h:commandButton> 
+                
+                <!-- 
+                    Boton para enviar al bean el valor respectivo de la horaInicial y horaFinal
+                  -->
+                <h:commandButton value="BTN  HIDDEN" style="display: none" styleClass="botonAPPADM" id="btnTimerHourInputEditable" onclick="return true;" >
+                </h:commandButton> 
+                
+                <div id="lightCalendario" class="white_content">
+                    <div id="calendario" style="visibility:hidden;position:absolute;" class="arrastrable"/>
+                </div>
+                <div id="fadeCalendario" class="black_overlay"/>
+                <script type="text/javascript" language="javascript">
+                    /* <![CDATA[ */
+                    function datePicker(obj, pattern) {
+                        if (obj !== null) {
+                            obj.disabled = true;
+                            document.getElementById('lightCalendario').style.display = 'block';
+                            document.getElementById('fadeCalendario').style.display = 'block';
+                            iniciaCalendario(obj.id, '#{facesContext.externalContext.requestContextPath}/resources', pattern);
+                        }
+                    }
+                    /* ]]> */
+                </script>
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" id="modalMensajes" styleClass="dialogDiv"  rendered="#{initBean.mostrarModalMsg}">
+            <h:panelGroup layout="block" styleClass="centerDivMsg" >
+                <div  class="dialogDivTitleBar" title="SARA">
+                    <span  class="dialogDivTitle">SARA</span>
+                    <h:commandButton styleClass="closeBtnImageMsg" actionListener="#{initBean.cerrarModal()}">
+                        <f:ajax render="panelPaginas" />
+                    </h:commandButton>
+                </div>
+                <h:panelGroup layout="block" styleClass="dialogDivMsg">
+                    <h:panelGrid columns="1">  
+                        <h:panelGroup layout="block">
+                            <textarea id="textAreaDescripcion" readonly="true" style="width: 461px; height: 130px;">
+                                    <h:outputText  escape="false" value="#{initBean.descripcionModal}" />
+                            </textarea>                               
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" id="modalAutenticacion" styleClass="dialogDiv"  rendered="#{initBean.mostrarModalAut}">
+            <h:panelGroup layout="block" styleClass="centerDiv" >
+                <div  class="dialogDivTitleBar" title="Autenticacion Segura">
+                    <span  class="dialogDivTitle">Autenticacion Segura</span>
+                    <h:commandButton styleClass="closeBtnImage" actionListener="#{initBean.cerrarModalAut()}">
+                        <f:ajax render="panelPaginas" />
+                    </h:commandButton>
+                </div>
+                <h:panelGroup layout="block" styleClass="dialogDivAut">
+                    <h:panelGrid columns="1" styleClass="dialogDivTable">  
+                        <h:panelGroup layout="block">
+                            <h:panelGrid columns="2" style="padding-top: 48px;">  
+                                <div style="padding-left: 20px;   padding-bottom: 16px; padding-right: 30px;">
+                                    <span class="nombreCampo">Usuario</span>                    
+                                </div>
+                                <div>
+                                    <h:inputText value="#{initBean.usuarioAut}" style="margin-bottom: 16px;"><f:ajax render="@this"  /></h:inputText>
+                                </div>
+                                <div style="padding-left: 20px;"> 
+                                    <span class="nombreCampo">Clave</span>
+                                </div>
+                                <div>
+                                    <h:inputSecret value="#{initBean.passwordAut}" redisplay="true" ><f:ajax render="@this"  /></h:inputSecret>
+                                </div>
+                                <h:panelGrid columns="1" style="margin-bottom: 68px; margin-left: 70px;">
+                                    <h:commandButton value="Enviar" id="btnEnviarModalAut" styleClass="botonAPPADM" actionListener="#{initBean.autenticar()}">
+                                        <f:ajax render="panelPaginas" />
+                                    </h:commandButton>
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>

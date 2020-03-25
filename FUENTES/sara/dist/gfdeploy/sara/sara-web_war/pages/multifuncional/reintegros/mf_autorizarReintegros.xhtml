@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup id="panelAutorizarReintegros_multifuncional">
+        <h:panelGroup layout="block" rendered="#{!autorizarReintegrosMultifuncionalBean.mostrarTabla}"> 
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 155px; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Consultar Reintegros</div>  
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Desde</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{autorizarReintegrosMultifuncionalBean.fechaDesde}" onclick="datePicker(this,'YYYY-MM-DD');" ><f:ajax render="@this"  /></h:inputText>
+                            
+                            
+                                                        
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{autorizarReintegrosMultifuncionalBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{autorizarReintegrosMultifuncionalBean.horaDesde}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                            
+                        </h:panelGrid>
+
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{autorizarReintegrosMultifuncionalBean.fechaHasta}" onclick="datePicker(this,'YYYY-MM-DD');" ><f:ajax render="@this"  /></h:inputText>
+                                                       
+                                                        
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{autorizarReintegrosMultifuncionalBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{autorizarReintegrosMultifuncionalBean.horaHasta}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Acciones </div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:commandButton value="CONSULTAR" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{autorizarReintegrosMultifuncionalBean.consultar()}" >
+                        <f:ajax  render="panelAutorizarReintegros_multifuncional tablaAutorizarReintegros_multifuncional panelPaginas"/>
+                    </h:commandButton>   
+                    <h:inputHidden>
+
+                    </h:inputHidden>
+                </h:panelGroup>
+
+            </div>
+        </h:panelGroup>
+        <div class="barra_Rojo">Autorizar Reintegros Multifuncional</div>
+        <h:panelGroup  layout="block" id="tablaAutorizarReintegros_multifuncional" rendered="#{autorizarReintegrosMultifuncionalBean.mostrarTabla}" >
+
+            <h:panelGroup layout="block"  rendered="#{not empty autorizarReintegrosMultifuncionalBean.listaData}" styleClass="reintegrosGuardar" >
+                <h:commandButton value="Guardar" style="width: 140px;" actionListener="#{autorizarReintegrosMultifuncionalBean.mostrarModalAut()}" >
+                        <f:ajax render="panelPaginas"  />
+                </h:commandButton>
+
+            </h:panelGroup>
+            <h:dataTable id="tableMfAutorizarReintegros" value="#{autorizarReintegrosMultifuncionalBean.listaData}" var="regc" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 0, 'numero', arrayOrder[0]);  return false;" >
+                            #                        
+                        </h:outputLink>
+                    </f:facet> 
+                        #{regc.idRegistro}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 1, 'numero', arrayOrder[1]);  return false;" >
+                            Cajero                       
+                        </h:outputLink>
+                    </f:facet>  
+                        #{regc.codigoCajero}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 2, 'numero', arrayOrder[2]);  return false;" >
+                            Occa                       
+                        </h:outputLink>
+                    </f:facet>
+                        #{regc.codigoOcca}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 3, 'numero', arrayOrder[3]);  return false;" >
+                            Transacción                       
+                        </h:outputLink>
+                    </f:facet>
+                        #{regc.numeroTransaccion}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 4, 'numero', arrayOrder[4]);  return false;" >
+                            Cuenta                       
+                        </h:outputLink>
+                    </f:facet>
+                        #{regc.numeroCuenta}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 5, 'numero', arrayOrder[5]);return false;" >
+                            Tarjeta                     
+                        </h:outputLink> 
+                        
+                    </f:facet> 
+                        #{regc.numeroTarjeta}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 6, 'fecha', arrayOrder[6]);  return false;" >
+                            Fecha                        
+                        </h:outputLink>      
+                    </f:facet>
+                        #{regc.fecha}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 7, 'numero', arrayOrder[7]);return false;" >
+                           Valor                     
+                        </h:outputLink> 
+                    </f:facet>  
+                        #{regc.valor}
+                </h:column>
+                <h:column>
+                     <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 8, 'numero', arrayOrder[8]);return false;" >
+                            Valor Ajustar                     
+                        </h:outputLink> 
+                    </f:facet> 
+                    #{regc.valorAjustar}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 9, 'texto', arrayOrder[9]);return false;" >
+                            Status Transacci�n                     
+                        </h:outputLink> 
+                    </f:facet>
+                        #{regc.statusTransaccion}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 10, 'texto', arrayOrder[10]);return false;" >
+                            Valor Entregado                     
+                        </h:outputLink> 
+                    </f:facet> 
+                        #{regc.valorEntregado}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLink class="tablaLinkHeader"
+                                      onclick="sort_table('menuForm:tableMfAutorizarReintegros', 11, 'texto', arrayOrder[11]);  return false;" >
+                            Usuario Reviso                       
+                        </h:outputLink> 
+                    </f:facet>
+                        #{regc.usuarioRevisa}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Autorizado</f:facet> 
+                    <h:selectBooleanCheckbox value="#{regc.checkSeleccion}">
+                        <f:ajax render="@this"  />
+                    </h:selectBooleanCheckbox>
+                </h:column>
+            </h:dataTable>
+            <h:panelGroup  style="width:  1280px;" layout="block"  styleClass="mensajesData" rendered="#{empty autorizarReintegrosMultifuncionalBean.listaData}">
+                No Data
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

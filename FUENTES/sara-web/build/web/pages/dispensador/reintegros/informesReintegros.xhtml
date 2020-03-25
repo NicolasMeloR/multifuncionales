@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+     <h:panelGroup id="panelInfoReintegros">
+    <div  style="background-color: rgb(224,224,224); width: 100%;height: 180px; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Consultar Reintegros</div>  
+           
+          
+               <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Desde</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{informesReintegrosBean.fechaDesde}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{informesReintegrosBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{informesReintegrosBean.horaDesde}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                                   
+                        </h:panelGrid>
+
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{informesReintegrosBean.fechaHasta}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{informesReintegrosBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{informesReintegrosBean.horaHasta}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>
+               <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                   <div class="barra_Rojo"> Tipo Reporte </div>
+                   
+                   <h:panelGrid columns="2" >
+                       <h:selectOneRadio  id="infoReintegrosTipo1" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="9" itemLabel="Todos" />
+                        </h:selectOneRadio>
+                       
+                       <h:selectOneRadio  id="infoReintegrosTipo2" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="10" itemLabel="Davivienda" />
+                        </h:selectOneRadio>
+
+                        <h:selectOneRadio   id="infoReintegrosTipo3" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="0" itemLabel="Otras Redes" />
+                        </h:selectOneRadio>
+                       
+                        <h:selectOneRadio   id="infoReintegrosTipo4" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="6" itemLabel="BanAgrario" />
+                        </h:selectOneRadio>
+
+                       <h:selectOneRadio   id="infoReintegrosTipo5" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="5" itemLabel="Visa Pagos" />
+                        </h:selectOneRadio>
+                       
+                       <h:selectOneRadio   id="infoReintegrosTipo6" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="4" itemLabel="Tarjeta Credito" />
+                        </h:selectOneRadio>
+
+                       <h:selectOneRadio   id="infoReintegrosTipo7" onclick="infoReintegrosTipos(this)" valueChangeListener="#{informesReintegrosBean.cambioTipoReporte}">
+                                <f:selectItem itemValue="11" itemLabel="Notas Debito" />
+                        </h:selectOneRadio>
+                     </h:panelGrid>
+              </h:panelGroup> 
+               <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Acciones </div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:commandButton value="GENERAR INFORME" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{informesReintegrosBean.generarInforme()}" >
+                        
+                    </h:commandButton>                    
+               </h:panelGroup>
+              <script type="text/javascript">
+                        function infoReintegrosTipos(event) {
+                            console.log(event.id);
+                            var obj = document.getElementById("menuForm:infoReintegrosTipo1:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo2:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo3:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo4:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo5:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo6:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo7:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            obj = document.getElementById("menuForm:infoReintegrosTipo8:0");
+                            if(null !== obj){
+                                obj.checked = false;
+                            }
+                            event.checked = true;
+                            return true;
+                        }
+              </script>
+        </div>
+    <div class="barra_Rojo">Informes Reintegros</div>
+     </h:panelGroup>
+</html>
+

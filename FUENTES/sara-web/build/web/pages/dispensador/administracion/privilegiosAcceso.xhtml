@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup id="panelPrivilegiosAdm">
+        <h:panelGrid columns="8" id="btnPrivilegiosAcceso">             
+
+            <h:commandButton value="Nuevo" rendered="#{!privilegiosAccesoBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.nuevoUsuario()}" >
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:commandButton>
+            <h:commandButton value="Modificar" rendered="#{!privilegiosAccesoBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.modificarUsuario()}" >
+                <f:ajax render="panelPrivilegiosAdm panelPaginas" />
+            </h:commandButton>
+            <h:commandButton rendered="#{privilegiosAccesoBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.grabarUsuario()}" >
+                <f:ajax render="panelPrivilegiosAdm panelPaginas" />
+            </h:commandButton>
+            <h:commandButton rendered="#{privilegiosAccesoBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.usuarioInicial()}"  >
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:commandButton>
+            <h:commandButton value="Borrar" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.borrarRegistro()}">
+                <f:ajax render="panelPrivilegiosAdm panelPaginas" />
+            </h:commandButton>
+            <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.anteriorRegistro()}">
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:commandButton>
+
+            <h:selectOneMenu styleClass="combo"   value="#{privilegiosAccesoBean.usuarioSeleccionado}" >
+                <f:selectItems value="#{privilegiosAccesoBean.listaUsuarios}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:selectOneMenu>
+
+            <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.buscarRegistroGeneral()}"   >
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:commandButton>
+
+            <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.siguienteRegistro()}">
+                <f:ajax render="panelPrivilegiosAdm" />
+            </h:commandButton>
+
+            <h:commandButton value="INFORME EXCEL" styleClass="botonAPPADM" actionListener="#{privilegiosAccesoBean.exportarExcel()}">
+            </h:commandButton>
+        </h:panelGrid>
+
+        <div class="tituloSeccion2">Configuración Acceso a la Aplicación</div>            
+        <br/>
+        <br/>
+        <h:panelGrid columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+
+            <h:panelGroup>
+                <div class="flechaItem"></div>                                
+                <span class="nombreCampo">Usuario</span>                    
+            </h:panelGroup>                               
+            <h:panelGroup class="ingresoTextoMedio" >
+                <h:selectOneMenu styleClass="combo"  value="#{privilegiosAccesoBean.usuarioSeleccionadoTipoAcceso}">
+                    <f:ajax listener="#{privilegiosAccesoBean.buscarRegistro()}" render="tipoAcceso"></f:ajax>
+                    <f:selectItem itemValue="" itemLabel=""></f:selectItem>
+                    <f:selectItems value="#{privilegiosAccesoBean.listaUsuariosGeneral}"  var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <div class="flechaItem"></div>                                
+                <span class="nombreCampo">Tipo Acceso</span>                    
+            </h:panelGroup>                               
+            <h:panelGroup class="ingresoTextoMedio" id="tipoAcceso">
+                <h:selectOneMenu styleClass="combo"  value="#{privilegiosAccesoBean.tipoAccesoSeleccionado}">
+                    <f:selectItem itemValue="" itemLabel=""></f:selectItem>
+                    <f:selectItems value="#{privilegiosAccesoBean.listaAccesos}"  var="user" itemValue="#{user.value}" itemLabel="#{user.label}"/>
+                    <f:ajax render="@this"  />
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup>
+                <div class="flechaItem"></div>                                
+                <span class="nombreCampo">Privilegios</span>                    
+            </h:panelGroup>    
+
+            <h:panelGroup class="ingresoTextoLargo" >                    
+                <h:selectBooleanCheckbox value="#{privilegiosAccesoBean.consultar}">
+                    <f:ajax render="@this"  />
+                </h:selectBooleanCheckbox>  
+                <label > Consultar </label>
+                <h:selectBooleanCheckbox value="#{privilegiosAccesoBean.actualizar}">
+                    <f:ajax render="@this"  />
+                </h:selectBooleanCheckbox>   
+                <label > Actualizar </label>
+                <h:selectBooleanCheckbox value="#{privilegiosAccesoBean.crear}">
+                    <f:ajax render="@this"  />
+                </h:selectBooleanCheckbox>  
+                <label > Crear </label>
+                <h:selectBooleanCheckbox value="#{privilegiosAccesoBean.borrar}">
+                    <f:ajax render="@this"  />
+                </h:selectBooleanCheckbox> 
+                <label > Borrar </label>
+                <h:selectBooleanCheckbox value="#{privilegiosAccesoBean.ejecutar}">
+                    <f:ajax render="@this"  />
+                </h:selectBooleanCheckbox> 
+                <label > Ejecutar </label>
+            </h:panelGroup>	
+        </h:panelGrid>
+    </h:panelGroup>      
+</html>
+

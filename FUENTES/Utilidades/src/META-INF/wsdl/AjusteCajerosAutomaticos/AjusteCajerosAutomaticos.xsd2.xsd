@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" targetNamespace="http://servicios.impl.procesadortransacciones.davivienda.com/" xmlns:tns="http://servicios.impl.procesadortransacciones.davivienda.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ServicioException" type="tns:ServicioException"/>
+  <xs:element name="ajustarFaltanteCajero" type="tns:ajustarFaltanteCajero"/>
+  <xs:element name="ajustarFaltanteCajeroResponse" type="tns:ajustarFaltanteCajeroResponse"/>
+  <xs:element name="ajustarProvisionCajero" type="tns:ajustarProvisionCajero"/>
+  <xs:element name="ajustarProvisionCajeroResponse" type="tns:ajustarProvisionCajeroResponse"/>
+  <xs:element name="ajustarSobranteCajero" type="tns:ajustarSobranteCajero"/>
+  <xs:element name="ajustarSobranteCajeroResponse" type="tns:ajustarSobranteCajeroResponse"/>
+  <xs:complexType name="ajustarProvisionCajero">
+    <xs:sequence>
+      <xs:element name="parameter" type="tns:consultaManejoEfectivoATMDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="consultaManejoEfectivoATMDto">
+    <xs:complexContent>
+      <xs:extension base="tns:parametrosDeTransaccionBaseDTO">
+        <xs:sequence>
+          <xs:element name="estadoAtm" type="xs:short" minOccurs="0"/>
+          <xs:element name="tipoTransaccion" type="xs:short" minOccurs="0"/>
+          <xs:element name="valor" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="parametrosDeTransaccionBaseDTO">
+    <xs:sequence>
+      <xs:element name="canal" type="xs:short" minOccurs="0"/>
+      <xs:element name="host" type="xs:int" minOccurs="0"/>
+      <xs:element name="idTarea" type="xs:string" minOccurs="0"/>
+      <xs:element name="identificadorOperacion" type="xs:string" minOccurs="0"/>
+      <xs:element name="identificadorSesion" type="xs:string" minOccurs="0"/>
+      <xs:element name="jornada" type="xs:short" minOccurs="0"/>
+      <xs:element name="llaveRepetitivaConsulta" type="tns:campoExtendidoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="modoDeOperacion" type="xs:short" minOccurs="0"/>
+      <xs:element name="origenLog" type="xs:string" minOccurs="0"/>
+      <xs:element name="parametrosSeguridad" type="tns:parametrosSeguridadDTO" minOccurs="0"/>
+      <xs:element name="perfil" type="xs:short" minOccurs="0"/>
+      <xs:element name="segundaClave" type="xs:string" minOccurs="0"/>
+      <xs:element name="total" type="xs:int" minOccurs="0"/>
+      <xs:element name="usuario" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="campoExtendidoDto">
+    <xs:complexContent>
+      <xs:extension base="tns:campoDto">
+        <xs:sequence>
+          <xs:element name="JMascara" type="xs:string" minOccurs="0"/>
+          <xs:element name="PMascara" type="xs:string" minOccurs="0"/>
+          <xs:element name="valor" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="campoDto">
+    <xs:sequence>
+      <xs:element name="caracterRelleno" type="xs:string" minOccurs="0"/>
+      <xs:element name="esAuditable" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="esEncabezado" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="esLlaveDeRepetitivo" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="esParametro" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="esRepetitivo" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="idCampo" type="xs:long" minOccurs="0"/>
+      <xs:element name="idCampoLlaveRepetitiva" type="xs:long" minOccurs="0"/>
+      <xs:element name="idFormato" type="xs:long" minOccurs="0"/>
+      <xs:element name="iniciaEnCeros" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="justificacion" type="xs:short" minOccurs="0"/>
+      <xs:element name="longitud" type="xs:int" minOccurs="0"/>
+      <xs:element name="nombre" type="xs:string" minOccurs="0"/>
+      <xs:element name="nombreAtributoDto" type="xs:string" minOccurs="0"/>
+      <xs:element name="posicionInicial" type="xs:int" minOccurs="0"/>
+      <xs:element name="tipoDato" type="xs:string" minOccurs="0"/>
+      <xs:element name="valorActual" type="xs:string" minOccurs="0"/>
+      <xs:element name="valorPorDefecto" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="parametrosSeguridadDTO">
+    <xs:sequence>
+      <xs:element name="debeRevalidarToken" type="xs:boolean"/>
+      <xs:element name="debeValidarSegundaClave" type="xs:boolean"/>
+      <xs:element name="idSesionToken" type="xs:string" minOccurs="0"/>
+      <xs:element name="usaToken" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ajustarProvisionCajeroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respuestaConsultaManejoEfectivoATMDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respuestaConsultaManejoEfectivoATMDto">
+    <xs:complexContent>
+      <xs:extension base="tns:respuestaDeTransaccionBaseDTO">
+        <xs:sequence>
+          <xs:element name="valorProvision" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="respuestaDeTransaccionBaseDTO">
+    <xs:sequence>
+      <xs:element name="caracterAcepta" type="xs:string" minOccurs="0"/>
+      <xs:element name="codMRespuesta" type="xs:short" minOccurs="0"/>
+      <xs:element name="consecutivo" type="xs:int" minOccurs="0"/>
+      <xs:element name="llaveRepetitivoSiguienteTrama" type="tns:campoExtendidoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="MRespuesta" type="xs:string" minOccurs="0"/>
+      <xs:element name="numeroLineas" type="xs:short" minOccurs="0"/>
+      <xs:element name="respuestaOriginal" type="xs:string" minOccurs="0"/>
+      <xs:element name="tieneMasRegistros" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="total" type="xs:int" minOccurs="0"/>
+      <xs:element name="ultimoMensaje" type="xs:short" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ServicioException">
+    <xs:sequence>
+      <xs:element name="codMRespuesta" type="xs:short" minOccurs="0"/>
+      <xs:element name="mensaje" type="xs:string" minOccurs="0"/>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+      <xs:element name="total" type="xs:int" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ajustarSobranteCajero">
+    <xs:sequence>
+      <xs:element name="parameter" type="tns:ajustarSobranteCajeroDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ajustarSobranteCajeroDto">
+    <xs:complexContent>
+      <xs:extension base="tns:parametrosDeTransaccionBaseDTO">
+        <xs:sequence>
+          <xs:element name="concepto" type="xs:short" minOccurs="0"/>
+          <xs:element name="estadoAtm" type="xs:short" minOccurs="0"/>
+          <xs:element name="referencia1" type="xs:string" minOccurs="0"/>
+          <xs:element name="referencia2" type="xs:string" minOccurs="0"/>
+          <xs:element name="referencia3" type="xs:string" minOccurs="0"/>
+          <xs:element name="referencia4" type="xs:string" minOccurs="0"/>
+          <xs:element name="referencia5" type="xs:string" minOccurs="0"/>
+          <xs:element name="talon" type="xs:string" minOccurs="0"/>
+          <xs:element name="tipoTransaccion" type="xs:short" minOccurs="0"/>
+          <xs:element name="valor" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="valorEfectivo" type="xs:decimal" minOccurs="0"/>
+          <xs:element name="valorTotal" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ajustarSobranteCajeroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respAjustarSobranteCajeroDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="respAjustarSobranteCajeroDto">
+    <xs:complexContent>
+      <xs:extension base="tns:respuestaDeTransaccionBaseDTO">
+        <xs:sequence>
+          <xs:element name="valor" type="xs:short" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ajustarFaltanteCajero">
+    <xs:sequence>
+      <xs:element name="parameter" type="tns:ajustarSobranteCajeroDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ajustarFaltanteCajeroResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:respAjustarSobranteCajeroDto" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

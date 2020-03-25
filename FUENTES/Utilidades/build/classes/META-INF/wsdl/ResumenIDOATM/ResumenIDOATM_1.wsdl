@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/" xmlns:ns0="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="ResumenIDOATM.xsd2.xsd" namespace="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="resumenIDOATM">
+    <wsdl:part name="parameters" element="xsns:resumenIDOATM" xmlns:xsns="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="resumenIDOATMResponse">
+    <wsdl:part name="parameters" element="xsns:resumenIDOATMResponse" xmlns:xsns="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ServicioException">
+    <wsdl:part name="fault" element="xsns:ServicioException" xmlns:xsns="http://ResumenIDOATM.servicios.impl.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:portType name="ResumenIDOATM">
+    <wsdl:operation name="resumenIDOATM">
+      <wsdl:input name="resumenIDOATMRequest" message="ns0:resumenIDOATM"/>
+      <wsdl:output name="resumenIDOATMResponse" message="ns0:resumenIDOATMResponse"/>
+      <wsdl:fault name="ServicioException" message="ns0:ServicioException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResumenIDOATMPortBinding" type="ns0:ResumenIDOATM">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="resumenIDOATM">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="resumenIDOATMRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="resumenIDOATMResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServicioException">
+        <soap11:fault name="ServicioException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResumenIDOATMService">
+    <wsdl:port name="ResumenIDOATMPort" binding="ns0:ResumenIDOATMPortBinding">
+      <soap11:address location="http://90.4.28.5:80/ResumenIDOATMService/ResumenIDOATM"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

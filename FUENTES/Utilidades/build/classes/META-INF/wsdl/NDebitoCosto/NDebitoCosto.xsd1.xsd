@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.davivienda.com/xml/NotaDebitoCosto" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.davivienda.com/xml/NotaDebitoCosto" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mrm="http://www.davivienda.com/xml/NotaDebitoCosto">
+  <xsd:include schemaLocation="NDebitoCosto.xsd2.xsd"/>
+</xsd:schema>

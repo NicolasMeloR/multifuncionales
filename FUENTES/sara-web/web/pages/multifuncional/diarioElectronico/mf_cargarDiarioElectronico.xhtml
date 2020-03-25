@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup id="panelCargarDiarioE_multifuncional">
+        <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Recuperaciones Diarios Electrónicos</div>                       
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                <div class="barra_Rojo">Tipo Diario</div>
+                <h:panelGrid columns="1">
+                    <h:selectOneRadio id="mfcde_tipoDiario" value="#{cargarDiariosElectronicosBean.tipointDiario_}" layout="pageDirection">
+                        <f:selectItem itemValue="3" itemLabel="Diario Efectivo"   />
+                        <f:selectItem itemValue="1" itemLabel="Diario Cheque" />
+                        <f:selectItem itemValue="2" itemLabel="Log Eventos" />
+                        <f:ajax  render="panelCtgaGeneral"/>
+                    </h:selectOneRadio>
+                </h:panelGrid>
+            </h:panelGroup>
+            <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                <div class="barra_Rojo"> Acciones </div>
+                <div class="textoNombreCampo">&nbsp;</div>
+                <div class="textoNombreCampo">&nbsp;</div>
+                <h:commandButton value="PROCESAR ARCHIVO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cargarDiariosElectronicosBean.cargarDiariosElectronicos()}" >
+                    <f:ajax  render="panelCargarDiarioE_multifuncional panelPaginas"/>
+                </h:commandButton>                    
+            </h:panelGroup>
+        </div>
+        <div class="barra_Rojo">Cargar Información Diarios Electrónicos Multifuncional</div>
+    </h:panelGroup>
+</html>
+

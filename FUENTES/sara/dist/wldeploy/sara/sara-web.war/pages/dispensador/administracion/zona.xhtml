@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:panelGroup id="panelZona">
+            <h:panelGrid columns="6" id="btnZona">             
+
+                <h:commandButton value="Nuevo" rendered="#{!zonaBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{zonaBean.nuevoUsuario()}" >
+                    <f:ajax render="panelZona" />
+                </h:commandButton>
+                <h:commandButton value="Modificar" rendered="#{!zonaBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{zonaBean.modificarUsuario()}" >
+                    <f:ajax render="panelZona panelPaginas" />
+                </h:commandButton>
+                <h:commandButton rendered="#{zonaBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{zonaBean.grabarUsuario()}" >
+                    <f:ajax render="panelZona panelPaginas" />
+                </h:commandButton>
+                <h:commandButton rendered="#{zonaBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{zonaBean.buscarRegistro()}"  >
+                    <f:ajax render="panelZona" />
+                </h:commandButton>
+                <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{zonaBean.anteriorUsuario()}"  >
+                    <f:ajax render="panelZona" />
+                </h:commandButton>
+                
+                <h:selectOneMenu styleClass="combo"   value="#{zonaBean.usuarioSeleccionado}" >
+                    <f:selectItems value="#{zonaBean.listaZona}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                    <f:ajax render="panelZona" />
+                </h:selectOneMenu>
+            
+                <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{zonaBean.buscarRegistro()}"  >
+                    <f:ajax render="panelZona" />
+                </h:commandButton>
+                                                 
+                <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{zonaBean.siguienteUsuario()}"  >
+                    <f:ajax render="panelZona" />
+                </h:commandButton>
+            </h:panelGrid>
+                   
+            <div class="tituloSeccion2">Información Zonas de Ubicación</div>
+            <h:panelGrid id="datosZona" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{zonaBean.codigo}" size="18" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre</span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoLargo" >
+                    <h:inputText value="#{zonaBean.nombre}" size="40" ><f:ajax render="@this"  /></h:inputText>                  
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Descripción</span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoLargo" >
+                    <h:inputText value="#{zonaBean.descripcion}" size="40" ><f:ajax render="@this"  /></h:inputText>                               
+                 </h:panelGroup>
+                
+            </h:panelGrid>
+     </h:panelGroup> 
+</html>
+

@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup layout="bock" id="panelOpcionesSubMenus">
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarOpcionesSubMenus}">
+            <!--DIARIOS_ELECTRONICOS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'DIARIOS_ELECTRONICOS' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup   id="mod1_mnu101" class="frameSubmenuPpal_2"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc101}">
+                            <h:commandLink class="botonSubmenuPpal" value="Transacción" style="width:110px;" id="mod1_mnu101_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="TRANSACCION" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc102 || initBean.usuarioAplicacionDTO.srvc102}" >
+
+                    </h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod1_mnu111" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc102}">
+                            <h:commandLink class="botonSubmenuPpal" value="Copiar Archivo" style="width:110px;" id="mod1_mnu111_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="COPIAR_ARCHIVO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod1_mnu112" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc102}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Diario Electrónico" style="width:180px;" id="mod1_mnu112_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_DIARIO_E" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc121}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod1_mnu121" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc121}">
+                            <h:commandLink class="botonSubmenuPpal" value="Copiar Archivo Ciclo Diario" style="width:200px;" id="mod1_mnu121_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="COPIAR_ARCHIVO_CD" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod1_mnu122" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc121}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivo Ciclo Diario" style="width:200px;" id="mod1_mnu122_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_ARCHIVO_CD" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <!--CUADRE_CAJEROS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'CUADRE_CAJEROS' ? true : false}">
+                <div id="submenuModulo2">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod2_mnu201" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc201}">
+                            <h:commandLink class="botonSubmenuPpal" value="Realizar Ajuste" style="width:140px;" id="mod2_mnu201_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REALIZAR_AJUSTE" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod2_mnu202" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc202}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consultar Totales" style="width:140px;" id="mod2_mnu202_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONSULTAR_TOTALES" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc211 || initBean.usuarioAplicacionDTO.srvc212}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod2_mnu211" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc211}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consultar Ajustes" style="width:140px;" id="mod2_mnu211_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONSULTAR_AJUSTES" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod2_mnu212" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc212}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cuadre Cifras" style="width:110px;" id="mod2_mnu212_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CUADRE_CIFRAS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc221}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod2_mnu221" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc221}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivos Cuadre" style="width:140px;" id="mod2_mnu221_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CAR_CARCHIVOS_CUADRE" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <!--REINTEGROS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'REINTEGROS' ? true : false}">
+                <div id="submenuModulo3">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu301"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc301}">
+                            <h:commandLink class="botonSubmenuPpal" value="Crear Nota Crédito" style="width:180px;" id="mod3_mnu301_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CREAR_NOTA_CREDITO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu302"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc302}">
+                            <h:commandLink class="botonSubmenuPpal" value="Crear Nota Debito" style="width:180px;" id="mod3_mnu302_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CREAR_NOTA_DEBITO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc311 || initBean.usuarioAplicacionDTO.srvc312}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu311"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc311}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivo Host" style="width:180px;" id="mod3_mnu311_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_ARCHIVO_HOST" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu312"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc312}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Calcular Reintegros" style="width:180px;" id="mod3_mnu312_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CALCULAR_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>                        
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc321 || initBean.usuarioAplicacionDTO.srvc322}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu321"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc321}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Informes Reintegros"  style="width:150px;" id="mod3_mnu321_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="INFORMES_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu322"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc322}">
+                            <h:commandLink class="botonSubmenuPpal" value="Revisar Reintegros" style="width:150px;" id="mod3_mnu322_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REVISAR_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc331 || initBean.usuarioAplicacionDTO.srvc332}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu331"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc331}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Autorizar Reintegros" style="width:150px;" id="mod3_mnu331_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="AUTORIZAR_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu332" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc332}">
+                            <h:commandLink class="botonSubmenuPpal" value="Reintegros Creados" style="width:150px;" id="mod3_mnu332_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REINTEGROS_CREADOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc334 || initBean.usuarioAplicacionDTO.srvc333}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu333" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc333}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Reversar Reintegros" style="width:150px;" id="mod3_mnu333_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REVERSAR_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu334" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc334}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consultar Reintegros Reversados"  style="width:150px;" id="mod3_mnu334_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONSULTAR_REINTEGROS_REVERSADOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc341 || initBean.usuarioAplicacionDTO.srvc322}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu341" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc341}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Autorizar Notas Debito" style="width:150px;" id="mod3_mnu341_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="AUTORIZAR_NOTAS_DEBITO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod3_mnu342" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc322}">
+                            <h:commandLink class="botonSubmenuPpal" value="Revisar Creados"  style="width:150px;" id="mod3_mnu342_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REVISAR_CREADOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <!--ADMINISTRACION-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'ADMINISTRACION' ? true : false}">
+                <div id="submenuAdmin">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu401" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc401}">
+                            <h:commandLink class="botonSubmenuPpal" value="Usuarios" style="width:140px;" id="mod4_mnu401_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="USUARIOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu402" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc402}">
+                            <h:commandLink class="botonSubmenuPpal" value="Privilegios Acceso" style="width:140px;" id="mod4_mnu402_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="PRIVILEGIOS_ACCESO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc411 || initBean.usuarioAplicacionDTO.srvc412}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu411" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc411}">
+                            <h:commandLink class="botonSubmenuPpal" value="Configuración Módulos" style="width:110px;" id="mod4_mnu411_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONFIGURACION_MODULOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu412" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc412}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Cajero" style="width:110px;" id="mod4_mnu412_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CAJERO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc421 || initBean.usuarioAplicacionDTO.srvc422}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu421" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc421}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Tipo Cajero" style="width:110px;" id="mod4_mnu421_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="TIPO_CAJERO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu422" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc422}">
+                            <h:commandLink class="botonSubmenuPpal" value="Ubicacion" style="width:120px;" id="mod4_mnu422_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="UBICACION" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc431 || initBean.usuarioAplicacionDTO.srvc432}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu431" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc431}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Zona" style="width:110px;" id="mod4_mnu431_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="ZONA" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu432" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc432}">
+                            <h:commandLink class="botonSubmenuPpal" value="Regional" style="width:120px;" id="mod4_mnu432_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REGIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc441 || initBean.usuarioAplicacionDTO.srvc442}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu441" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc441}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Transportadora" style="width:110px;" id="mod4_mnu441_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="TRANSPORTADORA" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu442" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc442}">
+                            <h:commandLink class="botonSubmenuPpal" value="Occa" style="width:120px;" id="mod4_mnu442_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="OCCA" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc451 || initBean.usuarioAplicacionDTO.srvc452}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu451" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc451}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Contingencia Cajero" style="width:110px;" id="mod4_mnu451_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONTIGENCIA_CAJERO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod4_mnu452" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc452}">
+                            <h:commandLink class="botonSubmenuPpal" value="Oficina Multifuncional" style="width:120px;" id="mod4_mnu452_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="OFICINA_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                </div>
+            </h:panelGroup>
+            <!--CONTINGENCIA-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'CONTINGENCIA' ? true : false}">
+                <div id="submenuContingecia">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod5_mnu501"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc501}">
+                            <h:commandLink class="botonSubmenuPpal" value="Contingencia General" style="width:140px;" id="mod5_mnu501_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONTINGENCIA_GENERAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod5_mnu502"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc502}">
+                            <h:commandLink class="botonSubmenuPpal" value="Contingencia Diarios Electronicos" style="width:140px;" id="mod5_mnu502_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONT_DIARIOS_ELECTRONICOS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc511 || initBean.usuarioAplicacionDTO.srvc512}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod5_mnu511" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc511}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consulta General Contingencia" style="width:110px;" id="mod5_mnu511_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONS_GENERAL_CONTINGENCIA" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod5_mnu512" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc512}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Consulta Diarios E Contingencia" style="width:110px;" id="mod5_mnu512_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONS_DIARIOSE_CONTINGENCIA" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+
+                </div>
+            </h:panelGroup>
+            <!--MULTI_DIARIOS_ELECTRONICOS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'MULTI_DIARIOS_ELECTRONICOS' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod6_mnu601"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc601}">
+                            <h:commandLink class="botonSubmenuPpal" value="Transacción" style="width:110px;" id="mod6_mnu601_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="TRANSACCION_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod6_mnu601_2"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc601}">
+                            <h:commandLink class="botonSubmenuPpal" value="DiarioKal" style="width:110px;" id="mod6_mnu601_2_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="DIARIOKAL_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        
+                        
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc602}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod6_mnu602"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc602}">
+                            <h:commandLink class="botonSubmenuPpal" value="Copiar Archivo" style="width:110px;" id="mod6_mnu602_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="COPIAR_ARCHIVO_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod6_mnu603"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc602}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Diarios Electrónicos" style="width:180px;" id="mod6_mnu603_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_DIARIO_E_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <!--MULTI_CUADRE_CIFRAS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'MULTI_CUADRE_CIFRAS' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu801"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc801}">
+                            <h:commandLink class="botonSubmenuPpal" value="Realizar Ajuste" style="width:110px;" id="mod7_mnu801_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REALIZAR_AJUSTE_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu802" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc802}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consultar Totales" style="width:110px;" id="mod7_mnu802_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONSULTAR_TOTALES_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc811 || initBean.usuarioAplicacionDTO.srvc812}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu811" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc811}">
+                            <h:commandLink class="botonSubmenuPpal" value="Consultar Ajustes" style="width:180px;" id="mod7_mnu811_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CONSULTAR_AJUSTE_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu812" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc812}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cuadre Cifras" style="width:180px;" id="mod7_mnu812_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CUADRE_CIFRAS_SUB_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+
+            </h:panelGroup>
+            <!--MULTI_REINTEGROS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'MULTI_REINTEGROS' ? true : false}">
+                <div id="submenuModulo3">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu701"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc701}">
+                            <h:commandLink class="botonSubmenuPpal" value="Crear Nota Crédito" style="width:180px;" id="mod7_mnu701_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CREAR_NOTA_CREDITO_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu702" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc702}">
+                            <h:commandLink class="botonSubmenuPpal" value="Crear Nota Debito" style="width:180px;" id="mod7_mnu702_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CREAR_NOTA_DEBITO_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc711 || initBean.usuarioAplicacionDTO.srvc712}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu721"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc711}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Informes Reintegros"  style="width:150px;" id="mod7_mnu721_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="INFORMES_REINTEGROS_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu722"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc712}">
+                            <h:commandLink class="botonSubmenuPpal" value="Revisar Reintegros" style="width:150px;" id="mod7_mnu722_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="REVISAR_REINTEGROS_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc721 || initBean.usuarioAplicacionDTO.srvc722}" ></h:panelGroup>
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu731"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc721}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Autorizar Reintegros" style="width:150px;" id="mod7_mnu731_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="AUTORIZAR_REINTEGROS_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod7_mnu741"  layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc722}">
+                            <h:commandLink class="botonSubmenuPpal"  value="Autorizar Notas Debito" style="width:150px;" id="mod7_mnu741_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="AUTORIZAR_NOTAS_DEBITO_MULTIFUNCIONAL" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                </div>
+            </h:panelGroup>
+
+            <!--CARGUES MASIVOS REINTEGROS-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'CM_REINTEGROS' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod9_mnu901"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc901}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivo" style="width:110px;" id="mod9_mnu901_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_ARCHIVO_REINTEGROS" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc903}" ></h:panelGroup>
+                </div>
+            </h:panelGroup>
+
+            <!--CARGUES MASIVOS TIMBRES-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'CM_TIMBRES' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod9_mnu902"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc902}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivo" style="width:110px;" id="mod9_mnu902_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_ARCHIVO_TIMBRES" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc902}" ></h:panelGroup>
+                </div>
+            </h:panelGroup>
+
+            <!--NOTAS_DEBITO-->
+            <h:panelGroup layout="block" rendered="#{initBean.opcionSubMenu == 'CM_NOTAS_DEBITO' ? true : false}">
+                <div id="submenuModulo1">
+                    <div class="frameSubmenuPpal_1">
+                        <h:panelGroup class="frameSubmenuPpal_2" id="mod9_mnu903"   layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc903}">
+                            <h:commandLink class="botonSubmenuPpal" value="Cargar Archivo" style="width:110px;" id="mod9_mnu903_btn" actionListener="#{initBean.cargarPaginaOpcionesSubMenu()}">
+                                <f:param name="opcionPaginaSubMenu" value="CARGAR_ARCHIVO_NOTAS_DEBITO" />
+                                <f:ajax render="panelPaginas" />
+                            </h:commandLink>
+                        </h:panelGroup>
+                    </div>
+                    <h:panelGroup class="flechaSubmenuPpal" layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc903}" ></h:panelGroup>
+                </div>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+
+</html>

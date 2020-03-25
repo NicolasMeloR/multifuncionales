@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="SolicitarNotaDebitoCuentaAhorrosService" targetNamespace="http://servicios.davivienda.com/solicitarNotaDebitoCuentaAhorrosService" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://servicios.davivienda.com/solicitarNotaDebitoCuentaAhorrosServiceTypes" xmlns:tns="http://servicios.davivienda.com/solicitarNotaDebitoCuentaAhorrosService">
+  <types>
+    <schema targetNamespace="http://servicios.davivienda.com/solicitarNotaDebitoCuentaAhorrosServiceTypes" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://servicios.davivienda.com/solicitarNotaDebitoCuentaAhorrosServiceTypes" xmlns="http://www.w3.org/2001/XMLSchema">
+      <complexType name="solicitarNotaDebitoCuentaAhorros">
+        <sequence>
+          <element name="SolicitudNotaDebitoCuentaAhorrosDto_1" type="tns:SolicitudNotaDebitoCuentaAhorrosDto" nillable="true"/>
+        </sequence>
+      </complexType>
+      <simpleType name="validacionSegundaClave">
+        <restriction base="string">
+          <maxLength value="16"/>
+        </restriction>
+      </simpleType>
+      <xsd:simpleType name="validacionTotal">
+        <xsd:restriction base="int">
+          <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <complexType name="SolicitudNotaDebitoCuentaAhorrosDto">
+        <sequence>
+          <element name="identificadorOperacion" type="string" nillable="true"/>
+          <element name="identificadorSesion" type="string" nillable="true"/>
+          <element name="origenLog" type="string" nillable="true"/>
+          <element name="canal" type="short" nillable="true"/>
+          <element name="host" type="int" nillable="true"/>
+          <element name="jornada" type="short" nillable="true"/>
+          <element name="llaveRepetitivaConsulta" type="tns:CampoExtendidoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="modoDeOperacion" type="short" nillable="true"/>
+          <element name="parametrosSeguridad" type="tns:ParametrosSeguridadDTO" nillable="true"/>
+          <element name="perfil" type="short" nillable="true"/>
+          <element name="segundaClave" type="tns:validacionSegundaClave" nillable="true"/>
+          <element name="total" type="tns:validacionTotal" nillable="true"/>
+          <element name="usuario" type="string" nillable="true"/>
+          <element name="idTarea" type="string" nillable="true"/>
+          <element name="ORIGEN_FONDO_CTA_AHORROS" type="short" nillable="true"/>
+          <element name="concepto" type="short" nillable="true"/>
+          <element name="fechaMovimiento" type="dateTime" nillable="true"/>
+          <element name="numeroCuentaAhorros" type="string" nillable="true"/>
+          <element name="origenFondos" type="short" nillable="true"/>
+          <element name="referenciaDos" type="string" nillable="true"/>
+          <element name="referenciaUno" type="string" nillable="true"/>
+          <element name="secuencialRegistro" type="int" nillable="true"/>
+          <element name="valor" type="decimal" nillable="true"/>
+        </sequence>
+      </complexType>
+      <complexType name="CampoExtendidoDto">
+        <sequence>
+          <element name="caracterRelleno" type="string" nillable="true"/>
+          <element name="esAuditable" type="boolean" nillable="true"/>
+          <element name="esEncabezado" type="boolean" nillable="true"/>
+          <element name="esLlaveDeRepetitivo" type="boolean" nillable="true"/>
+          <element name="esParametro" type="boolean" nillable="true"/>
+          <element name="esRepetitivo" type="boolean" nillable="true"/>
+          <element name="idCampo" type="long" nillable="true"/>
+          <element name="idCampoLlaveRepetitiva" type="long" nillable="true"/>
+          <element name="idFormato" type="long" nillable="true"/>
+          <element name="iniciaEnCeros" type="boolean" nillable="true"/>
+          <element name="justificacion" type="short" nillable="true"/>
+          <element name="longitud" type="int" nillable="true"/>
+          <element name="nombre" type="string" nillable="true"/>
+          <element name="nombreAtributoDto" type="string" nillable="true"/>
+          <element name="posicionInicial" type="int" nillable="true"/>
+          <element name="tipoDato" type="string" nillable="true"/>
+          <element name="valorActual" type="string" nillable="true"/>
+          <element name="valorPorDefecto" type="string" nillable="true"/>
+          <element name="JMascara" type="string" nillable="true"/>
+          <element name="PMascara" type="string" nillable="true"/>
+          <element name="valor" type="string" nillable="true"/>
+        </sequence>
+      </complexType>
+      <complexType name="ParametrosSeguridadDTO">
+        <sequence>
+          <element name="debeRevalidarToken" type="boolean"/>
+          <element name="debeValidarSegundaClave" type="boolean"/>
+          <element name="idSesionToken" type="string" nillable="true"/>
+          <element name="usaToken" type="boolean"/>
+        </sequence>
+      </complexType>
+      <complexType name="solicitarNotaDebitoCuentaAhorrosResponse">
+        <sequence>
+          <element name="result" type="tns:RespuestaNotaDebitoCuentaAhorrosDto" nillable="true"/>
+        </sequence>
+      </complexType>
+      <complexType name="RespuestaNotaDebitoCuentaAhorrosDto">
+        <sequence>
+          <element name="MRespuesta" type="string" nillable="true"/>
+          <element name="caracterAcepta" type="string" nillable="true"/>
+          <element name="codMRespuesta" type="short" nillable="true"/>
+          <element name="consecutivo" type="int" nillable="true"/>
+          <element name="llaveRepetitivoSiguienteTrama" type="tns:CampoExtendidoDto" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+          <element name="numeroLineas" type="short" nillable="true"/>
+          <element name="respuestaOriginal" type="string" nillable="true"/>
+          <element name="tieneMasRegistros" type="boolean" nillable="true"/>
+          <element name="total" type="int" nillable="true"/>
+          <element name="ultimoMensaje" type="short" nillable="true"/>
+        </sequence>
+      </complexType>
+      <complexType name="ServicioException">
+        <sequence>
+          <element name="codMRespuesta" type="short" nillable="true"/>
+          <element name="mensaje" type="string" nillable="true"/>
+          <element name="total" type="int" nillable="true"/>
+        </sequence>
+      </complexType>
+      <element name="solicitarNotaDebitoCuentaAhorros" type="tns:solicitarNotaDebitoCuentaAhorros"/>
+      <element name="solicitarNotaDebitoCuentaAhorrosResponse" type="tns:solicitarNotaDebitoCuentaAhorrosResponse"/>
+      <element name="ServicioException" type="tns:ServicioException"/>
+    </schema>
+  </types>
+  <message name="SolicitarNotaDebitoCuentaAhorrosServiceInterface_solicitarNotaDebitoCuentaAhorros">
+    <part name="parameters" element="ns2:solicitarNotaDebitoCuentaAhorros"/>
+  </message>
+  <message name="SolicitarNotaDebitoCuentaAhorrosServiceInterface_solicitarNotaDebitoCuentaAhorrosResponse">
+    <part name="result" element="ns2:solicitarNotaDebitoCuentaAhorrosResponse"/>
+  </message>
+  <message name="ServicioException">
+    <part name="ServicioException" element="ns2:ServicioException"/>
+  </message>
+  <portType name="SolicitarNotaDebitoCuentaAhorrosServiceInterface">
+    <operation name="solicitarNotaDebitoCuentaAhorros">
+      <input message="tns:SolicitarNotaDebitoCuentaAhorrosServiceInterface_solicitarNotaDebitoCuentaAhorros"/>
+      <output message="tns:SolicitarNotaDebitoCuentaAhorrosServiceInterface_solicitarNotaDebitoCuentaAhorrosResponse"/>
+      <fault name="ServicioException" message="tns:ServicioException"/>
+    </operation>
+  </portType>
+  <binding name="SolicitarNotaDebitoCuentaAhorrosServiceInterfaceBinding" type="tns:SolicitarNotaDebitoCuentaAhorrosServiceInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="solicitarNotaDebitoCuentaAhorros">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ServicioException">
+        <soap:fault name="ServicioException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="SolicitarNotaDebitoCuentaAhorrosService">
+    <port name="SolicitarNotaDebitoCuentaAhorrosServiceInterfacePort" binding="tns:SolicitarNotaDebitoCuentaAhorrosServiceInterfaceBinding">
+      <soap:address location="http://90.4.28.5:80/servicios/SolicitarNotaDebitoCuentaAhorrosService" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+    </port>
+  </service>
+</definitions>

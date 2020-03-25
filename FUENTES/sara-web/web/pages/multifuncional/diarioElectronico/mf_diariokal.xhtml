@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:panelGroup id="panelDiariokal_multifuncional" >
+        <h:panelGroup rendered="#{diariokalMFBean.mostrarPanelGeneral}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Criterios de Selección</div>  
+                
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Cajero</div>
+                    <div class="textoNombreCampo">Nombre</div>
+                    <h:selectOneMenu style="width: 173px;"  value="#{diariokalMFBean.cajeroSeleccionado}" ><f:ajax render="@this"  />
+                        <f:selectItem itemLabel="Seleccione uno ..." />
+                        <f:selectItems value="#{diariokalMFBean.listaCajeros}" var="reg" itemValue="#{reg.codigoCajero}" itemLabel="#{reg.codigoCajero} - #{reg.nombre}" />
+                        <!--<f:ajax render="panelCargarDiarioE" />-->
+                    </h:selectOneMenu>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Desde</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{diariokalMFBean.fechaDesde}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{diariokalMFBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{diariokalMFBean.horaDesde}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                            
+                        </h:panelGrid>
+
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{diariokalMFBean.fechaHasta}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{diariokalMFBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{diariokalMFBean.horaHasta}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>
+                
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Reportes</div>
+                    <h:panelGrid columns="1">
+                        <h:commandButton value="GENERAR REPORTE" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{diariokalMFBean.generarReporteSinTrasmision()}">
+                        </h:commandButton> 
+                    </h:panelGrid>
+                </h:panelGroup>
+            </div>
+            <div class="barra_Rojo">Transacciones realizadas en cajeros automáticos multifuncionales</div>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:panelGroup id="InfoTransportadora">
+                <h:panelGrid columns="7" id="btnInfoTransportadora">             
+
+                   <h:commandButton value="Nuevo" rendered="#{!infoTransportadoraBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.nuevoRegistro()}" >
+                    <f:ajax render="InfoTransportadora" />
+                    </h:commandButton>
+                    <h:commandButton value="Modificar" rendered="#{!infoTransportadoraBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.modificarRegistro()}" >
+                    <f:ajax render="InfoTransportadora" />
+                    </h:commandButton>
+                    <h:commandButton rendered="#{infoTransportadoraBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.grabarRegistro()}" >
+                    <f:ajax render="InfoTransportadora panelPaginas" />
+                    </h:commandButton>
+                    <h:commandButton rendered="#{infoTransportadoraBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.buscarRegistro()}"  >
+                    <f:ajax render="InfoTransportadora" />
+                    </h:commandButton>
+                    <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.anteriorRegistro()}"  >
+                    <f:ajax render="InfoTransportadora panelPaginas" />
+                    </h:commandButton>
+
+                    <h:selectOneMenu style="width: 173px;"  value="#{infoTransportadoraBean.registroSeleccionado}" >
+                        <f:selectItems value="#{infoTransportadoraBean.listaRegistros}" var="user" itemValue="#{user.idTrans}" itemLabel="#{user.idTransportadora}-#{user.nombre}" />
+                             <f:ajax render="InfoTransportadora" />
+                    </h:selectOneMenu>
+
+                    <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.buscarRegistro()}"  >
+                    <f:ajax render="InfoTransportadora panelPaginas" />
+                    </h:commandButton>
+
+                    <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{infoTransportadoraBean.siguienteRegistro()}"  >
+                    <f:ajax render="InfoTransportadora panelPaginas" />
+                    </h:commandButton>      
+            </h:panelGrid>
+            
+            <div class="tituloSeccion2">Información Transportadora</div>
+            <h:panelGrid id="datosInfoTransportadora" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoTransportadoraBean.registro.idTransportadora}" onkeypress="javascript:return solonumeros(event)"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoTransportadoraBean.registro.nombre}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Directorio Archivo Arqueo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoTransportadoraBean.registro.dirArchivoArqueo}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+            </h:panelGrid>
+    </h:panelGroup>
+            
+</html>
+

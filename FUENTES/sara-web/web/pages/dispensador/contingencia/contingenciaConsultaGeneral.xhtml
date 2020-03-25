@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup id="panelContingenciaConsulta">
+        <h:panelGroup layout="block" rendered="#{!contingenciaConsultaGBean.mostrarTabla}"> 
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 155px; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Consultar Contingencia</div>  
+
+
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Desde</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{contingenciaConsultaGBean.fechaDesde}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                                                       
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{contingenciaConsultaGBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{contingenciaConsultaGBean.horaDesde}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                        
+                            
+                        </h:panelGrid>
+
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{contingenciaConsultaGBean.fechaHasta}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{contingenciaConsultaGBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{contingenciaConsultaGBean.horaHasta}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>  
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Acciones </div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:commandButton value="CONSULTAR" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{contingenciaConsultaGBean.consultar()}" >
+                        <f:ajax  render="panelContingenciaConsulta tablaContingenciaConsulta panelPaginas"/>
+                    </h:commandButton>                    
+                </h:panelGroup>
+            </div>
+        </h:panelGroup>
+        <div class="barra_Rojo">Consulta Contingencia</div>
+        <h:panelGroup  layout="block" id="tablaContingenciaConsulta" rendered="#{contingenciaConsultaGBean.mostrarTabla}" >
+            <h:dataTable value="#{contingenciaConsultaGBean.listaData}" var="regc" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+                <h:column>
+                    <f:facet name="header"> # </f:facet> 
+                        #{regc.idRegistro}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Archivo Tarea</f:facet> 
+                        #{regc.archivoTarea}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Archivo</f:facet> 
+                        #{regc.fechaArchivo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Tarea</f:facet> 
+                        #{regc.tarea}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Inicial</f:facet> 
+                        #{regc.fechaInicial}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Final</f:facet> 
+                        #{regc.fechaFinal}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">es tarea Automatica</f:facet> 
+                        #{regc.tareaAutomatica}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">EstadoCarga</f:facet> 
+                        #{regc.estadoCarga}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cantidad Registros</f:facet> 
+                        #{regc.numRegistros}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Usuario</f:facet> 
+                        #{regc.usuario}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Descripcion Error</f:facet> 
+                        #{regc.descripcionError}
+                </h:column>
+            </h:dataTable>
+            <h:panelGroup  style="width:  1280px;" layout="block"  styleClass="mensajesData" rendered="#{empty contingenciaConsultaGBean.listaData}">
+                No Data
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

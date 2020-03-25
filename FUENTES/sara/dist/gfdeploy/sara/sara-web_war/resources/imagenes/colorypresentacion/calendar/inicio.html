@@ -1,0 +1,178 @@
+<%@page contentType="text/html"%>
+<%@page pageEncoding="UTF-8"%>
+
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <jsp:useBean id="coleccionCajeroMnuBean" class="java.util.Collection" scope="request"></jsp:useBean>
+        <title>Terminales de Autoservicio</title>
+        
+        <link rel=stylesheet href="${pageContext.servletContext.contextPath}/recursos/estilos/adminAtm.css" type="text/css">
+
+        <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/dojo/src/widget/templates/DatePicker.css" />
+        
+	<script type="text/javascript">
+		var djConfig = { isDebug: true, debugAtAllCosts: true };
+	</script>
+        
+        <script type="text/javascript" src="${pageContext.servletContext.contextPath}/dojo/dojo.js"></script>
+        
+        <script language="javascript">
+        dojo.require("dojo.debug.Firebug");            
+	dojo.require("dojo.widget.LayoutContainer");
+	dojo.require("dojo.widget.FloatingPane");
+	dojo.require("dojo.widget.ContentPane");
+	dojo.require("dojo.widget.SplitContainer");
+	dojo.require("dojo.widget.ColorPalette");
+	dojo.require("dojo.widget.DatePicker");	
+	dojo.require("dojo.widget.Tree");
+	dojo.require("dojo.widget.TreeSelector");
+	dojo.require("dojo.widget.Button");
+	dojo.require("dojo.widget.ResizeHandle");
+	dojo.require("dojo.widget.FilteringTable");
+	dojo.require("dojo.collections.Store");
+        dojo.hostenv.writeIncludes();
+        </script>
+        
+        <script type="text/javascript" src="${pageContext.servletContext.contextPath}/recursos/js/adminAtm.js"></script>
+        
+        <script type="text/javascript">
+          function muestraCajeroPorZona(clickedTreeNode, codigoRegional) {
+           if (!clickedTreeNode.isFolder) {
+              <c:forEach items="${coleccionCajeroMnuBean}" var="item">
+               if (${item.codigoOcca} == codigoRegional) {   
+                 var v${item.codigoCajero} = dojo.widget.createWidget("TreeNode", {id: "cjr${item.codigoCajero}" , title: "${item.codigoCajero} ${item.nombre}" , childIconSrc: "${pageContext.servletContext.contextPath}/recursos/imagenes/tree/tree_document.gif"} );
+                 clickedTreeNode.addChild(v${item.codigoCajero});
+               }
+               </c:forEach>
+           }
+          };
+          
+          function crearNodoFechaProceso() {
+            dp = dojo.widget.byId("dpFechaProceso");
+            nodo = dojo.widget.byId("mnu.procesos.CargueTiras");
+            fechaProceso = dojo.date.strftime(dp.getDate(),"%Y/%m/%d");
+            nodoHijo = dojo.widget.byId("mnu.procesos.CargueTiras."+fechaProceso);
+            if (nodoHijo == undefined) {
+              nodoFecha = dojo.widget.createWidget("TreeNode" , {id: "mnu.procesos.CargueTiras."+fechaProceso , title : fechaProceso , childIconSrc: "${pageContext.servletContext.contextPath}/recursos/imagenes/document.gif"});
+              nodo.addChild(nodoFecha);
+              dojo.widget.byId('ingresoFecha').hide();
+            } else {
+               alert ("El proceso ya está definido");
+            };
+          };
+        </script>
+        
+        
+    </head>
+    <body>
+        <div dojoType="TreeSelector" eventNames="select:listSelected" widgetId="treeSelector"></div>
+        <div dojoType="TreeLinkExtension" widgetId="link" params="target:_blank"></div>
+        
+        
+        
+        <div dojoType="LayoutContainer" layoutChildPriority='top-bottom' id="main">
+            <div id="topMenu" dojoType="ContentPane" layoutAlign="top" class="header"
+                 style="padding-bottom: 5px">
+                <div style="float: left; margin-right: 10px;">
+                    <input type="button"  value="Home" class="BtnMnu_Enable" onmouseover="javascript: this.className='BtnMnu_Over'"  onmouseout="javascript: this.className='BtnMnu_Enable'" onclick="dojo.widget.byId('ingresoFecha').show()"/>                
+                </div>
+                <div style="float: left">
+                    <input type="button"  value="Fecha Proceso" class="BtnMnu_Enable" onmouseover="javascript: this.className='BtnMnu_Over'"  onmouseout="javascript: this.className='BtnMnu_Enable'" onclick="dojo.widget.byId('ingresoFecha').show()"/>
+                </div>
+                <div style="float: right;">
+                    <img id="proceso.stop" src="../imagenes/colorypresentacion/proceso-stop.png" alt="" border="0" />
+                </div>
+                <div style="float: right;">
+                    <input type="button"  value="Salir" class="BtnMnu_Enable" onmouseover="javascript: this.className='BtnMnu_Over'"  onmouseout="javascript: this.className='BtnMnu_Enable'" />
+                </div>                
+                <div align=center>Administración terminales</div>
+            </div>
+            
+            <div dojoType="SplitContainer"
+                 orientation="horizontal"
+                 sizerWidth="3"
+                 activeSizing="0"
+                 layoutAlign="client"
+                 sizeMin="70"
+                 sizeShare="85">
+                
+                
+                
+                <div id="treePane" dojoType="Tree" toggle="wipe" toggleDuration="500" selector="treeSelector"
+                     sizeMin="10" sizeShare="60">
+                    <div id="mnu.administracion" dojoType="TreeNode" title="Administración" childIconSrc="recursos/imagenes/tree/common_tasks.gif">
+                        <div id="mnu.administracion.cajeros" dojoType="TreeNode" title="Cajeros" childIconSrc="recursos/imagenes/tree/tree_folder.gif">
+                            <div id="mnu.administracion.cajeros.bogota" dojoType="TreeNode" title="Bogotá" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                            <div id="mnu.administracion.cajeros.cali" dojoType="TreeNode" title="Cali" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                            <div id="mnu.administracion.cajeros.barranquilla" dojoType="TreeNode" title="Barranquilla" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                            <div id="mnu.administracion.cajeros.medellin" dojoType="TreeNode" title="Medellín" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                            <div id="mnu.administracion.cajeros.bucaramanga" dojoType="TreeNode" title="Bucaramanga" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                            <div id="mnu.administracion.cajeros.zonacentral" dojoType="TreeNode" title="Zona Central" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>                        
+                        </div>                    
+                        <div id="mnu.administracion.occas" dojoType="TreeNode" title="Occas" childIconSrc="recursos/imagenes/tree/tree_folder.gif"></div>							
+                    </div>
+                    <div id="mnu.procesos" dojoType="TreeNode" title="Procesos" childIconSrc="recursos/imagenes/tree/JBIComponent.gif">
+                        <div id="mnu.procesos.TiraAuditoria" dojoType="TreeNode" title="Tiras Auditoría" childIconSrc="recursos/imagenes/tree/logger.gif"></div>
+                        <div id="mnu.procesos.CargueTiras" dojoType="TreeNode" title="Cargue Tiras" childIconSrc="recursos/imagenes/tree/cluster.gif"></div>          
+                    </div>			
+                    <div id="mnu.servicios" dojoType="TreeNode" title="Servicios" childIconSrc="recursos/imagenes/tree/resources.gif">
+                        <div id="mnu.servicios.comandos" dojoType="TreeNode" title="Comandos" childIconSrc="recursos/imagenes/tree/TransactionService.gif">
+                            <div id="mnu.servicios.comandos.traerArchivos" dojoType="TreeNode" title="Transmitir archivos host" childIconSrc="recursos/imagenes/tree/nodeagent.gif"></div>
+                            <div id="mnu.servicios.comandos.cargarHost" dojoType="TreeNode" title="Cargar archivos movimiento" childIconSrc="recursos/imagenes/tree/nodeagent.gif"></div>                                                    
+                            <div id="mnu.servicios.comandos.cargarTiras" dojoType="TreeNode" title="Cargar tiras de auditoria" childIconSrc="recursos/imagenes/tree/nodeagent.gif"></div>                                                                                
+                        </div>          
+                    </div>
+                    <div id="mnu.reportes" dojoType="TreeNode" title="Reportes" childIconSrc="recursos/imagenes/tree/logger.gif">
+                        <div id="mnu.reportes.tiras" dojoType="TreeNode" title="Tiras auditoria" childIconSrc="recursos/imagenes/tree/TransactionService.gif">
+                            <div id="mnu.reportes.tiras.recuperacion" dojoType="TreeNode" title="Tiras a recuperar" childIconSrc="recursos/imagenes/tree/tree_document.gif"></div>
+                        </div>          
+                    </div>
+                    <div id="mnu.estadisticas" dojoType="TreeNode" title="Estadísticas" childIconSrc="recursos/imagenes/tree/logger.gif">
+                        <div id="mnu.estadisticas.transaccion" dojoType="TreeNode" title="Transacciones" childIconSrc="recursos/imagenes/tree/TransactionService.gif">
+                            <div id="mnu.estadisticas.transaccion.totales" dojoType="TreeNode" title="Ver totales transacción" childIconSrc="recursos/imagenes/tree/tree_document.gif"></div>
+                        </div>          
+                    </div>
+                    
+                </div>
+                
+                <div id="contenedorList" dojoType="SplitContainer" orientation="vertical" sizerWidth="3" activeSizing="0" style="width: 100%; height: 100%;" 
+                     sizeMin="70" sizeShare="65">
+                    <div id="listPane" dojoType="ContentPane" sizeMin="80" sizeShare="20" style="padding: 5px" loadingMessage="Cargando ..."  executeScripts="true" scriptSeparation="false">
+                    </div>
+                    <div id="ppal.cp.Detalle" dojoType="ContentPane" sizeMin="20" sizeShare="80"  style="padding: 5px" loadingMessage="Cargando ..."  executeScripts="true" scriptSeparation="false">
+                    </div>                    
+                </div>
+            </div>
+            
+            
+            <div id="ingresoFecha" dojoType="FloatingPane"  constrainToContainer="true" title="Ingrese la fecha"
+                 style="width: 240px; height: 330px; left: 100px; top: 100px; display: none;"
+                 hasShadow="true" resizable="false" toggle="explode">
+                <div dojoType="ContentPane" layoutAlign="top-rigth" style="height: 50px; padding-top: 5px;">
+                    <div class="box">
+                        <div dojoType="datepicker" class="calendarContainer" widgetId="dpFechaProceso" style="border:1px solid blue;padding:1px; font-size:18px;" value="today" startDate="2007-03-01"
+                        incrementMonthImageNode="recursos/imagenes/colorypresentacion/calendar/right.jpg" decrementMonthImageNode="recursos/imagenes/colorypresentacion/calendar/right.jpg"
+                        ></div>
+                        <hr>
+                        <button dojoType="Button" onclick="crearNodoFechaProceso">
+                            <img src="${pageContext.servletContext.contextPath}/recursos/imagenes/ok.gif" height=18>
+                            Crear proceso
+                        </button>
+                        <button dojoType="Button" onclick="dojo.widget.byId('ingresoFecha').hide();">
+                            <img src="${pageContext.servletContext.contextPath}/recursos/imagenes/cancel.gif" height=18>
+                            Cancelar
+                        </button>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

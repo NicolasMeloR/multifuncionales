@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:panelGroup id="panelTransaccion" >
+        <h:panelGroup rendered="#{transaccionBean.mostrarPanelGeneral}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Criterios de Seleccion</div>  
+
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <div class="textoNombreCampo">Fecha</div>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{transaccionBean.fechaInicial}"  maxlength="10" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                                                
+                        <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                            <h:panelGroup layout="block" class="divTimerHourEditable">
+                                <div class="divDropDownListTimerHour">
+                                   <ui:repeat var="item" varStatus="status" value="#{transaccionBean.listaHora}">  
+                                               <a>#{item.value}</a>
+                                   </ui:repeat>
+                                 </div>   
+                               <div class="divTimerHourInputEditable">
+                                   <h:inputText maxlength="8" value="#{transaccionBean.horaInicial}" onclick="TimerHourInputEditable(this);">
+                                       <f:ajax render="@this"  />                     
+                                   </h:inputText>
+                                  <span>▼</span>
+                               </div>
+                            </h:panelGroup>
+                        </h:panelGroup> 
+                     </h:panelGrid>
+                    <div class="textoNombreCampo">Hasta</div>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{transaccionBean.fechaFinal}" maxlength="10" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                                              
+                        <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                            <h:panelGroup layout="block" class="divTimerHourEditable">
+                                <div class="divDropDownListTimerHour">
+                                   <ui:repeat var="item" varStatus="status" value="#{transaccionBean.listaHora}">  
+                                               <a>#{item.value}</a>
+                                   </ui:repeat>
+                                 </div>   
+                               <div class="divTimerHourInputEditable">
+                                   <h:inputText maxlength="8" value="#{transaccionBean.horaFinal}" onclick="TimerHourInputEditable(this);">
+                                       <f:ajax render="@this"  />                     
+                                   </h:inputText>
+                                  <span>▼</span>
+                               </div>
+                            </h:panelGroup>
+                        </h:panelGroup> 
+                        
+                      </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Cajero</div>
+                    <div class="textoNombreCampo">Codigo Cajero</div>
+                    <h:inputText value="#{transaccionBean.codigoCajero}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"/></h:inputText>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Datos Transaccion </div>
+                  
+                    <h:panelGrid columns="2">
+                    <div class="textoNombreCampo" style="float: left;">Cuenta</div>
+                    <div class="textoNombreCampo" style="float: left;">Tarjeta</div>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                    <h:inputText value="#{transaccionBean.cuenta}" style="width: 153px"><f:ajax render="@this"/></h:inputText>
+                    <h:inputText value="#{transaccionBean.tarjeta}" style="width: 153px"><f:ajax render="@this"/></h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                    <div class="textoNombreCampo" style="float: left;">Talon</div>
+                    <div class="textoNombreCampo" style="float: left;">Referencia</div>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2">
+                    <h:inputText value="#{transaccionBean.talon}" style="width: 153px"></h:inputText>
+                    <h:inputText value="#{transaccionBean.referencia}" style="width: 153px"></h:inputText>
+                    </h:panelGrid>
+                  
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Consultas</div>
+                    <h:panelGrid columns="2">
+                        <h:commandButton value="DIARIOELECTRONICO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarDiarioElectronico()}">
+                            <f:ajax  render="panelTransaccion panelDiarioElect panelTransacciones panelHistoricoCargue panelNumTransacciones panelCajeroSinTransmision panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="TRANSACCIONES" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarTransacciones()}">
+                            <f:ajax  render="panelTransaccion panelDiarioElect panelTransacciones panelHistoricoCargue panelNumTransacciones panelCajeroSinTransmision panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="HISTORICO CARGUE" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarHistoricoCargue()}">
+                            <f:ajax  render="panelTransaccion panelDiarioElect panelTransacciones panelHistoricoCargue panelNumTransacciones panelCajeroSinTransmision panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="# TRANSACCIONES" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarNumTrasacciones()}">
+                            <f:ajax  render="panelTransaccion panelDiarioElect panelTransacciones panelHistoricoCargue panelNumTransacciones panelCajeroSinTransmision panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="SIN TRANSMISION" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.cajerosSinTransmision()}">
+                            <f:ajax  render="panelTransaccion panelDiarioElect panelTransacciones panelHistoricoCargue panelNumTransacciones panelCajeroSinTransmision panelPaginas"/>
+                        </h:commandButton> 
+
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Reportes</div>
+                    <h:panelGrid columns="1">
+                        <h:commandButton value="TRANSACCIONES" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarXLSTransaccion()}">
+                            
+                        </h:commandButton> 
+                        <h:commandButton value="SIN TRANSMISION" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionBean.generarXLSSinTransmision()}">
+                            
+                        </h:commandButton> 
+                    </h:panelGrid>
+                </h:panelGroup>
+            </div>
+            <div class="barra_Rojo">Transacciones realizadas en cajeros automáticos</div>
+        </h:panelGroup>
+        <h:panelGroup id="panelDiarioElect" rendered="#{transaccionBean.mostrarDiarioElect}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;" >
+                <ui:repeat value="#{transaccionBean.itemsFormateados}" var="itemDiario" rendered="#{transaccionBean.mostrarDiarioElect}">
+                    <tr><td><pre>#{itemDiario.datos}</pre></td></tr>
+                </ui:repeat>
+            </div>    
+        </h:panelGroup>
+        <h:panelGroup id="panelTransacciones" rendered="#{transaccionBean.mostrarTransacciones}">
+            <h:dataTable value="#{transaccionBean.transacciones}" var="itemTr" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemTr.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemTr.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                        #{itemTr.nombreCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transaccion</f:facet>
+                        #{itemTr.descripcionTransaccion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha</f:facet>
+                        #{itemTr.fecha}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Talon</f:facet>
+                        #{itemTr.numeroSerial}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cuenta</f:facet>
+                        #{itemTr.cuenta}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Tarjeta</f:facet>
+                        #{itemTr.tarjeta}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Valor Entregado</f:facet>
+                        #{itemTr.valorEntregado}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Referencia</f:facet>
+                        #{itemTr.referencia}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Codigo Error</f:facet>
+                        #{itemTr.codigoError}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Codigo Terminacion</f:facet>
+                        #{itemTr.codigoTerminacion}
+                </h:column>
+            </h:dataTable>
+
+        </h:panelGroup>
+
+        <h:panelGroup id="panelHistoricoCargue" rendered="#{transaccionBean.mostrarHistorial}">
+            <h:dataTable value="#{transaccionBean.historicosCargue}" var="itemHist" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemHist.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemHist.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Nombre Archivo</f:facet>
+                        #{itemHist.nombreArchivo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Ciclo</f:facet>
+                        #{itemHist.ciclo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha Cargue</f:facet>
+                        #{itemHist.fecha}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Estado Proceso</f:facet>
+                        #{itemHist.estadoProceso}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Error</f:facet>
+                        #{itemHist.error}
+                </h:column>
+
+            </h:dataTable>
+        </h:panelGroup>
+
+        <h:panelGroup id="panelNumTransacciones" rendered="#{transaccionBean.mostrarNumTrasaccioes}">
+            <h:dataTable value="#{transaccionBean.numTransacciones}" var="itemNumTr" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemNumTr.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemNumTr.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                        #{itemNumTr.nombreCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha</f:facet>
+                        #{itemNumTr.fecha}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transaccion</f:facet>
+                        #{itemNumTr.descripcionTransaccion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cantidad</f:facet>
+                        #{itemNumTr.cantidad}
+                </h:column>
+
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup id="panelCajeroSinTransmision" rendered="#{transaccionBean.mostrarCajSinTransmision}">
+            <h:dataTable value="#{transaccionBean.cajerosSinTransamision}" var="itemCj" columnClasses="celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemCj.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemCj.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                        #{itemCj.nombreCajero}
+                </h:column>
+
+            </h:dataTable>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

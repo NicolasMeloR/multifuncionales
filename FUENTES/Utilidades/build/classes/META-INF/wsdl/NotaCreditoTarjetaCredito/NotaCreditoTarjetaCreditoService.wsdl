@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/" xmlns:ns1="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/" xmlns:ns0="http://notacreditotarjetacredito.procesadortransacciones.davivienda.com/" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="NotaCreditoTarjetaCreditoService.xsd2.xsd" namespace="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="generarNotaCreditoTarjetaCredito">
+    <wsdl:part name="parameters" element="xsns:generarNotaCreditoTarjetaCredito" xmlns:xsns="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="generarNotaCreditoTarjetaCreditoResponse">
+    <wsdl:part name="parameters" element="xsns:generarNotaCreditoTarjetaCreditoResponse" xmlns:xsns="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ServicioException">
+    <wsdl:part name="fault" element="xsns:ServicioException" xmlns:xsns="http://notacreditotarjetacreditointerface.procesadortransacciones.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:portType name="INotaCreditoTarjetaCreditoService">
+    <wsdl:operation name="generarNotaCreditoTarjetaCredito">
+      <wsdl:input name="generarNotaCreditoTarjetaCreditoRequest" message="ns1:generarNotaCreditoTarjetaCredito"/>
+      <wsdl:output name="generarNotaCreditoTarjetaCreditoResponse" message="ns1:generarNotaCreditoTarjetaCreditoResponse"/>
+      <wsdl:fault name="ServicioException" message="ns1:ServicioException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

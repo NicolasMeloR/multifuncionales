@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    <!--<persistence-unit name="sara-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>oracle.toplink.essentials.PersistenceProvider</provider>
+        <class>com.davivienda.sara.entitys.Regional</class>
+        <class>com.davivienda.sara.entitys.HistoricoAjustes</class>
+        <class>com.davivienda.sara.entitys.Occa</class>
+        <class>com.davivienda.sara.entitys.BilletajeCajero</class>
+        <class>com.davivienda.sara.entitys.Cajero</class>
+        <class>com.davivienda.sara.entitys.CfgAplicacion</class>
+        <class>com.davivienda.sara.entitys.CfgComunicaciones</class>
+        <class>com.davivienda.sara.entitys.ConceptoMovimientoCuadre</class>
+        <class>com.davivienda.sara.entitys.DiarioElectronico</class>
+        <class>com.davivienda.sara.entitys.EdcCargue</class>
+        <class>com.davivienda.sara.entitys.EdcRegistro</class>
+        <class>com.davivienda.sara.entitys.HostCargue</class>
+        <class>com.davivienda.sara.entitys.MovimientoCuadre</class>
+        <class>com.davivienda.sara.entitys.MovimientoHost</class>
+        <class>com.davivienda.sara.entitys.ProcesoArchivoArj</class>
+        <class>com.davivienda.sara.entitys.ProcesoTransmisionTira</class>
+        <class>com.davivienda.sara.entitys.ProvisionHost</class>
+        <class>com.davivienda.sara.entitys.ResumenCuadreCifras</class>
+        <class>com.davivienda.sara.entitys.TipoCajero</class>
+        <class>com.davivienda.sara.entitys.TipoMovimientoCuadre</class>
+        <class>com.davivienda.sara.entitys.TotalesEstacion</class>
+        <class>com.davivienda.sara.entitys.TotalesHost</class>
+        <class>com.davivienda.sara.entitys.Transportadora</class>
+        <class>com.davivienda.sara.entitys.Ubicacion</class>
+        <class>com.davivienda.sara.entitys.Usuario</class>
+        <class>com.davivienda.sara.entitys.Zona</class>
+        <class>com.davivienda.sara.entitys.config.ConfModulosAplicacion</class>
+        <class>com.davivienda.sara.entitys.seguridad.ConfAccesoAplicacion</class>
+        <class>com.davivienda.sara.entitys.seguridad.ServicioAplicacion</class>
+        <class>com.davivienda.sara.entitys.seguridad.UsuarioAplicacion</class>
+        <class>com.davivienda.sara.entitys.transaccion.Transaccion</class>
+        <class>com.davivienda.sara.entitys.HostAtm</class>
+        <class>com.davivienda.sara.entitys.Reintegros</class>
+        <class>com.davivienda.sara.entitys.BinEntidad</class>
+        <class>com.davivienda.sara.entitys.Notasdebito</class>
+        <class>com.davivienda.sara.entitys.DiarioelectronicoTemp</class>
+        <class>com.davivienda.sara.entitys.TransaccionTemp</class>
+        <class>com.davivienda.sara.entitys.Prueba2</class>
+        <class>com.davivienda.sara.entitys.Oficinamulti</class>
+        <class>com.davivienda.sara.entitys.Edcarguemultifuncional</class>
+        <class>com.davivienda.sara.entitys.Billetajemulti</class>
+        <class>com.davivienda.sara.entitys.Historicoajustesmulti</class>
+        <class>com.davivienda.sara.entitys.Hostmultifuncional</class>
+        <class>com.davivienda.sara.entitys.Totalesestacionmultifuncional</class>
+        <class>com.davivienda.sara.entitys.Movimientocuadremulti</class>
+        <class>com.davivienda.sara.entitys.Logcajeromulti</class>
+        <class>com.davivienda.sara.entitys.Regcarguearchivo</class>
+        <class>com.davivienda.sara.entitys.TareasadminAccesoUsuario</class>
+        <class>com.davivienda.sara.entitys.Edcarguemultifuncional</class>
+        <class>com.davivienda.sara.entitys.Provisionhostmulti</class>
+        <properties>
+            <property name="toplink.jdbc.user" value="adminatm"/>
+            <property name="toplink.jdbc.password" value="desa"/>
+            <property name="toplink.jdbc.url" value="jdbc:oracle:thin:@dbdesa:1548:ORA102"/>
+            <property name="toplink.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="toplink.ddl-generation" value="create-tables"/>
+        </properties>
+    </persistence-unit>-->
+</persistence>

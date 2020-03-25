@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:panelGroup id="panelInfoConCajero">
+            <h:panelGrid columns="7" id="btnInfoConCajero">             
+
+                   <h:commandButton value="Nuevo" rendered="#{!infoConCajeroBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{infoConCajeroBean.nuevoRegistro()}" >
+                            <f:ajax render="panelInfoConCajero" />
+                    </h:commandButton>
+                    <h:commandButton value="Modificar" rendered="#{!infoConCajeroBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{infoConCajeroBean.modificarRegistro()}" >
+                            <f:ajax render="panelInfoConCajero" />
+                    </h:commandButton>
+                    <h:commandButton rendered="#{infoConCajeroBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{infoConCajeroBean.grabarRegistro()}" >
+                            <f:ajax render="panelInfoConCajero panelPaginas" />
+                    </h:commandButton>
+                    <h:commandButton rendered="#{infoConCajeroBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{infoConCajeroBean.buscarRegistro()}"  >
+                            <f:ajax render="panelInfoConCajero" />
+                    </h:commandButton>
+                    <h:inputText  value="#{infoConCajeroBean.registroSeleccionado}"  >
+                            <f:ajax render="@this"  />
+                    </h:inputText>
+                    <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{infoConCajeroBean.buscarRegistro()}"  >
+                            <f:ajax render="panelInfoConCajero panelPaginas" />
+                    </h:commandButton>
+            </h:panelGrid>  
+            <div class="tituloSeccion2">Información Cajero</div>
+            <h:panelGrid id="datosInfoConCajero" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.codigoCajero}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Cajero Funcion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.tipoCajeroFuncion}"
+                                      valueChangeListener="#{infoConCajeroBean.activarCodigoDispensador}" >
+                         <f:selectItems  value="#{infoConCajeroBean.listaTipoCajeroMulti}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this datosInfoConCajero"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup rendered="#{infoConCajeroBean.showCodigoDispensador}">
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código Dispensador</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" rendered="#{infoConCajeroBean.showCodigoDispensador}">
+                     <h:inputText  value="#{infoConCajeroBean.registro.codigoDispensador}" onkeypress="javascript:return solonumeros(event)"  >
+                         <f:ajax render="@this"  />
+                     </h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Serie</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.serie}"   ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoConCajeroBean.registro.nombre}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Version Aplicativo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoConCajeroBean.registro.versionAplicativo}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Provision</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.tipoProvision}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaTipoProvision}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  /> 
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Provision Aprobada</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoConCajeroBean.registro.provisionAprobada}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Gaveta 1 Denominación</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.gav1Denominacion}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaDenominacion}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  /> 
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Gaveta 2 Denominación</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.gav2Denominacion}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaDenominacion}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Gaveta 3 Denominación</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.gav3Denominacion}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaDenominacion}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Gaveta 4 Denominación</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.gav4Denominacion}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaDenominacion}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Numero Gavetas</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoConCajeroBean.registro.numeroGavetas}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                  <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Activo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoConCajeroBean.registro.activo}">
+                             <f:selectItems  value="#{infoConCajeroBean.listaCajeroActivo}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                             <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                 
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Lectura EDC</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.tipoLecturaEDC}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Ubicacion EDC</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                      <h:inputText  value="#{infoConCajeroBean.registro.ubicacionEDC}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Encripcion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.tipoEncripcion}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Ubicacion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.ubicacion}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Cajero</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.tipoCajero}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Occa</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.occa}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Transportadora</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.transportadora}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Segunda Transportadora</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.idtransportadora2}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Oficina Multifuncional</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.oficinaMulti}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Red</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;"  value="#{infoConCajeroBean.registro.red}">
+                         <f:selectItems  value="#{infoConCajeroBean.listaRed}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                 
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Horario</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.horario}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Direccion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoConCajeroBean.registro.direccion}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+            </h:panelGrid>
+     </h:panelGroup>
+</html>
+

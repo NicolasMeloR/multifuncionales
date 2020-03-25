@@ -1,0 +1,715 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xml:lang="en" lang="en">
+    <head>
+        <!--META HTTP-EQUIV="Refresh" CONTENT="0; URL=/triptoe/frame.do"-->
+        <title>Tripbase Alpha</title>
+        <meta name="description" content="Tripbase is a travel website that gives you unbiased recommendations about where to go on your next trip based on what you like.">
+        <meta name="keywords" content="travel2.0, web2.0, travel3.0, web3.0, travel, trips, planning, booking, flight, flights, hotel, hotels, car rental, photo, photos, journal, journals, travelblog, travelblogs, london, paris, new york, chicago, san francisco, los angeles, bangkok, vacation, voyage, tour">
+        <link rel="Shortcut Icon" href="/favicon.ico">
+        
+        <script>
+			djConfig = {
+				isDebug: false,
+				debugAtAllCosts: false,
+    			parseWidgets: false,
+				preventBackButtonFix:false,
+				delayMozLoadingFix: false
+			};
+        </script>
+        
+        
+        
+        <script>
+    		function noop() {} 
+        </script>
+        
+        <link rel="stylesheet" type="text/css" href="/triptoe/styles0.3.0/undohtml.css" />
+        <link rel="stylesheet" type="text/css" href="/triptoe/styles0.3.0/generator.css" />
+        
+        <script language="Javascript"> 
+            <!-- 
+            if (top.location!= self.location) { 
+            top.location = self.location.href 
+            } 
+            //--> 
+        </script>
+        
+    </head>    
+    
+    <body>   
+        
+        
+        
+        <div id="popupCover" style="display:none;"></div>
+        <div style="display:none;" id="startPopup">
+            <div class="startingSliderBg"> 
+                <div class="startingMessage">Tell us what you like.<br> We will tell you where to travel:</div>
+                <div id="startingSliderHolder">			   
+                    
+                    <div class="preferenceChoice" style="position:relative;text-align:left;" id="slidersActual">
+                        <div class="sliderLabel">Nightlife</div> <div id="sliderNTL"></div><input type="hidden" id="sliderNTL-val" name="vnl" value=""/>
+                        <div class="sliderSpacer"></div>
+                        <div class="sliderLabel">Dining</div> <div id="sliderDIN"></div><input type="hidden" id="sliderDIN-val" name="vdn" value=""/>
+                        <div class="sliderSpacer"></div>
+                        <div class="sliderLabel">Shopping</div> <div id="sliderSHP"></div><input type="hidden" id="sliderSHP-val" name="vsh" value=""/>
+                        <div class="sliderSpacer"></div>
+                        <div class="sliderLabel">Nature</div> <div id="sliderNAT"></div><input type="hidden" id="sliderNAT-val" name="vnt" value=""/>
+                        <div class="sliderSpacer"></div>
+                        <div class="sliderLabel">Attractions</div> <div id="sliderCUL"></div><input type="hidden" id="sliderCUL-val" name="vat" value=""/>	
+                    </div>		
+                    
+                    <div class="bubbleHelp" style="display:none;" id="buttonHelp">
+                        <img src="/triptoe/images/generator/popup/xss.gif" id="venueX" onclick="dojo.html.hide('buttonHelp');" style="position:absolute;margin-left:141px;margin-top:-3px;cursor:pointer;"/> 							
+                        Drag the slider handle to the left or right to set your travel preferences
+                    </div>
+                    
+                    <div style="float:left;margin-left:50px;">
+                        <div class="submitButton" onclick="dojo.tripbase.firstTimeSubmit();" >
+                            <a href="javascript:noop();" class="sLink">Submit</a>
+                        </div>					
+                    </div>
+                    
+                    <div style="float:left;margin-top:15px;margin-left:20px;">
+                        <a href="javascript://" onclick='dojo.tripbase.revertToNormalView();' style="font-size:10px;">Skip to all<br>travel preferences</a>
+                    </div>
+                    
+                </div>			
+            </div>
+        </div> 
+        
+        <div style="position:absolute;" id="motz"></div>
+        <div id="tempKayakAptHolder" style="text-align:left;">
+            <div style="position:absolute;margin-left:261px;"><img src="/triptoe/images/generator/popup/xs.gif" onclick="dojo.tripbase.closePopupFlightSearch();" /> </div>
+            <div style="font-size:14px;">Search Flights to <span style="font-weight:600;" id="departingKayak_to"></span></div><br>
+            <span style="font-weight:600;">Departing from</span> <span style="font-size:10px;">(City name or airport code)</span><br>
+            <input type="text" class="hugeField" id="departingKayak" name="departingKayak"/><br><br>
+            <input type="hidden" id="departingKayak_val"/>
+            <button onclick="dojo.tripbase.submitPopupFlightSearch();">Ok</button> 
+        </div>
+        
+        <div id="outer-frame" class="not-logged-in">
+            <div class="introArrow" id="introArrow" style="display:none;"></div>
+            <div id="general-header">
+                <div id="header-actual" class="gen-header not-logged-in">
+                    <div class="logo">  
+                        <img src="/triptoe/images/generator/logoA.gif" onclick="dojo.tripbase.revertToEgg();" style="margin-left: 70px;margin-top:10px;cursor:pointer;"/>
+                    </div>
+                    <div class="center-bar">   
+                        <div class="login-form for-not-loggedIn">
+                            <form id="login-form" action="/security/authorize">
+                                <div class="label">User name</div> <input name="j_username" type="text" value="" class="login-field" id="mainLoginUsernameField"/><br> 					<div class="miniSpacer"></div>
+                            <div class="label">Password</div> <input name="j_password" onkeyup="dojo.tripbase.pwdKeyEnter(event);" type="password" value="" class="login-field"/><br> 				</form>
+                            <div class="miniSpacer"></div>
+                            <div>
+                                <a href='javascript:noop()' onclick="dojo.tripbase.openPwd()" style="float:left;padding-left:1px;color:#807f7f;text-decoration:underline;font-size:10px;">Forgot password?</a>
+                                <button onclick="dojo.tripbase.submitLogin(this);" style="float:right;margin-right:7px;">Sign in</button>								
+                                <div class="forgot-pwd-form" id="pwdExt" style="display: none;">
+                                    <img src="/triptoe/images/generator/popup/xs.gif" onclick="dojo.tripbase.closePwd();" style="position:absolute;margin-left:208px;margin-top:-4px;cursor:pointer;"/> 
+                                    <form id="forgotPwdForm" style="margin-top:5px;">						
+                                        <div class="label" style="width:40px;">email</div>
+                                        <input type="text" value="" name="email" class="join-field" style="width:120px" /><br/>
+                                    </form>
+                                    <button class="join-button" onclick="dojo.tripbase.submitPwdReq(this)" style="margin-top:10px;">Send Email</button> 
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="titlemsg for-not-loggedIn">  
+                            <a href='javascript:noop()' onclick="dojo.tripbase.showHelp('help')" style="font-size:16px;color:#015b8f;">What is tripbase?</a><br>
+                            <a href='javascript:noop()' onclick="dojo.tripbase.showHelp('help')" style="font-size:16px;color:#015b8f;">How do I use it?</a>
+                        </div>
+                        <div class="titlemsg-loggedIn for-loggedIn"">										
+        </div>
+                    </div>
+                    <div class="right"> 
+                        <div class="for-not-loggedIn" style="padding-left:0px;">Register now:</div>
+                        <div class="userName join-closed for-loggedIn"> 
+                        <span id="usernameHtml"></span>			</div>
+                        
+                        <div class="userActions for-loggedIn">
+                            <a href='javascript:noop()' onclick="dojo.tripbase.reqChangePwd()">Change password</a><br>
+                            <a href='javascript:noop()' onclick="dojo.tripbase.requestLogoff()">Sign out</a>
+                            
+                            <div id="extraLinks">
+                            </div>
+                            
+                            <div style="display:none;" id="changePwd" class="change-pwd-form-box">
+                                <img src="/triptoe/images/generator/popup/xss.gif" onclick="dojo.tripbase.closeChangePwd();" style="position:absolute;margin-left:-7px;margin-top:-4px;cursor:pointer;"/> 
+                                <div class="change-pwd-form">
+                                    <form id="change-pwd-form">    
+                                        <div class="label">Old password</div>
+                                        <input type="password" name="currentPassword"  class="join-field"/><br/>
+                                        
+                                        <div class="label">New Password</div>
+                                        <input type="password" name="password" value="" class="join-field"/><br/>
+                                        
+                                        <div class="label">Confirm new password</div>
+                                        <input type="password" name="confirm" value="" class="join-field"/><br/>
+                                        
+                                        <input type="HIDDEN" id="change-pwd-token" />
+                                        
+                                        <div style="clear:both">.</div>
+                                    </form>
+                                    <button onclick="dojo.tripbase.submitChangePwdReq()" id="submitChangePwdBtn" style="display:none;">Change</button> 
+                            </div>				</div>	
+                        </div>
+                        
+                        <div class="for-not-loggedIn">
+                            <div class="join-closed" id="joinOuterBox"> 
+                                <form id="registerForm">
+                                    <div class="regHeader">
+                                        <img src="/triptoe/images/generator/popup/xs.gif" onclick="dojo.tripbase.closeJoin();" style="position:absolute;margin-left:208px;margin-top:-4px;cursor:pointer;"/> 
+                                        <h4>Tripbase Registration</h4>
+                                    </div>
+                                    <input type="text" id="signUpUsername1" value="username" class="join-handle-field fieldenter" onkeyup="dojo.tripbase.joinKeyEnter(event);" onfocus="dojo.tripbase.checkClear(this,'username')" onblur="dojo.tripbase.checkClear(this,'username')"/> 						
+                                    <div class="join-ext" id="joinExt" style="display: none;">									
+                                        <div class="join-label">Username: (<span style="color:red;font-size:10px;">* required</span>)</div>
+                                        <input type="text" name="username" id="signUpUsername2" class="join-field"/><br/> 
+                                        
+                                        <div class="join-label">Email: (<span style="color:red;font-size:10px;">* required</span>)</div>
+                                        <input type="text" value="" name="email" class="join-field" id="join-email-field"/><br/>
+                                        
+                                        <div class="join-label">Password: (<span style="color:red;font-size:10px;">* required</span>)</div>
+                                        <input type="password" name="password" class="join-field"/><br/>
+                                        
+                                        <div class="join-label">Password again: (<span style="color:red;font-size:10px;">* required</span>)</div>
+                                        <input type="password" name="confirm" class="join-field"/><br/>
+                                        
+                                        <div style="clear:both"></div>
+                                        
+                                        <div style="font-size:9px;margin-bottom:0px;margin-top:10px;"> 
+                                            <div style="float:left;">
+                                                <input type="checkbox" name="agree"/> 
+                                            </div>
+                                            <div style="float:left;margin-left:10px; width: 170px;">
+                                                I confirm I have read and agree to the 
+                                                <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('termsOfUse')">
+                                                    Terms & Conditions
+                                                </a> 
+                                                and 
+                                                <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('privacyPolicy')">
+                                                    Privacy Policy
+                                                </a>
+                                            </div>
+                                            <div style="clear:both;height:1px;line-height:1px;"></div>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </form>
+                                <div class="miniSpacer"></div>
+                                <button class="join-button" onclick="dojo.tripbase.openJoin()">Sign Up!</button><button class="register-button" onclick="dojo.tripbase.submitJoin(this)">Register Now</button> 					<div class="shareMsg">Share your data? Never <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('privacyPolicy')"> Read More</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                
+            </div>
+            
+            
+            
+            <div id="contents">
+                <div class="contentWorld" id="contentWorldCover">     
+                    <div style="padding-top:370px;width:900px;padding-left:100px;color:#666666;">
+                        <b>Tripbase is still in alpha</b>, and is under development.<br>   
+                        We want to provide you with the best service possible, but we know that some of the features still don't work perfectly, and may have some bugs.<br>
+                        We would be very happy to hear your  <a href='javascript://' onclick='dojo.tripbase.openFeedback()'>feedback</a>.  So that we can create the ultimate tool to help you find that perfect travel destination.
+                        
+                    </div>
+                </div>
+                
+                <div class="cornerCover"></div>
+                <div class="controls-top"></div>
+                
+                <div id="controls-outer-holder" style="height: 295px;">
+                    <div id="controls-holder">					
+                        <div id="controls">
+                            <div id="fadinTest" style="display:none;padding-left:19px;">
+                                <form id="generator-form" class="generator-form">  
+                                    <div class="sliderArea">
+                                        <div style="height:20px;width:1px;"></div>
+                                        <div class="header">Tell us what you like:</div> 				<div id="sliderContainer"></div>
+                                    </div>			
+                                    
+                                    
+                                    <div class="preferenceChoice" style="padding-left:30px;width:245px;">
+                                        <input type="checkbox" name="popu" id="popu" value="checked" onclick="dojo.tripbase.inputChange();" /> <span style="font-weight:600; margin-left:4px;">Hide popular destinations</span>
+                                    </div>
+                                    
+                                    
+                                    <div class="formDivider"></div>
+                                    
+                                    <div style="clear:both;"></div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="advancedOptions">     				
+                                        <div class="header" id="whenInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'whenInput')">Dates and Duration</div>
+                                        <div class="preferenceChoice" id="whenInput" style="display:none;">
+                                            
+                                            <div class="fieldLabel">Start date</div>
+                                            <div class="formElem">
+                                                <div id="startDateField"></div>
+                                                <div style="color:#999999;font-size:10px;margin-top:-5px;">(mm/dd/yyyy)</div>
+                                                <input type="hidden" value="2007-06-07" id="defaultDate"/>
+                                                <input type="hidden" value="2007-05-24" id="defaultLimitStartDate"/>							
+                                            </div>
+                                            <div style="clear:both;height:10px;"></div>
+                                            
+                                            <div class="fieldLabel">Duration</div>
+                                            <div class="formElem">
+                                                <input type="text" class="smallField" name="dur" id="dur" value="7" onkeyup="dojo.tripbase.durationChanged(this); dojo.tripbase.inputChange();"/>        					
+                                            </div>
+                                            <div class="formElem">
+                                                <div style="margin-left: 3px; padding-top:10px;">Days</div>
+                                                
+                                            </div> 
+                                            
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        <div class="header" id="whereFromInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'whereFromInput')">Departure City</div>
+                                        
+                                        <div class="preferenceChoice" id="whereFromInput" style="width:265px;display:none;">
+                                            <div style="color: #716B4D;width:245px;"><span style="font-weight:600;">Departing from</span> <span style="font-size:10px;">(City name or airport code)</span></div>
+                                            <input type="text" class="hugeField" id="departing" name="dep" onkeyup="dojo.tripbase.inputChange();"/> 				
+                                            <input type="hidden" id="departing_val" name="dep_s" /> 				        				
+                                        </div>	
+                                        
+                                        
+                                        <div class="header" id="budgetInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'budgetInput')">Budget</div>
+                                        <div class="preferenceChoice" id="budgetInput" style="display:none;">
+                                            <div class="fieldLabel" style="width:100px;">
+                                                Overall Budget
+                                            </div>
+                                            <div class="formElem">
+                                                <input type="text" class="mediumField" name="bud" id="bud" onkeyup="dojo.tripbase.inputChange();"/>
+                                                <div id="includingFlights" style="display:none;">*including flights</div>
+                                                <div class="durationDisplay">*for <span id="durationDisplay">7</span> days</div>							
+                                            </div>
+                                            <div class="formElem">
+                                                <div style="margin-left: 3px; padding-top:10px;height:41px;">
+                                                    USD$
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <!--div class="sliderLabel">Per day</div>
+                        <div class="formElem">
+                        	<input type="text" class="largeField"/>			
+                        </div-->			
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        
+                                        <div class="header" id="budgetTypeHeader" onclick="dojo.tripbase.toggleDisplay(this, 'budgetType')">Type of trip</div>
+                                        <div class="preferenceChoice" id="budgetType" style="display:none;">
+                                            <div class="formElem budgetType">
+                                                <input type="radio" name="bt" value="1" onclick="dojo.tripbase.inputChange();">Backpacker
+                                                &nbsp;&nbsp;<input type="radio" name="bt" value="3" checked="checked" onclick="dojo.tripbase.inputChange();">Middle
+                                                &nbsp;&nbsp;<input type="radio" name="bt" value="5" onclick="dojo.tripbase.inputChange();">Luxury				
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        
+                                        <div class="header" id="weatherInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'weatherInput')">Weather</div>
+                                        <div class="preferenceChoice" id="weatherInput" style="display:none;">
+                                            <div class="fieldLabel">Temperature</div>
+                                            <select id="fTemp" class="mediumSelect" name="fTemp">
+                                                <option value="">----</option>
+                                                <option value="40">40°F</option>
+                                                <option value="50">50°F</option>
+                                                <option value="60">60°F</option>
+                                                <option value="70">70°F</option>
+                                                <option value="80">80°F</option>
+                                                <option value="90">90°F</option>
+                                            </select> 
+                                            <select id="cTemp" class="mediumSelect" name="cTemp" style="display:none;">
+                                                <option value="">----</option>
+                                                <option value="40">5°C</option>
+                                                <option value="50">10°C</option>
+                                                <option value="60">15°C</option>
+                                                <option value="70">20°C</option>
+                                                <option value="80">27°C</option>
+                                                <option value="90">32°C</option>  
+                                            </select>  
+                                            <input type="radio" name="metric" value="F" onclick="dojo.tripbase.selectFTemp()" checked="checked" style="margin-left:15px;">°F
+                                            &nbsp;&nbsp;<input type="radio" name="metric" value="C" onclick="dojo.tripbase.selectCTemp()">°C
+                                            
+                                            <div style="clear:both;"></div>
+                                            
+                                            
+                                        </div>
+                                        
+                                        
+                                        <div class="header" id="seasonInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'seasonInput')">Tourist Season</div>
+                                        <div class="preferenceChoice" id="seasonInput" style="display:none;">
+                                            <div class="formElem budgetType">
+                                                <input type="radio" name="ts" value="0" checked="checked" onclick="dojo.tripbase.inputChange();">Any&nbsp;&nbsp;
+                                                &nbsp;&nbsp;<input type="radio" name="ts" value="1" onclick="dojo.tripbase.inputChange();">High&nbsp&nbsp
+                                                &nbsp;&nbsp;<input type="radio" name="ts" value="2" onclick="dojo.tripbase.inputChange();">Low				
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        
+                                        
+                                        <div class="header" id="continentsInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'continentsInput')">Continents</div>
+                                        <div class="preferenceChoice" id="continentsInput" style="display:none;">
+                                            <div style="font-weight:600;padding-bottom:5px;">Continents to include</div>
+                                            <input type="checkbox" name="conti" value="1" checked="checked" onclick="dojo.tripbase.inputChange();"> Africa<br>
+                                            <input type="checkbox" name="conti" value="2" checked="checked" onclick="dojo.tripbase.inputChange();"> Asia<br>
+                                            <input type="checkbox" name="conti" value="3" checked="checked" onclick="dojo.tripbase.inputChange();"> Australia & South Pacific<br>
+                                            <input type="checkbox" name="conti" value="4" checked="checked" onclick="dojo.tripbase.inputChange();"> Central America & Caribbean<br>
+                                            <input type="checkbox" name="conti" value="5" checked="checked" onclick="dojo.tripbase.inputChange();"> Europe<br>
+                                            <input type="checkbox" name="conti" value="6" checked="checked" onclick="dojo.tripbase.inputChange();"> Middle East<br>
+                                            <input type="checkbox" name="conti" value="7" checked="checked" onclick="dojo.tripbase.inputChange();"> North America<br>
+                                            <input type="checkbox" name="conti" value="8" checked="checked" onclick="dojo.tripbase.inputChange();"> South America<br>
+                                            
+                                            
+                                        </div>
+                                        
+                                        
+                                        <div style="display:none;" class="header" id="languagesInputHeader" onclick="dojo.tripbase.toggleDisplay(this, 'languagesInput')">Languages</div>
+                                        <div style="display:none;" class="preferenceChoice" id="languagesInput" style="display:none;">
+                                            <div style="font-weight:600;padding-bottom:5px;">Languages to include</div>
+                                            <table class="languageTable" cellspacing="0" cellpadding="0">
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Arabic" onclick="dojo.tripbase.inputChange();"/> Arabic
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Chinese" onclick="dojo.tripbase.inputChange();"/> Chinese
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="English" onclick="dojo.tripbase.inputChange();"/> English
+                                                </td>
+                                                <tr>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="French" onclick="dojo.tripbase.inputChange();"/> French
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="German" onclick="dojo.tripbase.inputChange();"/> German
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Italian" onclick="dojo.tripbase.inputChange();"/> Italian
+                                                </td>
+                                                <tr>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Portuguese" onclick="dojo.tripbase.inputChange();"/> Portuguese
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Russian" onclick="dojo.tripbase.inputChange();"/> Russian
+                                                </td>
+                                                <td class="languageCell">
+                                                    <input name="languages" type="checkbox" value="Spanish" onclick="dojo.tripbase.inputChange();"/> Spanish
+                                                </td>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div style="position:absolute; top:-1000px;left:-1000px">
+                                        <input type="text" id="dummyFocus"/> 
+                                    </div>
+                                </form>
+                                
+                                <input type="hidden" id="defaultVals" value="">
+                                <input type="hidden" id="defaultSDate" value="2007-06-07">
+                                <input type="hidden" id="defaultDur" value="7">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div id="submit-holder" class="submit-holder">    
+                        <table height="100%" width="270px" id="submitTable" style="display:none;"><tr><td valign="top">
+                                    <div class="submitButton" onclick="dojo.tripbase.submitButtonClicked();">
+                                        <a href="javascript:noop();" class="sLink">Submit</a>
+                                    </div>
+                                    <div class="autoRefresh">
+                                        <input type="checkbox" id="autoRefreshCB" onclick="dojo.tripbase.changeAuto(this);"/> Auto Submit
+                                    </div>
+                                    <div class="resetLink">
+                                        <a href="javascript://" onclick="dojo.tripbase.resetForm(this);">Reset</a>
+                                        
+                                    </div>
+                        </td></tr></table>
+                    </div>
+                </div>
+                
+                <div id="results-holder">  
+                    <div id="results">    
+                        
+                        <div id="googleAdIframeHolder" style="padding-bottom:10px;">
+                            <iframe src="" id="googleAd" scrolling="no" height="80px" width="500px" frameborder="0" style="padding:0px;margin:0px;margin-left:60px;background: transparent url(/triptoe/images/generator/googleAds-bg.jpg) repeat-y left top;"></iframe>
+                        </div>
+                        
+                        <div id="generator" style="display:none;">
+                            <div id="generator-holder"></div>
+                        </div>
+                        <div></div>
+                        <div id="intro-page" class="introBox" style="display:none;">
+                            
+                        </div>						
+                        <div id="help-page" style="display:none;padding-left:20px;font-size:13px;">
+                            <a href="javascript://" onclick="dojo.tripbase.hideHelp();" style="text-decoration: underline;float:right;margin-right:15px;">close help</a>
+                            
+                            <div class="tripbaseHelp">
+                                <h2>What is Tripbase?</h2><br>
+                                <p style="color: #015b8f;font-size: 14px;">
+                                    Tripbase is a travel website that gives you unbiased recommendations about where to go on your next trip based on what you like.
+                                </p>
+                                <br>
+                                <h2>How do I use it?</h2><br>
+                                <p>
+                                    To use the travel generator, either use your mouse to move the green sliders up or down or simply click on the gray square where you want the slider to end.  The sliders tell us how important each of the criteria are for you - from nightlife to attractions.
+                                </p>
+                                
+                                <p>
+                                    <b>Submit</b>: This button enters your results into the system.  After a few seconds, a number of chosen destinations will appear on the right side of the screen.  To explore individual cities, just click on the 'More' button.
+                                </p>
+                                <p>
+                                    <b>What is 'Auto Submit?'</b><br> If this box is checked, the system will automatically give you personalized results after every change you make.  If you uncheck it, the system will only give you results after you enter all of your information and click �submit�.
+                                </p>
+                                <p>
+                                    <b>What is 'hide popular destinations?'</b><br>
+                                    Checking this box will bring up less well-known destinations that meet your personal preferences.  It's a great way to discover new places.
+                                </p>
+                                
+                                
+                                
+                                <p>
+                                    <b>Dates and Duration:</b>
+                                    To enter the start date of your trip, just click on the calendar to the right and then fill in the number of days you'll be traveling.
+                                </p>
+                                
+                                
+                                <p>
+                                    <b>Calendar:</b> (insert graphic arrows) Use these arrows at the top to move by month and the links at the bottom to insert a year.
+                                </p>
+                                
+                                
+                                
+                                
+                                <p>
+                                    <b>Departure City:</b>
+                                    Just enter the first words of your departure city and our system will fill in the airport code.  This information is then automatically entered into flight, hotel and car rental searches you do later.
+                                </p>
+                                
+                                
+                                <p>
+                                    <b>Budget:</b>
+                                    Enter both the amount you have to spend and the type of budget you have.
+                                </p>
+                                
+                                
+                                <p>
+                                    <b>Weather:</b>
+                                    Use the drop-down box to tell us what temperature you're looking for.  You can choose Fahrenheit or Celsius in the box to the right.
+                                </p>
+                                
+                                
+                                <p>
+                                    <b>Tourist Season:</b>
+                                    Just check the circle that applies to you�any, high or low.  Remember that high tourist season usually corresponds to higher prices and bigger crowds, while low tourist season does not necessarily mean bad weather.  
+                                </p>
+                                
+                                
+                                <p>
+                                    <b>Continents:</b>
+                                    Just check the continents you want to include in the results.  
+                                </p>
+                                
+                                
+                                
+                                <p>
+                                    <b>Results Location popup box:</b>
+                                    Once you've clicked on a destination, you'll get descriptions, information about things to do, photos from flickr and top links.  The chart on the left shows the annual weather conditions and tourist seasons.  We also tell you what the average cost of a flight to this location from your departure city will cost.  To search for flight, hotel and car rentals, click on the buttons at the bottom of the screen.  To close the screen, hit the red x in the top right corner.  To follow a link, just click on the link.  To close the links you've opened, just hit the red x in the top right corner and you'll return to your personalized tripbase destination.  If you want to give us feedback, just click on the Give us Feedback link.  To get back to all of the results, just close the destination box by clicking on the x in the top right corner.
+                                </p>
+                            </div>
+                            
+                            <a href="javascript://" onclick="dojo.tripbase.hideHelp();" style="text-decoration: underline;float:right;margin-right:15px;">close help</a>
+                        </div>
+                        <div id="about-us" style="display:none;padding-left:20px;font-size:13px;padding-top:30px;">
+                            <a href="javascript://" onclick="dojo.tripbase.hideHelp();" style="text-decoration: underline;float:right;margin-right:15px;">close</a>
+                            <div style="font-size: 18px;color: #0083bb;margin-bottom:20px;clear:both;">About Us</div>
+                            
+                            Coming soon... the full story <br><br>
+                            <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('termsOfUse')">Terms & Conditions</a> | 
+                            <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('privacyPolicy')">Privacy Policy</a> |
+                            <a href="mailto:contact@tripbase.com" style="text-decoration:underline;">Contact Us</a> |
+                            <a href="javascript:noop()" onclick="dojo.tripbase.openFeedback()">Give Feedback</a>								<a href="javascript://" onclick="dojo.tripbase.hideHelp();" style="text-decoration: underline;float:right;margin-right:15px;">close</a>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+            
+            <div id="footer"> 
+                <div style="width:990px;text-align:center;"> 
+                    &copy; 2007 Trip Technologies Inc. All rights reserved. No part of this site may be reproduced without our written permission. - 
+                    <a style="font-size:8px;text-decoration:none;" onclick="dojo.tripbase.openLegalPopup('termsOfUse')"> Terms of Use </a>
+                </div>
+                
+                <div style="float: left;width:300px;padding-top: 7px;padding-left:40px;"> 
+                    <button onclick="dojo.tripbase.showHelp('help')">
+                        Help
+                    </button>
+                    
+                    <!--button onclick='dojo.byId("generator-form").reset()'>
+						Reset
+					</button-->
+					
+                    <a href="javascript:noop()" onclick="dojo.tripbase.openFeedback()" style="padding-left:10px;padding-right:10px;">Give Feedback</a>
+                </div>
+                <div style="float: left;width:140px;">  
+                    <button onclick="dojo.tripbase.showHelp('about')"> 
+                        About Us
+                    </button>    
+                </div> 
+                <div class="for-loggedIn" style="float: right;width:100px;padding-top: 7px;margin-right:30px;"> 
+                    <button onclick="dojo.tripbase.sendMyself(this)">
+                        Send myself
+                    </button> 
+                </div>     
+                <div style="float: right;width:335px;padding-top: 7px;margin-right:20px;"> 
+                    
+                    <div class="sendResults" id="sendResults" style="display:none;">
+                        <img src="/triptoe/images/generator/popup/xs.gif" onclick="dojo.tripbase.closeSendResults();" style="position:absolute;margin-left:208px;margin-top:-4px;cursor:pointer;"/> 
+                        <form id="shareResultsForm">
+                            <div class="field" style="margin-top:15px;">
+                                To Email Address (<span style="color:red;font-size:10px;">* required</span>) <input type="text" name="emailt" id="toEmailAddress2"/><br>
+                            </div>
+                            <div class="field">
+                                Your Email Address (<span style="color:red;font-size:10px;">* required</span>) <input type="text" name="emailf"/><br>
+                            </div>
+                            <div class="field">
+                                Subject <input type="text" value="Check out these destinations" name="title"/><br>
+                            </div>
+                            <div class="field">
+                                Message <textarea cols="34" rows="4" style="font-family: Arial;font-size:12px;" name="msg">Tripbase helps you find where to go.</textarea><br>
+                            </div>
+                        </form>
+                        <div class="field"> 
+                            <button onclick="dojo.tripbase.sendResults(this)">
+                                Send Now
+                            </button>
+                        </div>
+                        <div class="shareMsg" style="clear:both;">Share your data? Never <a href="javascript:noop()" onclick="dojo.tripbase.openLegalPopup('privacyPolicy')"> Read More </a></div>						
+                    </div>
+                    
+                    Send to a friend: <input type="text" value="email address" class="email-field fieldenter" id="toEmailAddress1" onkeyup="dojo.tripbase.sendKeyEnter(event)" onfocus="dojo.tripbase.checkClear(this,'email address')" onblur="dojo.tripbase.checkClear(this,'email address')"/>	
+                    <button onclick="dojo.tripbase.openSendResults()" style="margin-left: 5px;">
+                        Send
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+        
+        <script src="/triptoe/js/dojo410.3.0/dojo.js" type="text/javascript"></script>
+        
+        <script> 
+			function noop(){};
+			
+			function openLink(url) {
+				newWindow = window.open(url,'LinkWindow','top=150,left=150,menubar=no,toolbar=no,scrollbars=yes,resizable=yes,status=no,location=yes,width=750,height=550');
+			}
+			
+			document.getElementById("generator-form").reset();
+			
+			var resetValues = [
+{"id":"sliderNTL", "value":"50", "name":"vnl"}
+,{"id":"sliderDIN", "value":"50", "name":"vdn"}
+,{"id":"sliderSHP", "value":"50", "name":"vsh"}
+,{"id":"sliderNAT", "value":"50", "name":"vnt"}
+,{"id":"sliderCUL", "value":"50", "name":"vat"}
+,{"id":"startDateWidget", "value":"2007-06-07", "name":"sdt"}
+,{"id":"dur", "value":"7", "name":"dur"}
+,{"id":"bt", "value":"3", "name":"bt"}
+,{"id":"departing", "value":"", "name":"dep"}
+,{"id":"metric", "value":"F", "name":"metric"}
+,{"id":"ts", "value":"0", "name":"ts"}
+,{"id":"conti", "value":"1", "name":"conti"}
+,{"id":"conti", "value":"2", "name":"conti"}
+,{"id":"conti", "value":"3", "name":"conti"}
+,{"id":"conti", "value":"4", "name":"conti"}
+,{"id":"conti", "value":"5", "name":"conti"}
+,{"id":"conti", "value":"6", "name":"conti"}
+,{"id":"conti", "value":"7", "name":"conti"}
+,{"id":"conti", "value":"8", "name":"conti"}
+];			
+			var initValues = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+];
+		
+			if (!initValues || initValues.length == 0) {
+//				document.getElementById("popupCover").style.display = "";
+//				document.getElementById("startPopup").style.display = "";
+			}
+			
+			var img1 = new Image();
+			img1.src = "http://localhost/triptoe/images/generator/sliderBg-off.gif";
+			
+			var img2 = new Image();
+			img2.src = "http://localhost/triptoe/images/generator/sliderBg-on.gif";
+			
+			var img3 = new Image();
+			img3.src = "http://localhost/triptoe/images/generator/sliderHandle.gif";
+		
+//			dojo.require("dojo.widget.DebugConsole");
+    		dojo.require("dojo.widget.Slider");
+    		dojo.require("dojo.json");
+			dojo.hostenv.writeIncludes();
+
+//    		dojo.hostenv.setModulePrefix('triptoe', 'dojo.triptoe');
+    		dojo.registerModulePath('triptoe', 'src/triptoe');
+    		dojo.widget.manager.registerWidgetPackage('dojo.triptoe.widget');
+
+  
+    		dojo.require("dojo.triptoe.widget.GeneratorResultsHolder");
+    		dojo.require("dojo.triptoe.widget.GeneratorResult");
+			dojo.require("dojo.triptoe.widget.IframeDialog");
+			dojo.require("dojo.triptoe.widget.SlideShow2");			
+    		dojo.require("dojo.triptoe.tripbase");
+			
+			dojo.require("dojo.widget.DropdownDatePicker");
+			dojo.event.connect(window, "onload", dojo.tripbase, "generatorOnLoadHandler");	
+        </script>
+        
+        <link rel="stylesheet" type="text/css" href="/triptoe/js/dojo410.3.0/src/triptoe/widget/templates/DatePicker.css" />
+        
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+        	_uacct = "UA-1800020-1";
+        	urchinTracker();
+        </script>
+        
+    </body>
+</html>

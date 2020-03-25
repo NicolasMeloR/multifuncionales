@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>SARA - Sistema Administración Red ATMs</title>
+        <h:outputStylesheet id="estilosSara" library="estilos" name="estilosSara.css" />
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form id="menuForm" enctype="multipart/form-data" style="margin-top:100px;">
+
+                <div>
+                    <div class="encZonaIzq" style="height: 100px"></div>            
+                    <div class="encZonaLogo"></div>            
+                    <div class="encZonaDer"></div>            
+                </div>
+                <div id="ppal.cp.barraTituloOp"  class="barraComandosLogin">
+                    <div id="ppal.cp.barraTituloOp.msj" style="float:left;margin-left: 20px;">SARA v#{loginBean.version} - Sistema Administración Red ATMs</div>
+                </div>   
+                <div id="mensajeCargando" class="zonaContenidoLogin" style="display: none;">
+                    Iniciando la página. Un momento por favor ...
+                </div>
+                <h:panelGroup layout="block" styleClass="centerDiv" style="margin:100px auto">
+                    <div  class="dialogDivTitleBar" title="Autenticacion Segura">
+                        <span  class="dialogDivTitle">Autenticación Segura</span>
+                    </div>
+                    <h:panelGroup layout="block" styleClass="dialogDivAut">
+                        <h:panelGrid columns="1" styleClass="dialogDivTable">  
+                            <h:panelGroup layout="block">
+                                <h:panelGrid columns="2" style="padding-top: 48px;">  
+                                    <div style="padding-left: 20px;   padding-bottom: 16px; padding-right: 30px;">
+                                        <span class="nombreCampo">Usuario</span>                    
+                                    </div>
+                                    <div>
+                                        <h:inputText id="saraUser" value="#{loginBean.usuario}" style="margin-bottom: 16px;" autocomplete="off"></h:inputText>
+                                    </div>
+                                    <div style="padding-left: 20px;"> 
+                                        <span class="nombreCampo">Clave</span>
+                                    </div>
+                                    <div>
+                                        <h:inputSecret id="saraPassword" value="#{loginBean.clave}" autocomplete="off"></h:inputSecret>
+                                    </div>
+                                    <h:panelGrid columns="1" style="margin-bottom: 68px; margin-left: 70px;">
+                                        <h:commandButton value="Enviar" id="btnEnviarModalAut" styleClass="botonAPPADM" action="#{loginBean.autenticar()}">
+                                            <f:ajax render="menuForm" execute="@form"></f:ajax>
+                                        </h:commandButton>
+                                    </h:panelGrid>
+                                    <h:panelGroup layout="block" id="modalMensajes" styleClass="dialogDiv"  rendered="#{loginBean.mostrarModalMsg}">
+                                        <h:panelGroup layout="block" styleClass="centerDivMsg" >
+                                            <div  class="dialogDivTitleBar" title="SARA">
+                                                <span  class="dialogDivTitle">SARA</span>
+                                                <h:commandButton styleClass="closeBtnImageMsg" actionListener="#{loginBean.cerrarModal()}"/>
+                                            </div>
+                                            <h:panelGroup layout="block" styleClass="dialogDivMsg">
+                                                <h:panelGrid columns="1">  
+                                                    <h:panelGroup layout="block">
+                                                        <textarea id="textAreaDescripcion" readonly="true" style="width: 461px; height: 130px;">
+                                                                <h:outputText  escape="false" value="#{loginBean.descripcionModal}" />
+                                                        </textarea>                               
+                                                    </h:panelGroup>
+                                                </h:panelGrid>
+                                            </h:panelGroup>
+                                        </h:panelGroup>
+                                    </h:panelGroup>
+                                </h:panelGrid>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                   
+                </h:panelGroup>
+                 <script type="text/javascript">
+                        function handleAjax(data) {
+                                var status = data.status;
+
+                                switch (status) {
+                                case "begin":
+                                        // This is the start of the AJAX request.
+                                         document.getElementById("menuForm").style.cursor = "wait";
+                                         if(document.getElementById("menuForm:btnEnviarModalAut")){
+                                             document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "wait";
+                                         }
+                                        break;
+
+                                case "complete":
+                                        // This is invoked right after AJAX response is returned.
+                                        document.getElementById("menuForm").style.cursor = "default";
+                                        if(document.getElementById("menuForm:btnEnviarModalAut")){
+                                             document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "default";
+                                         }
+                                        break;
+
+                                case "success":
+                                        // This is invoked right after successful processing of AJAX response and update of HTML DOM.
+                                        document.getElementById("menuForm").style.cursor = "default"
+                                         if(document.getElementById("menuForm:btnEnviarModalAut")){
+                                             document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "default";
+                                         }
+                                        break;
+                                }
+                        }
+                        // Setup the statusUpdate function to hear all events on the page
+                        jsf.ajax.addOnEvent(handleAjax);
+                 </script>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

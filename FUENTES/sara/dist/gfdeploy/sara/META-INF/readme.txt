@@ -1,0 +1,17 @@
+Configuracion ambiente DESARROLLO
+1. Comentar la linea del archivo weblogic-ejb-jar.xml <!--<timer-implementation>Clustered</timer-implementation>-->
+2. configurar en BASE DE DATOS
+TABLE CONF_MODULOS_APLICACION 
+SET 
+URL_ACCESO_APP,
+CONFIGURACION_LOG.directorioLogs, // 
+SARA.directorioUpLoad, //directorio de cargue en disco d archivos
+SARA.directorioCuadre, //proceso automatico
+
+
+
+UPDATE "ADMINATM"."CONF_MODULOS_APLICACION" SET VALOR = 'C:\logsara' WHERE ROWID = 'AAASemAAMAAAcczAAD' AND ORA_ROWSCN = '2467706';
+UPDATE "ADMINATM"."CONF_MODULOS_APLICACION" SET VALOR = 'C:\logsara' WHERE ROWID = 'AAASemAAMAAAcczAAF' AND ORA_ROWSCN = '2467706';
+UPDATE "ADMINATM"."CONF_MODULOS_APLICACION" SET VALOR = 'https://localhost:7002/sara-web' WHERE ROWID = 'AAASemAAMAAAcczAAb' AND ORA_ROWSCN = '2467706';
+UPDATE "ADMINATM"."CONF_MODULOS_APLICACION" SET VALOR = 'localhost' WHERE ROWID = 'AAASemAAMAAAcczAAN' AND ORA_ROWSCN = '3581115';
+UPDATE "ADMINATM"."CONF_MODULOS_APLICACION" SET VALOR = '8182' WHERE ROWID = 'AAASemAAMAAAcczAAO' AND ORA_ROWSCN = '3581115';

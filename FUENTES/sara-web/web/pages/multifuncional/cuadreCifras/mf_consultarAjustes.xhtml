@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="panelConsultarAjustesMF" >
+            <h:panelGroup rendered="#{consultarAjustesMFBean.mostrarPanelGeneral}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Consultar Ajustes</div>  
+           
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <div class="textoNombreCampo">Fecha</div>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{consultarAjustesMFBean.fechaInicial}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                                                
+                        
+                        <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                            <h:panelGroup layout="block" class="divTimerHourEditable">
+                                <div class="divDropDownListTimerHour">
+                                   <ui:repeat var="item" varStatus="status" value="#{consultarAjustesMFBean.listaHora}">  
+                                               <a>#{item.value}</a>
+                                   </ui:repeat>
+                                 </div>   
+                               <div class="divTimerHourInputEditable">
+                                   <h:inputText maxlength="8" value="#{consultarAjustesMFBean.horaInicial}" onclick="TimerHourInputEditable(this);">
+                                       <f:ajax render="@this"  />                     
+                                   </h:inputText>
+                                  <span>▼</span>
+                               </div>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                            
+                        
+                     </h:panelGrid>
+                    <div class="textoNombreCampo">Hasta</div>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{consultarAjustesMFBean.fechaFinal}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                        
+                        <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                            <h:panelGroup layout="block" class="divTimerHourEditable">
+                                <div class="divDropDownListTimerHour">
+                                   <ui:repeat var="item" varStatus="status" value="#{consultarAjustesMFBean.listaHora}">  
+                                               <a>#{item.value}</a>
+                                   </ui:repeat>
+                                 </div>   
+                               <div class="divTimerHourInputEditable">
+                                   <h:inputText maxlength="8" value="#{consultarAjustesMFBean.horaFinal}" onclick="TimerHourInputEditable(this);">
+                                       <f:ajax render="@this"  />                     
+                                   </h:inputText>
+                                  <span>▼</span>
+                               </div>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        
+                      </h:panelGrid>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                <div class="barra_Rojo"> Criterios Consulta </div>
+                <div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo" style="float: left;">Cajero</div>
+                        <h:selectOneMenu styleClass="combo" value="#{consultarAjustesMFBean.cajeroSeleccionado}" ><f:ajax render="@this"  />
+                            <f:selectItems value="#{consultarAjustesMFBean.cajeros}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                        </h:selectOneMenu>
+                        <div class="textoNombreCampo" style="float: left;">Oficina</div>
+                        <h:selectOneMenu styleClass="combo"   value="#{consultarAjustesMFBean.oficinaSeleccionado}" ><f:ajax render="@this"  />
+                            <f:selectItems value="#{consultarAjustesMFBean.listaOficina}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                </div>
+            </h:panelGroup>
+             <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo">Acciones</div>
+                 <br></br>
+                 <h:panelGrid columns="1">
+                     <h:commandButton value="CONSULTAR" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{consultarAjustesMFBean.consultar()}">
+                            <f:ajax  render="panelConsultarAjustesMF panelPaginas"/>
+                    </h:commandButton> 
+                     <h:commandButton value="EXPORTAR XLS" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{consultarAjustesMFBean.exportarExcel()}">
+                    </h:commandButton> 
+                 </h:panelGrid>
+             </h:panelGroup>
+            
+            </div>
+            <div class="barra_Rojo">Consultar Ajustes Usuarios</div>
+            </h:panelGroup>
+            <h:panelGroup id="panelRespuestaAjustesMF" rendered="#{consultarAjustesMFBean.mostrarRespuesta}">
+                <h:dataTable value="#{consultarAjustesMFBean.ajustes}" var="itemConsulta" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+    			<h:column>
+    				<f:facet name="header">#</f:facet>
+    				#{itemConsulta.idRegistro}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Tipo Ajuste</f:facet>
+    				#{itemConsulta.tipoAjuste}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Usuario</f:facet>
+    				#{itemConsulta.usuario}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Oficina</f:facet>
+    				#{itemConsulta.codigoOficina}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Cajero</f:facet>
+    				#{itemConsulta.codigoCajero}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Fecha</f:facet>
+    				#{itemConsulta.fecha}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Talon</f:facet>
+    				#{itemConsulta.talon}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">valor</f:facet>
+    				#{itemConsulta.valor}
+    			</h:column> 
+                        <h:column>
+    				<f:facet name="header">Codigo Error</f:facet>
+    				#{itemConsulta.codigoError}
+    			</h:column>
+                        <h:column>
+    				<f:facet name="header">Descripcion Error</f:facet>
+    				#{itemConsulta.descripcionError}
+    			</h:column>
+                </h:dataTable>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
+</html>
+

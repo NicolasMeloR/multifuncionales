@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.davivienda.com/xml/NotaCredito" xmlns:ns0="http://www.davivienda.com/xml/NotaCredito" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="NotaCredito.xsd1.xsd" namespace="http://www.davivienda.com/xml/NotaCredito"/>
+      <xsd:import schemaLocation="NotaCredito.xsd2.xsd" namespace="http://www.davivienda.com/xml/NotaCredito"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NotaCredito_in">
+    <wsdl:part name="NotaCredito" element="xsns:NotaCredito" xmlns:xsns="http://www.davivienda.com/xml/NotaCredito"/>
+  </wsdl:message>
+  <wsdl:message name="NotaCredito_out">
+    <wsdl:part name="NotaCreditoResponse" element="xsns:NotaCreditoResponse" xmlns:xsns="http://www.davivienda.com/xml/NotaCredito"/>
+  </wsdl:message>
+  <wsdl:portType name="NotaCreditoPortType">
+    <wsdl:operation name="NotaCredito">
+      <wsdl:input name="NotaCredito_Input" message="ns0:NotaCredito_in"/>
+      <wsdl:output name="NotaCredito_Output" message="ns0:NotaCredito_out"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BankTrade07_HTTP_Binding" type="ns0:NotaCreditoPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="NotaCredito">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="NotaCredito_Input">
+        <soap11:body parts="NotaCredito" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="NotaCredito_Output">
+        <soap11:body parts="NotaCreditoResponse" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BankTrade07_HTTP_Service">
+    <wsdl:port name="BankTrade07_HTTP_Port" binding="ns0:BankTrade07_HTTP_Binding">
+      <soap11:address location="http://90.4.28.5:80/ESBService/NotaCredito"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

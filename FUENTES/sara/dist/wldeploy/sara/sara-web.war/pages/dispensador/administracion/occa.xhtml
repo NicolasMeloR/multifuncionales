@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:panelGroup id="panelOcca">
+    <h:panelGrid columns="7" id="btnInfoOccas">             
+
+                <h:commandButton value="Nuevo" rendered="#{!occaBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{occaBean.nuevoUsuario()}" >
+                    <f:ajax render="panelOcca" />
+                </h:commandButton>
+                <h:commandButton value="Modificar" rendered="#{!occaBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{occaBean.modificarUsuario()}" >
+                    <f:ajax render="panelOcca panelPaginas" />
+                </h:commandButton>
+                <h:commandButton rendered="#{occaBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{occaBean.grabarUsuario()}" >
+                    <f:ajax render="panelOcca panelPaginas" />
+                </h:commandButton>
+                <h:commandButton rendered="#{occaBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{occaBean.buscarRegistro()}"  >
+                    <f:ajax render="panelOcca" />
+                </h:commandButton>
+                <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{occaBean.anteriorUsuario()}"  >
+                    <f:ajax render="panelOcca" />
+                </h:commandButton>
+                
+                <h:selectOneMenu styleClass="combo"   value="#{occaBean.usuarioSeleccionado}" >
+                    <f:selectItems value="#{occaBean.listaOcca}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                    <f:ajax render="panelOcca" />
+                </h:selectOneMenu>
+            
+                <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{occaBean.buscarRegistro()}"  >
+                    <f:ajax render="panelOcca" />
+                </h:commandButton>
+                                                 
+                <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{occaBean.siguienteUsuario()}"  >
+                    <f:ajax render="panelOcca panelPaginas" />
+                </h:commandButton>
+             </h:panelGrid>
+           
+            
+            <div class="tituloSeccion2">Información Occas</div>
+            <h:panelGrid id="datosInfoOccas" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{occaBean.codigo}" size="18" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{occaBean.nombre}" size="18" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre Archivo Movimiento</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{occaBean.archivoMovimiento}" size="18"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Ubicacion Archivo Movimiento</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{occaBean.ubicacionArchivoMovimiento}" size="18"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código Terminal Caja</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{occaBean.codigoTerminalCaja}" size="18" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup> 
+                
+            </h:panelGrid>
+      </h:panelGroup>      
+</html>
+

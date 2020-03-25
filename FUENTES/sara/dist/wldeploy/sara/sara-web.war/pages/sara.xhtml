@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:corejsf="http://corejsf.com">
+    <h:head>
+        <title>SARA - Sistema Administración Red ATMs</title> 
+
+        <h:outputStylesheet id="estilosSara"  	  library="estilos" name="estilosSara.css" />
+        <h:outputScript id="calendario"           library="js" name="calendario.js" />
+        <h:outputScript id="sortTableFunction"           library="js" name="sortTableFunction.js" />
+        <h:outputScript id="thousandSeparator"           library="js" name="thousandSeparator.js" />
+        <h:outputScript id="timerHourInputEditable"           library="js" name="timerHourInputEditable.js" />
+
+    </h:head>
+    <h:body onload="startCountdown();">
+        <f:view>
+            <h:form id="menuForm" enctype="multipart/form-data">
+
+                <div>
+                    <div class="encZonaIzq"></div>            
+                    <div class="encZonaLogo"></div>            
+                    <div class="encZonaDer"></div>            
+                </div>
+                <div id="zonaMenuPpal">
+                    <ui:include src="listaMenuPrincipal.xhtml"></ui:include>
+                </div>
+                <div id="zonaSubmenuPpal">
+                    <ui:include src="listasOpcionesSubMenus.xhtml"></ui:include>                                             
+                </div>
+                <div id="ppal.cp.barraTituloOp"  class="barraComandos">
+                    <div id="ppal.cp.barraTituloOp.msj" style="float:left;margin-left: 20px;">SARA v#{initBean.version} - Sistema Administración Red ATMs</div>
+                    <h:panelGroup layout="bock" id="panelBtnInicioSesion">
+                        <div style="float:right;margin-right: 20px;">
+                            <h:outputText  value="#{initBean.loggedUser} | " />
+                            <h:commandLink value="Inicio" action="#{initBean.cargarPaginaInicial()}" 
+                                           rendered="#{initBean.mostrarSubMenuDispensador || initBean.mostrarSubMenuMultifuncional || initBean.mostrarSubMenuCarguesMasivos}" styleClass="cerrarSesionLink"/>
+                            <h:outputText  rendered="#{initBean.mostrarSubMenuDispensador || initBean.mostrarSubMenuMultifuncional || initBean.mostrarSubMenuCarguesMasivos}"
+                                           value=" | " />
+                            <h:commandLink id="btnCerrarSesion" value="Cerrar sesión" action="#{initBean.cerrarSesion()}" styleClass="cerrarSesionLink"/>
+                        </div>
+                    </h:panelGroup>
+                </div>   
+                <div id="mensajeCargando" class="zonaContenido" style="display: none;">
+                    Iniciando la página. Un momento por favor ...
+                </div>
+                <ui:include src="paginasOpcionesSubMenus.xhtml"></ui:include>
+
+                <div id="countdowntimer" style="display: none;">
+                </div>
+                <corejsf:owaspCsrfToken />
+
+                <script type="text/javascript">
+
+
+                    function startCountdown() {
+                        //Se restan 10 segundos antes de que Java elimine la sesion y poder eliminar 
+                        //el registro en la base de datos
+                        var timeleft = #{initBean.tiempoSession} * 60 - 10;
+                        document.getElementById("countdowntimer").innerHTML = timeleft;
+                        var downTimer = setInterval(function () {
+                            timeleft--;
+                            document.getElementById("countdowntimer").innerHTML = timeleft;
+                            if(timeleft &lt; 0){
+                                clearInterval(downTimer);
+                                document.getElementById("menuForm:btnCerrarSesion").click();
+                            }
+                        }, 1000);
+
+                    }
+
+                    function handleAjax(data) {
+                        var status = data.status;
+
+                        switch (status) {
+                            case "begin":
+                                // This is the start of the AJAX request.
+                                document.getElementById("menuForm").style.cursor = "wait";
+                                if (document.getElementById("menuForm:btnEnviarModalAut")) {
+                                    document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "wait";
+                                }
+                                break;
+
+                            case "complete":
+                                // This is invoked right after AJAX response is returned.
+                                document.getElementById("menuForm").style.cursor = "default";
+                                if (document.getElementById("menuForm:btnEnviarModalAut")) {
+                                    document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "default";
+                                }
+                                break;
+
+                            case "success":
+                                // This is invoked right after successful processing of AJAX response and update of HTML DOM.
+                                document.getElementById("menuForm").style.cursor = "default"
+                                if (document.getElementById("menuForm:btnEnviarModalAut")) {
+                                    document.getElementById("menuForm:btnEnviarModalAut").style.cursor = "default";
+                                }
+                                break;
+                        }
+                    }
+                    // Setup the statusUpdate function to hear all events on the page
+                    jsf.ajax.addOnEvent(handleAjax);
+
+
+                </script>
+            </h:form>
+        </f:view>
+    </h:body>
+</html>
+

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+     <h:panelGroup id="panelCtgaGeneral">
+    <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Contingencia General</div>  
+           
+          
+               <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                     <div class="barra_Rojo"> Fecha y Hora </div>
+                        <h:panelGrid columns="1">
+                               <div class="textoNombreCampo">Fecha</div>
+                               <h:panelGrid columns="2">
+                                   <h:inputText value="#{contingenciaGeneralBean.fecha}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                                   
+                                   
+                                    <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                        <h:panelGroup layout="block" class="divTimerHourEditable">
+                                            <div class="divDropDownListTimerHour">
+                                               <ui:repeat var="item" varStatus="status" value="#{contingenciaGeneralBean.listaHora}">  
+                                                           <a>#{item.value}</a>
+                                               </ui:repeat>
+                                             </div>   
+                                           <div class="divTimerHourInputEditable">
+                                               <h:inputText maxlength="8" value="#{contingenciaGeneralBean.hora}" onclick="TimerHourInputEditable(this);">
+                                                   <f:ajax render="@this"  />                     
+                                               </h:inputText>
+                                              <span>▼</span>
+                                           </div>
+                                        </h:panelGroup>
+                                    </h:panelGroup>
+                                   
+                                </h:panelGrid>
+                        </h:panelGrid> 
+               </h:panelGroup>  
+               <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                   <div class="barra_Rojo"> Archivo Tarea </div>
+                   
+                   <h:panelGrid columns="3">
+                       <h:selectOneRadio id="CtgaGeneralTarea" value="#{contingenciaGeneralBean.tipoTarea}" styleClass="cgArchivoTarea">
+                           <f:selectItem itemValue="1" itemLabel="Cfamo" />
+                                <f:selectItem itemValue="5" itemLabel="Otbmo" />
+                                <f:selectItem itemValue="3" itemLabel="Geato" />
+                                <f:selectItem itemValue="7" itemLabel="Cuadre" />
+                                <f:selectItem itemValue="9" itemLabel="HostMvto" />
+                                <f:ajax  render="panelCtgaGeneral"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid>
+                    <h:panelGrid columns="3">
+                       <h:selectOneRadio id="CtgaGeneralTarea2" value="#{contingenciaGeneralBean.tipoTarea}" >
+                                <f:selectItem itemValue="11" itemLabel="Reintegros"  />
+                                <f:selectItem itemValue="14" itemLabel="P.Diarios" />
+                                <f:selectItem itemValue="16" itemLabel="Diarios_Reint" />
+                                <f:selectItem itemValue="17" itemLabel="P.Log Eventos" />
+                                <f:ajax  render="panelCtgaGeneral"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid>
+                    <h:panelGrid columns="3">
+                       <h:selectOneRadio id="CtgaGeneralTarea3" value="#{contingenciaGeneralBean.tipoTarea}" >
+                                <f:selectItem itemValue="20" itemLabel="Info.Diferencias" />
+                                <f:ajax  render="panelCtgaGeneral"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid>
+              </h:panelGroup> 
+             <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Tipo Cajero </div>
+                    <h:panelGrid columns="1">
+                        <h:selectOneRadio id="CtgaGeneralCajero"  value="#{contingenciaGeneralBean.tipoCajero}" >
+                                <f:selectItem itemValue="0" itemLabel="Dispensador"   />
+                                <f:selectItem itemValue="1" itemLabel="Multifuncional"   />
+                                <f:ajax  render="panelCtgaGeneral"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid>                    
+               </h:panelGroup>
+               <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Acciones </div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:commandButton value="CARGAR ARCHIVO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{contingenciaGeneralBean.cargarArchivo()}" >
+                        <f:ajax  render="panelCtgaGeneral panelPaginas"/>
+                    </h:commandButton>                    
+               </h:panelGroup>
+        </div>
+    <div class="barra_Rojo">Cargar Archivo</div>
+     </h:panelGroup>
+</html>
+

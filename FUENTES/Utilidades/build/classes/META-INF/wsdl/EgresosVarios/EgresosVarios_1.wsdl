@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://www.davivienda.com/xml/EgresosVarios" xmlns:ns0="http://www.davivienda.com/xml/EgresosVarios" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="EgresosVarios.xsd1.xsd" namespace="http://www.davivienda.com/xml/EgresosVarios"/>
+      <xsd:import schemaLocation="EgresosVarios.xsd2.xsd" namespace="http://www.davivienda.com/xml/EgresosVarios"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EgresosVarios_in">
+    <wsdl:part name="EgresosVarios" element="xsns:EgresosVarios" xmlns:xsns="http://www.davivienda.com/xml/EgresosVarios"/>
+  </wsdl:message>
+  <wsdl:message name="EgresosVarios_out">
+    <wsdl:part name="EgresosVariosResponse" element="xsns:EgresosVariosResponse" xmlns:xsns="http://www.davivienda.com/xml/EgresosVarios"/>
+  </wsdl:message>
+  <wsdl:portType name="EgresosVariosPortType">
+    <wsdl:operation name="EgresosVarios">
+      <wsdl:input name="EgresosVarios_Input" message="ns0:EgresosVarios_in"/>
+      <wsdl:output name="EgresosVarios_Output" message="ns0:EgresosVarios_out"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Operaciones09_HTTP_Binding" type="ns0:EgresosVariosPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="EgresosVarios">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="EgresosVarios_Input">
+        <soap11:body parts="EgresosVarios" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="EgresosVarios_Output">
+        <soap11:body parts="EgresosVariosResponse" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Operaciones09_HTTP_Service">
+    <wsdl:port name="Operaciones02_HTTP_Port" binding="ns0:Operaciones09_HTTP_Binding">
+      <soap11:address location="http://90.4.28.5:80/ESBService/EgresosVarios"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

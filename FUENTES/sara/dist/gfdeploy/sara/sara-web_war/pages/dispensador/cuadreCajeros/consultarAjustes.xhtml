@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="panelConsultarAjustes" >
+            <h:panelGroup rendered="#{consultarAjustesBean.mostrarPanelGeneral}">
+                <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+                    <div class="barra_Rojo">Consultar Ajustes</div>  
+
+                    <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                        <div class="barra_Rojo"> Fecha y Hora </div>
+                        <div class="textoNombreCampo">Fecha</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{consultarAjustesBean.fechaInicial}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{consultarAjustesBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{consultarAjustesBean.horaInicial}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>    
+                        </h:panelGrid>
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{consultarAjustesBean.fechaFinal}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{consultarAjustesBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{consultarAjustesBean.horaFinal}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>   
+                        </h:panelGrid>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                        <div class="barra_Rojo"> Criterios Consulta </div>
+                        <div>
+                            <h:panelGrid columns="1">
+                                <div class="textoNombreCampo" style="float: left;">Cajero</div>
+                                <h:selectOneMenu styleClass="combo" value="#{consultarAjustesBean.cajeroSeleccionado}" >
+                                    <f:selectItems value="#{consultarAjustesBean.cajeros}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                                    <f:ajax render="panelZona" />
+                                </h:selectOneMenu>
+                                <div class="textoNombreCampo" style="float: left;">Occa</div>
+                                <h:selectOneMenu styleClass="combo"   value="#{consultarAjustesBean.occaSeleccionado}" >
+                                    <f:selectItems value="#{consultarAjustesBean.listaOcca}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                                    <f:ajax render="panelZona" />
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </div>
+                    </h:panelGroup>
+                    <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                        <div class="barra_Rojo">Acciones</div>
+                        <br></br>
+                        <h:panelGrid columns="1">
+                            <h:commandButton value="CONSULTAR" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{consultarAjustesBean.consultar()}">
+                                <f:ajax  render="panelConsultarAjustes panelPaginas"/>
+                            </h:commandButton> 
+                            <h:commandButton value="ARCHIVO XLS" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{consultarAjustesBean.generarAjustesXML()}">
+                            </h:commandButton> 
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                </div>
+                <div class="barra_Rojo">Consultar Ajustes Usuarios</div>
+            </h:panelGroup>
+            
+                
+            
+           
+            
+            <h:panelGroup id="panelRespuestaAjustes" rendered="#{consultarAjustesBean.mostrarRespuesta}">
+                <h:dataTable id="tableConsAjustes" value="#{consultarAjustesBean.ajustes}" var="itemConsulta" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 0, 'numero', arrayOrder[0]);  return false;" >
+                                #                        
+                            </h:outputLink>
+                        </f:facet>
+                        #{itemConsulta.idRegistro}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 1, 'texto', arrayOrder[1]);  return false;" >
+                                Tipo Ajuste                        
+                            </h:outputLink>
+                        </f:facet>
+                        #{itemConsulta.tipoAjuste}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 2, 'texto', arrayOrder[2]);  return false;" >
+                                Usuario                        
+                            </h:outputLink>
+                        </f:facet>
+                        #{itemConsulta.usuario}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 3, 'numero', arrayOrder[3]);  return false;" >
+                                Occa                        
+                            </h:outputLink>
+                        </f:facet>
+                        #{itemConsulta.codigoOcca}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 4, 'numero', arrayOrder[4]);  return false;" >
+                                Cajero                        
+                            </h:outputLink>
+                        </f:facet>
+                        #{itemConsulta.codigoCajero}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 5, 'fecha', arrayOrder[5]);  return false;" >
+                                Fecha                        
+                            </h:outputLink>      
+                        </f:facet>
+                        #{itemConsulta.fecha}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 6, 'numero', arrayOrder[6]);  return false;" >
+                                Talón                        
+                            </h:outputLink> 
+                        </f:facet>
+                        #{itemConsulta.talon}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 7, 'numero', arrayOrder[7]);  return false;" >
+                                Valor                        
+                            </h:outputLink> 
+                        </f:facet>
+                        #{itemConsulta.valor}
+                    </h:column>
+
+                    <h:column>  
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 8, 'texto', arrayOrder[8]);  return false;" >
+                                Código Error                        
+                            </h:outputLink> 
+                        </f:facet>
+                        #{itemConsulta.codigoError}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLink class="tablaLinkHeader"
+                                          onclick="sort_table('menuForm:tableConsAjustes', 9, 'texto', arrayOrder[9]);  return false;" >
+                                Descripción Error                       
+                            </h:outputLink> 
+                        </f:facet>
+                        #{itemConsulta.descripcionError}
+                    </h:column>
+
+                </h:dataTable>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
+</html>
+

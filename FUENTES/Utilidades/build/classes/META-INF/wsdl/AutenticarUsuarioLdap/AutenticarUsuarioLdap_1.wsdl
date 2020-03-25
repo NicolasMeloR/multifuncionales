@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servicio.autenticacionldap.davivienda.com/" xmlns:ns0="http://servicio.autenticacionldap.davivienda.com/" xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="AutenticarUsuarioLdap.xsd2.xsd" namespace="http://servicio.autenticacionldap.davivienda.com/"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="autenticarUsuario">
+    <wsdl:part name="parameters" element="xsns:autenticarUsuario" xmlns:xsns="http://servicio.autenticacionldap.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="autenticarUsuarioResponse">
+    <wsdl:part name="parameters" element="xsns:autenticarUsuarioResponse" xmlns:xsns="http://servicio.autenticacionldap.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:message name="ServicioException">
+    <wsdl:part name="fault" element="xsns:ServicioException" xmlns:xsns="http://servicio.autenticacionldap.davivienda.com/"/>
+  </wsdl:message>
+  <wsdl:portType name="AutenticarUsuarioLdap">
+    <wsdl:operation name="autenticarUsuario">
+      <wsdl:input name="autenticarUsuarioRequest" message="ns0:autenticarUsuario"/>
+      <wsdl:output name="autenticarUsuarioResponse" message="ns0:autenticarUsuarioResponse"/>
+      <wsdl:fault name="ServicioException" message="ns0:ServicioException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AutenticarUsuarioLdapPortBinding" type="ns0:AutenticarUsuarioLdap">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="autenticarUsuario">
+      <soap11:operation soapAction="" style="document"/>
+      <wsdl:input name="autenticarUsuarioRequest">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="autenticarUsuarioResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServicioException">
+        <soap11:fault name="ServicioException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutenticarUsuarioLdapService">
+    <wsdl:port name="AutenticarUsuarioLdapPort" binding="ns0:AutenticarUsuarioLdapPortBinding">
+      <soap11:address location="http://90.4.28.5:80/AutenticarUsuarioLdapService/AutenticarUsuarioLdap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <h:panelGroup id="panelConsultarTotales" >
+        <h:panelGroup rendered="#{consultarTotalesBean.mostrarPanelGeneral}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Criterios de Seleccion</div>  
+           
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo"> Tipo Consulta </div>
+                 <div class="textoNombreCampo">Consultar</div>
+                 <h:selectOneMenu styleClass="combo"   value="#{consultarTotalesBean.tipoSelecccionado}" >
+                    <f:selectItems value="#{consultarTotalesBean.tiposConsultas}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                    <f:ajax render="panelZona" />
+                 </h:selectOneMenu>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                <div class="barra_Rojo"> Datos Consulta </div>
+                <h:panelGrid columns="1">
+                    <div class="textoNombreCampo" style="float: left;">Codigo Cajero</div>
+                    <h:inputText value="#{consultarTotalesBean.codigoCajero}" onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"/></h:inputText>
+                </h:panelGrid>
+                <h:panelGrid columns="1">
+                    <div class="textoNombreCampo" style="float: left;">Codigo Occa</div>
+                    <h:inputText value="#{consultarTotalesBean.codigoOcca}" onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"/></h:inputText>
+                </h:panelGrid>
+            </h:panelGroup>
+             <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo">Acciones</div>
+                 <br></br>
+                 <h:commandButton value="CONSULTAR" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{consultarTotalesBean.consultar()}">
+                         <f:ajax  render="panelConsultarTotales panelPaginas"/>
+                 </h:commandButton> 
+             </h:panelGroup>
+            
+            </div>
+            <div class="barra_Rojo">Consultar Ajustes en cajeros automáticos</div>
+            </h:panelGroup>
+            <h:panelGroup id="panelRespuestaTotales" rendered="#{consultarTotalesBean.mostrarRespuesta}">
+                <h:dataTable value="#{consultarTotalesBean.consultaTotales}" var="itemConsulta" columnClasses="celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  500px;">
+
+    			<h:column>
+    				<f:facet name="header">#</f:facet>
+    				#{itemConsulta.idRegistro}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Titulo</f:facet>
+    				#{itemConsulta.titulo}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Cantidad</f:facet>
+    				#{itemConsulta.cantidad}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Valor</f:facet>
+    				#{itemConsulta.valor}
+    			</h:column>
+                </h:dataTable>
+            </h:panelGroup>
+        </h:panelGroup>
+</html>
+

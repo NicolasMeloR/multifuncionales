@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:panelGroup id="panelInfoTipoCajero">
+            <h:panelGrid columns="7" id="btnInfoTipoCajero">
+                <h:commandButton value="Nuevo" rendered="#{!infoTipoCajeroBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.nuevoRegistro()}" >
+                       <f:ajax render="panelInfoTipoCajero" />
+               </h:commandButton>
+               <h:commandButton value="Modificar" rendered="#{!infoTipoCajeroBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.modificarRegistro()}" >
+                       <f:ajax render="panelInfoTipoCajero" />
+               </h:commandButton>
+               <h:commandButton rendered="#{infoTipoCajeroBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.grabarRegistro()}" >
+                       <f:ajax render="panelInfoTipoCajero panelPaginas" />
+               </h:commandButton>
+               <h:commandButton rendered="#{infoTipoCajeroBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.buscarRegistro()}"  >
+                       <f:ajax render="panelInfoTipoCajero" />
+               </h:commandButton>
+               <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.anteriorRegistro()}"  >
+                       <f:ajax render="panelInfoTipoCajero panelPaginas" />
+               </h:commandButton>
+
+               <h:selectOneMenu styleClass="combo"   value="#{infoTipoCajeroBean.registroSeleccionado}" >
+                   <f:selectItems value="#{infoTipoCajeroBean.listaRegistros}" var="reg" itemValue="#{reg.idCajero}" itemLabel="#{reg.codigoTipoCajero}-#{reg.descripcion}" />
+                       <f:ajax render="panelInfoTipoCajero" />
+               </h:selectOneMenu>
+
+               <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.buscarRegistro()}"  >
+                       <f:ajax render="panelInfoTipoCajero panelPaginas" />
+               </h:commandButton>
+
+                   <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{infoTipoCajeroBean.siguienteRegistro()}"  >
+                       <f:ajax render="panelInfoTipoCajero panelPaginas" />
+               </h:commandButton>
+            </h:panelGrid>
+            <div class="tituloSeccion2">Información Tipo Cajeros</div>
+            <h:panelGrid id="datosInfoTipoCajero" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoTipoCajeroBean.registro.codigoTipoCajero}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Descripción</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoTipoCajeroBean.registro.descripcion}" size="40"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Marca</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoTipoCajeroBean.registro.marca}">
+                         <f:selectItems  value="#{infoTipoCajeroBean.listaMarcaCajero}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Modelo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoTipoCajeroBean.registro.modelo}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Sistema Operativo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoTipoCajeroBean.registro.sistemaOperativo}">
+                         <f:selectItems  value="#{infoTipoCajeroBean.listaSistemaOperativo}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Aplicativo Cajero</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoTipoCajeroBean.registro.aplicativoCajero}">
+                         <f:selectItems  value="#{infoTipoCajeroBean.listaAplicativoCajero}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Formato Diario Electr�nico</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoTipoCajeroBean.registro.formatoDiarioElectronico}">
+                         <f:selectItems  value="#{infoTipoCajeroBean.listaFormatoDiarioElectronico}"  var="reg" itemValue="#{reg.value}"  itemLabel="#{reg.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Papel Impresion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText   value="#{infoTipoCajeroBean.registro.papelImpresion}"   ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+              
+            </h:panelGrid>
+    </h:panelGroup>
+            
+</html>
+

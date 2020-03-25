@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="panelRealizarAjustes" >
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Criterios de Seleccion</div>  
+           
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo"> Tipo Transaccion </div>
+                 <div class="textoNombreCampo">Ajuste</div>
+                 <h:panelGrid columns="1">
+                    <h:selectOneMenu styleClass="combo"   value="#{realizarAjusteBean.ajusteSeleccionado}" >
+                         <f:selectItems value="#{realizarAjusteBean.tiposAjuste}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                        <f:ajax render="panelZona" />
+                    </h:selectOneMenu>
+                 </h:panelGrid>
+             </h:panelGroup>
+             <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo"> Datos Ajuste </div>
+                 <h:panelGrid columns="2">
+                     <h:panelGrid columns="1">
+                         <div class="textoNombreCampo" style="float: left;">Codigo Cajero</div>
+                         <h:inputText value="#{realizarAjusteBean.codigoCajero}" onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"/></h:inputText>
+                         <div class="textoNombreCampo" style="float: left;">Valor Ajuste</div>
+                         <h:inputText value="#{realizarAjusteBean.valorAjuste}"  onkeyup="formatInput(event)" ><f:ajax render="@this"/></h:inputText>
+                     </h:panelGrid>
+                     <h:panelGrid columns="1">
+                         <div class="textoNombreCampo" style="float: left;">Codigo Occa</div>
+                         <h:inputText value="#{realizarAjusteBean.codigoOcca}" onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"/></h:inputText>
+                         <div class="textoNombreCampo" style="height: 39px;"></div>
+                     </h:panelGrid>
+                 </h:panelGrid>
+             </h:panelGroup>
+             <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo">Acciones</div>
+                 <br></br>
+                 <h:commandButton value="GUARDAR AJUSTE" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{realizarAjusteBean.guardarAjuste()}">
+                         <f:ajax  render="panelRealizarAjustes panelPaginas"/>
+                 </h:commandButton> 
+             </h:panelGroup>
+            
+        </div>
+        <div class="barra_Rojo">Ajustes en cajeros automáticos</div>
+       </h:panelGroup>
+    </h:body>
+</html>
+

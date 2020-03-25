@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+     <h:panelGroup id="panelIngNotaDebito">
+    <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Criterios de Selección</div>  
+             
+               <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                   <div class="barra_Rojo"> Datos Nota Credito  </div>
+                    <h:panelGrid columns="5">
+                        <h:panelGroup>
+                            <div class="textoNombreCampo">Codigo Cajero</div>
+                            <h:selectOneMenu style="width: 173px;"  value="#{ingNotaDebitoBean.cajeroSeleccionado}" >
+                                 <f:selectItem itemValue="0" itemLabel="Seleccione uno ..." />
+                                 <f:selectItems value="#{ingNotaDebitoBean.listaRegistros}" var="reg" itemValue="#{reg.codigoCajero}" itemLabel="#{reg.codigoCajero} - #{reg.nombre}" />
+                                     <f:ajax render="@this" />
+                             </h:selectOneMenu>
+                            </h:panelGroup>
+                        <h:panelGroup>
+                            <div class="textoNombreCampo">Tipo Cuenta</div>
+                            <h:selectOneMenu style="width: 173px;"  value="#{ingNotaDebitoBean.cuentaSeleccionada}" >
+                                 <f:selectItem itemValue="0" itemLabel="Seleccione uno ..." />
+                                 <f:selectItems value="#{ingNotaDebitoBean.listaTipoCuenta}" var="reg" itemValue="#{reg.label}" itemLabel="#{reg.label}" />
+                                     <f:ajax render="@this" />
+                             </h:selectOneMenu>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <div class="textoNombreCampo">Cuenta</div>
+                            <h:inputText value="#{ingNotaDebitoBean.cuenta}" maxlength="16" onkeypress="javascript:return solonumeros(event)" > <f:ajax render="@this"  /></h:inputText>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <div class="textoNombreCampo">Valor</div>
+                            <h:inputText value="#{ingNotaDebitoBean.valor}" onkeyup="formatInput(event)"><f:ajax render="@this"  /></h:inputText>
+                        </h:panelGroup>
+                    </h:panelGrid>
+              </h:panelGroup> 
+               <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Acciones </div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:commandButton value="GUARDAR NOTA" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{ingNotaDebitoBean.guardarNota()}" >
+                        <f:ajax  render="panelIngNotaDebito panelPaginas"/>
+                    </h:commandButton>                    
+               </h:panelGroup>
+        </div>
+    <div class="barra_Rojo">Reintegros Notas Debito</div>
+     </h:panelGroup>
+</html>
+

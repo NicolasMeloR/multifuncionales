@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup id="panelArchivoCuadre" >
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+            <div class="barra_Rojo">Cargar Archivo Cuadre Diario</div>  
+           
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                <div class="barra_Rojo"> Fecha y Hora</div>
+                <div class="textoNombreCampo">Fecha</div>
+                  <h:panelGrid columns="2">
+                      <h:inputText value="#{cargarArchivoCuandreBean.fechaCargue}" onclick="datePicker(this,'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                         
+                      <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                        <h:panelGroup layout="block" class="divTimerHourEditable">
+                            <div class="divDropDownListTimerHour">
+                               <ui:repeat var="item" varStatus="status" value="#{cargarArchivoCuandreBean.listaHora}">  
+                                           <a>#{item.value}</a>
+                               </ui:repeat>
+                             </div>   
+                           <div class="divTimerHourInputEditable">
+                               <h:inputText maxlength="8" value="#{cargarArchivoCuandreBean.horaCargue}" onclick="TimerHourInputEditable(this);">
+                                   <f:ajax render="@this"  />                     
+                               </h:inputText>
+                              <span>▼</span>
+                           </div>
+                        </h:panelGroup>
+                     </h:panelGroup>
+                 </h:panelGrid>
+            </h:panelGroup>
+            <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                 <div class="barra_Rojo">Acciones</div>
+                 <br></br>
+                 <h:panelGrid columns="1">
+                    <h:commandButton value="PROCESAR ARCHIVO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cargarArchivoCuandreBean.cargarCicloDiario()}">
+                            <f:ajax  render="panelArchivoCuadre panelPaginas"/>
+                    </h:commandButton> 
+                 </h:panelGrid>
+             </h:panelGroup>
+            
+            </div>
+            <div class="barra_Rojo">Cuadre Diario</div>
+        </h:panelGroup>
+    </h:body>
+</html>
+

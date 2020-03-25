@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <script type="text/javascript">
+        //<![CDATA[
+        function solonumeros(e) {
+            var key;
+            if (window.event) {// IE
+                key = e.keyCode;
+            } else if (e.which) { // Netscape/Firefox/Opera
+                key = e.which;
+            }
+            if (key === 8) {
+                return true;
+            } else if (key < 48 || key > 57) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        ;
+        //]]>
+    </script>
+
+    <h:panelGroup layout="bock" id="panelSubMenus">
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarMenuPrincipal}">
+            <div>
+                <h:commandLink  class="botonMnuPpal" value="Dispensador" actionListener="#{initBean.cargarSubMenuDispensador()}">
+                    <f:ajax render="panelSubMenus panelBtnInicioSesion" />
+                </h:commandLink>
+            </div>
+            <div id="flechamoduload2" class="flechaMenuPpal"/>
+            <div>
+                <h:commandLink class="botonMnuPpal" value="Multifuncional" actionListener="#{initBean.cargarSubMenuMultifuncional()}">
+                    <f:ajax render="panelSubMenus panelBtnInicioSesion" />
+                </h:commandLink>
+            </div>
+            <div id="flechamoduload2" class="flechaMenuPpal"/>
+            <div>
+                <h:commandLink class="botonMnuPpal" value="Carga Masiva" actionListener="#{initBean.cargarSubMenuCarguesMasivos()}">
+                    <f:ajax render="panelSubMenus panelBtnInicioSesion" />
+                </h:commandLink>
+            </div>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarSubMenuDispensador}">
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc1}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'DIARIOS_ELECTRONICOS' ?'botonMnuPpalActive' : 'botonMnuPpal'}" value="Diarios Electrónicos" actionListener="#{initBean.cargarOpcionesSubMenu()}" >
+                        <f:param name="opcionSubMenu" value="DIARIOS_ELECTRONICOS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc2}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'CUADRE_CAJEROS' ? 'botonMnuPpalActive' :' botonMnuPpal'}" value="Cuadre Cajeros" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="CUADRE_CAJEROS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc3}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'REINTEGROS' ? 'botonMnuPpalActive' :' botonMnuPpal'}" value="Reintegros" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="REINTEGROS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc4}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'ADMINISTRACION' ? 'botonMnuPpalActive' :' botonMnuPpal'}"  value="Administración" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="ADMINISTRACION" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc5}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'CONTINGENCIA' ? 'botonMnuPpalActive' :' botonMnuPpal'}"  value="Contingencia" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="CONTINGENCIA" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarSubMenuMultifuncional}">
+
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc6}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'MULTI_DIARIOS_ELECTRONICOS' ? 'botonMnuPpalActive' :' botonMnuPpal'}" value="Diario Electronico" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="MULTI_DIARIOS_ELECTRONICOS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc7}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'MULTI_REINTEGROS' ? 'botonMnuPpalActive' :' botonMnuPpal'}" value="Reintegros" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="MULTI_REINTEGROS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc8}">
+                <div id="flechamodulo1"  class="flechaMenuPpal"/>
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'MULTI_CUADRE_CIFRAS' ? 'botonMnuPpalActive' :' botonMnuPpal'}" value="Cuadre Cifras" actionListener="#{initBean.cargarOpcionesSubMenu()}">
+                        <f:param name="opcionSubMenu" value="MULTI_CUADRE_CIFRAS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" rendered="#{initBean.mostrarSubMenuCarguesMasivos}">
+            
+            <div id="flechamodulo1"  class="flechaMenuPpal"/>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc9}">
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'CARGUES_MASIVOS' ?'botonMnuPpalActive' : 'botonMnuPpal'}" value="Timbre Masivo Para Ajustes" actionListener="#{initBean.cargarOpcionesSubMenu()}" >
+                        <f:param name="opcionSubMenu" value="CM_TIMBRES" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+            
+            <div id="flechamodulo1"  class="flechaMenuPpal"/>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc9}">
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'CARGUES_MASIVOS' ?'botonMnuPpalActive' : 'botonMnuPpal'}" value="Reintegro Masivo Por Descuento y No Pago" actionListener="#{initBean.cargarOpcionesSubMenu()}" >
+                        <f:param name="opcionSubMenu" value="CM_REINTEGROS" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+
+            <div id="flechamodulo1"  class="flechaMenuPpal"/>
+            <h:panelGroup layout="block" rendered="#{initBean.usuarioAplicacionDTO.srvc9}">
+                <div>
+                    <h:commandLink styleClass="#{initBean.opcionSubMenu == 'CARGUES_MASIVOS' ?'botonMnuPpalActive' : 'botonMnuPpal'}" value="Cargue Masivo Notas Débito" actionListener="#{initBean.cargarOpcionesSubMenu()}" >
+                        <f:param name="opcionSubMenu" value="CM_NOTAS_DEBITO" />
+                        <f:ajax render="panelSubMenus panelOpcionesSubMenus" />
+                    </h:commandLink>
+                </div>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>

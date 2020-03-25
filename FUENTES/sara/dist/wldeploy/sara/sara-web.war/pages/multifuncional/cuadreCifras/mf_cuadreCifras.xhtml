@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup id="panelCuadreCifras_multifuncional">
+        <h:panelGroup layout="block"> 
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 155px; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Consultar Cuadre Cajeros Multifuncional</div>  
+                <div class="textoNombreCampo">&nbsp;</div>
+                <div class="textoNombreCampo">&nbsp;</div>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Fecha</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{cuadreCifrasMFBean.fecha}" onclick="datePicker(this, 'YYYY-MM-DD');" ><f:ajax render="@this"  /></h:inputText>
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Reportes Dali </div>
+
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:panelGrid columns="3">
+                        <h:commandButton value="DALI 50LS" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cuadreCifrasMFBean.generarReporteDALI50LS()}" >
+                        </h:commandButton> 
+                        <h:commandButton value="DALI 40LS" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cuadreCifrasMFBean.generarReporteDALI40LS()}" >
+                        </h:commandButton>  
+                        <h:commandButton value="RESUMEN DALI40" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cuadreCifrasMFBean.generarReporteResumenDALI40()}" >
+                        </h:commandButton>  
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Reportes General </div>
+
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <div class="textoNombreCampo">&nbsp;</div>
+                    <h:panelGrid columns="2">
+                        <h:commandButton value="GENERAR INFORME" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cuadreCifrasMFBean.generarReporteInformeGeneral()}" >
+                        </h:commandButton> 
+                        <h:commandButton value="INFORME AYER" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{cuadreCifrasMFBean.generarReporteInformeGeneralAyer()}" >
+                        </h:commandButton>   
+                    </h:panelGrid>
+                </h:panelGroup>
+            </div>
+        </h:panelGroup>
+        <div class="barra_Rojo">Consultar Cuadre Cajeros Multifuncional</div>
+    </h:panelGroup>
+</html>
+

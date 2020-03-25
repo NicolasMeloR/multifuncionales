@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:panelGroup id="panelTransaccion_multifuncional" >
+        <h:panelGroup rendered="#{transaccionMFBean.mostrarPanelGeneral}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;">
+                <div class="barra_Rojo">Criterios de Selección</div>  
+
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo"> Fecha y Hora </div>
+                    <h:panelGrid columns="1">
+                        <div class="textoNombreCampo">Desde</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{transaccionMFBean.fechaDesde}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{transaccionMFBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{transaccionMFBean.horaDesde}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                            
+                        </h:panelGrid>
+
+                        <div class="textoNombreCampo">Hasta</div>
+                        <h:panelGrid columns="2">
+                            <h:inputText value="#{transaccionMFBean.fechaHasta}" onclick="datePicker(this, 'YYYY-MM-DD');"><f:ajax render="@this"  /></h:inputText>
+                            
+                            <h:panelGroup layout="block" class="divBlockTimerHourEditable">
+                                <h:panelGroup layout="block" class="divTimerHourEditable">
+                                    <div class="divDropDownListTimerHour">
+                                       <ui:repeat var="item" varStatus="status" value="#{transaccionMFBean.listaHora}">  
+                                                   <a>#{item.value}</a>
+                                       </ui:repeat>
+                                     </div>   
+                                   <div class="divTimerHourInputEditable">
+                                       <h:inputText maxlength="8" value="#{transaccionMFBean.horaHasta}" onclick="TimerHourInputEditable(this);">
+                                           <f:ajax render="@this"  />                     
+                                       </h:inputText>
+                                      <span>▼</span>
+                                   </div>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                            
+                        </h:panelGrid>
+                    </h:panelGrid> 
+                </h:panelGroup>
+                <h:panelGroup  layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Cajero</div>
+                    <div class="textoNombreCampo">Nombre</div>
+                    <h:selectOneMenu style="width: 173px;"  value="#{transaccionMFBean.cajeroSeleccionado}" ><f:ajax render="@this"  />
+                        <f:selectItem itemLabel="Seleccione uno ..." />
+                        <f:selectItems value="#{transaccionMFBean.listaCajeros}" var="reg" itemValue="#{reg.codigoCajero}" itemLabel="#{reg.codigoCajero} - #{reg.nombre}" />
+                        <!--<f:ajax render="panelCargarDiarioE" />-->
+                    </h:selectOneMenu>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Datos Transacción</div>
+                    <div>
+                        <div class="textoNombreCampo" style="float: left;">Cuenta</div>
+                    </div>
+                    <br/>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{transaccionMFBean.cuenta}"><f:ajax render="@this"/></h:inputText>
+                    </h:panelGrid>
+                    <div>
+                        <div class="textoNombreCampo" style="float: left;">Talon</div>
+                    </div>
+                    <br/>
+                    <h:panelGrid columns="2">
+                        <h:inputText value="#{transaccionMFBean.talon}" onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"/></h:inputText>
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Tipo Diario</div>
+                    <h:panelGrid columns="1">
+                        <h:selectOneRadio id="mfd_tipoDiario" value="#{transaccionMFBean.tipoDiario}" layout="pageDirection"><f:ajax render="@this"  />
+                            <f:selectItem itemValue="0" itemLabel="Efectivo"   />
+                            <f:selectItem itemValue="1" itemLabel="Cheque" />
+                            <!--<f:ajax  render="panelCtgaGeneral"/>-->
+                        </h:selectOneRadio>
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Consultas</div>
+                    <h:panelGrid columns="1">
+                        <h:commandButton value="DIARIOELECTRONICO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.consultarDiarioElctronico()}">
+                            <f:ajax  render="panelTransaccion_multifuncional panelDiarioElectronico_Multifuncional_Cheque panelDiarioElectronico_Multifuncional_Efectivo panelHistoricoCargue_multifuncional panelCajeroSinTransmision_multifuncional panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="HISTORICO CARGUE" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.consultarHistoricoCargue()}">
+                            <f:ajax  render="panelTransaccion_multifuncional panelDiarioElectronico_Multifuncional_Cheque panelDiarioElectronico_Multifuncional_Efectivo panelHistoricoCargue_multifuncional panelCajeroSinTransmision_multifuncional panelPaginas"/>
+                        </h:commandButton> 
+                        <h:commandButton value="SIN TRANSMISION" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.consultarSinTrasmision()}">
+                            <f:ajax  render="panelTransaccion_multifuncional panelDiarioElectronico_Multifuncional_Cheque panelDiarioElectronico_Multifuncional_Efectivo panelHistoricoCargue_multifuncional panelCajeroSinTransmision_multifuncional panelPaginas"/>
+                        </h:commandButton> 
+                    </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup layout="block" class="fondoIngresoDatosCriterio">
+                    <div class="barra_Rojo">Reportes</div>
+                    <h:panelGrid columns="1">
+                        <h:commandButton value="SIN TRANSMISION" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.generarReporteSinTrasmision()}">
+                        </h:commandButton> 
+                        <h:commandButton value="DIARIO ELECTRONICO" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.generarReporteDiarioElectronico()}">
+                        </h:commandButton> 
+                        <h:commandButton value="LOG EVENTOS" style="width: 140px;" styleClass="botonAPPADM" actionListener="#{transaccionMFBean.generarReporteLogEventos()}">
+                        </h:commandButton> 
+                    </h:panelGrid>
+                </h:panelGroup>
+            </div>
+            <div class="barra_Rojo">Transacciones realizadas en cajeros automáticos multifuncionales</div>
+        </h:panelGroup>
+        <!--<h:panelGroup id="panelDiarioElect_multifuncional" rendered="{transaccionMFBean.mostrarDiarioElect}">
+            <div  style="background-color: rgb(224,224,224); width: 100%;height: 10%; display: block; overflow: auto; padding: 0px;" >
+                <ui:repeat value="{transaccionMFBean.itemsFormateados}" var="itemDiario" rendered="{transaccionMFBean.mostrarDiarioElect}">
+                    <tr><td><pre>{itemDiario.datos}</pre></td></tr>
+                </ui:repeat>
+            </div>    
+        </h:panelGroup>-->
+        <h:panelGroup id="panelCajeroSinTransmision_multifuncional" rendered="#{transaccionMFBean.mostrarCajSinTransmision}">
+            <h:dataTable value="#{transaccionMFBean.cajerosSinTransamision}" var="itemCST" columnClasses="celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemCST.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemCST.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                        #{itemCST.nombreCajero}
+                </h:column>
+
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup id="panelHistoricoCargue_multifuncional" rendered="#{transaccionMFBean.mostrarHistorial}">
+            <h:dataTable value="#{transaccionMFBean.historicosCargue}" var="itemHist" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemHist.idRegistro}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cajero</f:facet>
+                        #{itemHist.codigoCajero}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Ciclo</f:facet>
+                        #{itemHist.ciclo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha</f:facet>
+                        #{itemHist.fecha}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Descripcion Error</f:facet>
+                        #{itemHist.descripcionError}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nombre Archivo</f:facet>
+                        #{itemHist.nombreArchivo}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup id="panelDiarioElectronico_Multifuncional_Efectivo" rendered="#{transaccionMFBean.mostrarDiarioElectronicoEfectivo}">
+            <h:dataTable value="#{transaccionMFBean.multifuncionalEfectivo}" var="itemCj" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemCj.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Código Transacción</f:facet>
+                        #{itemCj.codigoTransaccion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Estado</f:facet>
+                        #{itemCj.estado}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Código Cajero</f:facet>
+                        #{itemCj.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Número de corte</f:facet>
+                        #{itemCj.numerocorte}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transacción consecutivo</f:facet>
+                        #{itemCj.transaccionconsecutivo}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha Cierre</f:facet>
+                        #{itemCj.fechacierre}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha Cajero</f:facet>
+                        #{itemCj.fechaCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Tipo Cuenta</f:facet>
+                        #{itemCj.tipocuenta}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Numero Cuenta Consignar</f:facet>
+                        #{itemCj.numerocuentaconsignar}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Numero Cuenta Homologa</f:facet>
+                        #{itemCj.numerocuentahomologa}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Valor Consignacion</f:facet>
+                        #{itemCj.valorconsignacion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"># Billetes Notas Debito</f:facet>
+                        #{itemCj.nobilletesnd}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"># Billetes 50.000</f:facet>
+                        #{itemCj.nobilletesdenominacionf}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"># Billetes 20.000</f:facet>
+                        #{itemCj.nobilletesdenominacione}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"># Billetes 10.000</f:facet>
+                        #{itemCj.nobilletesdenominaciond}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"># Billetes 5.000</f:facet>
+                        #{itemCj.nobilletesdenominacionc}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"># Billetes 2.000</f:facet>
+                        #{itemCj.nobilletesdenominacionb}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"># Billetes 1.000</f:facet>
+                        #{itemCj.nobilletesdenominaciona}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Total billetes consignados</f:facet>
+                        #{itemCj.totalbilletesconsignados}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+
+        <h:panelGroup id="panelDiarioElectronico_Multifuncional_Cheque" rendered="#{transaccionMFBean.mostrarDiarioElectronicoCheque}">
+            <h:dataTable value="#{transaccionMFBean.multifuncionalcheque}" var="itemCC" columnClasses="celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData,celdaData" headerClass="headerData" style="width:  1280px;">
+
+                <h:column>
+                    <f:facet name="header">#</f:facet>
+                        #{itemCC.idRegistro}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Código Transacción</f:facet>
+                        #{itemCC.codigoTransaccion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Estado</f:facet>
+                        #{itemCC.estado}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Código Cajero</f:facet>
+                        #{itemCC.codigoCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha Cajero</f:facet>
+                        #{itemCC.fechaCajero}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Número de Corte</f:facet>
+                        #{itemCC.numerocorte}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Consecutivo Transacción</f:facet>
+                        #{itemCC.consecutivotransaccion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Fecha Cierre</f:facet>
+                        #{itemCC.fechacierre}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Consecutivo Cheque Consignación</f:facet>
+                        #{itemCC.consecutivochequeconsignacion}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Tipo Cuenta</f:facet>
+                        #{itemCC.tipocuenta}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Número Cuenta Consignar</f:facet>
+                        #{itemCC.numerocuentaconsignar}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Numero Cuenta Homóloga</f:facet>
+                        #{itemCC.numerocuentahomologa}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Cheque Propio</f:facet>
+                        #{itemCC.chequepropio}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Ruta</f:facet>
+                        #{itemCC.ruta}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Transito</f:facet>
+                        #{itemCC.transito}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cuenta</f:facet>
+                        #{itemCC.cuenta}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Serial</f:facet>
+                        #{itemCC.serial}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Oficina</f:facet>
+                        #{itemCC.oficina}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Valor Cheque</f:facet>
+                        #{itemCC.valorchequeusuario}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Plaza</f:facet>
+                        #{itemCC.plazaControl}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Archivo</f:facet>
+                        #{itemCC.fechaarchivoControl}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Monto Archivo</f:facet>
+                        #{itemCC.montoarchivoControl}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cantidad Cheques</f:facet>
+                        #{itemCC.cantidadchequesControl}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

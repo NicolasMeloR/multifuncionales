@@ -1,0 +1,1019 @@
+body {
+	color: #333333;
+	font-family: Arial;
+	font-size: 12px;
+	margin: 0px;
+	overflow: hidden; 
+	padding: 0px;
+
+}
+
+td {
+	color: #333333;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+a, a:active, a:visited, td a, td a:active, td a:visited  {
+	font-family: Arial;
+	color: #015b8f;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+a:hover, td a:hover {
+	font-family: Arial;
+	color: #015b8f;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+
+button {
+	background: url(/triptoe/images/generator/button.gif) no-repeat left top;
+	height: 18px;
+	width: 97px;
+	border: 0px;
+	border: none;
+	color: #015b8f;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;	
+}
+
+button:hover {
+	background: url(/triptoe/images/generator/buttonOver.gif) no-repeat left top;
+	height: 18px;
+	width: 97px;
+	border: 0px;
+	border: none;
+	color: #015b8f;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;	
+}
+
+.change-pwd-form-box {
+	margin-top: -30px;
+	width: 160px;
+	height: 170px;
+	margin-right: 20px;
+	overflow: auto;
+	padding: 10px;
+	position: absolute;
+	z-index: 100;
+	background: #FFFFFF url(/triptoe/images/generator/changePwd-bg.png) no-repeat left top;
+}
+.change-pwd-form .join-field {
+	width: 150px;
+}
+.change-pwd-form .label {
+	width: 150px;
+}
+
+.controls {
+	background: url(../fondos/controlBg.gif) repeat left top;
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.controls-holder {
+	background: #FFFFFF;
+	float: left;
+	height: 400px;
+	margin-top: 80px;
+	overflow: auto;
+	width: 316px;
+}
+
+.forgot-pwd-form {
+	margin-right: 20px;
+	overflow: auto;
+	padding: 10px;
+	position: absolute;
+	z-index:1404;
+	width: 220px;
+	height: 60px;
+	background: #FFFFFF url(/triptoe/images/generator/forgotPwd-bg.png) repeat-x left top;
+}
+
+.gen-contents {
+	height: 100%;
+}
+
+.gen-controls {
+	background: #0000FF;
+	height: 5%;
+}
+
+.generator-form .sliderArea {
+	height: 206px;
+	width: 280px;
+	background: url(../fondos/sliderAreaBg.jpg) repeat-x left top;
+}
+
+.generator-form {
+	padding-left: 15px;
+/*	background-color: #e4f2ff;*/
+	background: url(/triptoe/images/generator/sliderAreaBg.jpg) repeat-x left top;
+}
+
+.generator-form .budgettype {
+	padding-top: 5px;
+}
+
+.generator-form .datefield {
+	background: url(/triptoe/images/generator/dateField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px;
+	padding: 5px 8px;
+	width: 90px;
+}
+
+.generator-form .header {
+	clear:both;
+	font-size: 16px;
+	color: #015b8f;
+	/*	color: #999999; */
+	font-weight: 600;
+	margin-bottom: 10px;
+	padding-left: 5px;
+	padding-top: 1px;
+	width:270px;
+	height: 20px;
+	border-bottom: 1px solid #DDDDDD;
+/*	background: url(/triptoe/images/generator/formTitle.gif) no-repeat left top;	*/
+}
+
+.generator-form .formSpacer {
+	clear:both;
+	margin-bottom:20px
+}
+.generator-form .formDivider {
+	clear: both;
+	height:2px;
+	width: 270px;
+	line-height:1px;
+	font-size: 1px;
+	margin-left: 5px;
+	margin-bottom:15px;
+	background: url(/triptoe/images/generator/divider.gif) no-repeat left top;
+}
+
+.generator-form .moreOptions {
+	width: 139px;
+	height: 32px;
+	margin-left:70px;
+	padding-top:8px;
+	cursor: pointer;
+	text-align: center;
+	background: url(/triptoe/images/generator/moreOptions3.gif) no-repeat left top;
+}
+.generator-form .moreOptions A {
+	color: #FFFFFF;
+}
+
+.generator-form INPUT.largefield{
+	background: url(/triptoe/images/generator/largeField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px;
+	padding: 5px 0px 5px 5px;
+	width: 116px;
+}
+INPUT.hugeField{
+	background: url(/triptoe/images/generator/hugeField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px;
+	padding: 5px 0px 5px 5px;
+	width: 250px;
+}
+
+.generator-form INPUT.mediumfield{
+	background: url(/triptoe/images/generator/mediumField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px;
+	padding: 5px 0px 5px 5px;
+	width: 71px;
+}
+
+.generator-form INPUT.smallfield{
+	background: url(/triptoe/images/generator/smallField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px;
+	padding: 5px 0px 5px 5px;
+	width: 51px;
+}
+
+
+.generator-form input.smallselect{
+	background: transparent url(/triptoe/images/generator/smallField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px !important;
+	padding: 5px 0px 5px 5px;
+	width: 25px;
+}
+.generator-form img.smallselect{
+	border: 0px;
+	border: none;
+	height: 27px !important;
+	width: 16px !important;
+}
+.generator-form input.mediumselect{
+	background: transparent url(/triptoe/images/generator/mediumField.png) no-repeat left center;
+	border: none;
+	border: 0px;
+	height: 27px !important;
+	padding: 5px 0px 5px 5px;
+	width: 45px;
+}
+.generator-form img.mediumselect{
+	border: 0px;
+	border: none;
+	height: 27px !important;
+	width: 16px !important;
+}
+
+.generator-form input, .generator-form select {
+	color: #006EAA;
+	font-size: 12px;
+}
+
+.generator-form input.largeselect{
+	background: transparent url(/triptoe/images/generator/largeField.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px !important;
+	padding: 5px 0px 5px 5px;
+	width: 95px;
+}
+.generator-form input.largeselectDisabled{
+	background: transparent url(/triptoe/images/generator/largeFieldDisabled.png) no-repeat left top;
+	border: none;
+	border: 0px;
+	height: 27px !important;
+	padding: 5px 0px 5px 5px;
+	width: 95px;
+}
+.generator-form img.largeselect{
+	border: 0px;
+	border: none;
+	height: 27px !important;
+	width: 16px !important;
+}
+
+.generator-form .advancedOptions {
+	clear: both;
+	padding-bottom: 50px;
+}
+
+.generator-form .advancedOptions .header {
+	clear:both;
+	font-size: 13px;
+	color: #015b8f;
+/*	text-decoration: underline; */
+	margin: 0px;
+	padding-left: 15px;
+	padding-top: 1px;
+	width:265px;
+	background: transparent url(/triptoe/images/generator/moreOptionsPlus.gif) no-repeat left top;	
+	cursor: pointer;
+	border: none;
+	font-weight: 300;
+}
+
+.generator-form .advancedOptions .header-opened {
+	clear:both;
+	font-size: 13px;
+	color: #015b8f;
+/*	text-decoration: underline; */
+
+/*	color: #333333;
+	text-decoration: none; */
+	margin: 0px;
+	padding-left: 15px;
+	padding-top: 1px;
+	width:265px;
+	background: transparent url(/triptoe/images/generator/moreOptionsMinus.gif) no-repeat left top;	
+	cursor: pointer;
+	border: none;
+	font-weight: 600;
+}
+
+
+.generator-form .languageTable {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+.generator-form .languageTable TD {
+	margin:0px;
+	padding:0px;
+	padding-right: 20px;
+	padding-top: 2px;
+	color: #716B4D;
+}
+
+.gen-frame {
+	height: 100%;
+	overflow: hidden;
+}
+
+.gen-header {
+}
+
+.gen-header .center-bar {
+	float: left;
+	height: 93px;
+	width: 440px;
+}
+
+.gen-header .logo {
+	float: left;
+	height: 91px;
+	width: 340px;
+}
+
+.gen-header .right {
+	float: right;
+	height: 70px;
+	padding-top: 17px;
+	width: 195px;
+	color: #807f7f;
+}
+
+.miniSpacer {
+	height: 5px;
+	width: 1px;
+	font-size: 1px;
+	line-height:1px;
+	clear: both;
+}
+
+.join-closed {
+	background-color: #FFFFFF;
+	font-weight: 300;
+	overflow: auto;
+	padding-top: 4px;
+	width: 190px;
+}
+
+.join-closed #usernameHtml {
+	font-weight:600;
+}
+
+
+.join-closed .close-register{
+	display: none;
+}
+
+.join-closed .register-button {
+	display: none;
+}
+
+.join-closed .regHeader {
+	display:none;
+}
+.join-closed .shareMsg  {
+	display:none;
+}
+
+.userActions {
+	 text-align: right;
+	 margin-right: 65px;
+}
+
+.userName {
+	 width: 180px;
+	 text-align: right;
+	 margin-right: 0px;
+}
+
+.regHeader {
+	width:200px;
+	height: 20px;
+}
+
+.join-ext {
+	margin-top: 0px;
+	height: 170px;
+}
+
+.join-ext br {
+	margin-top: 10px;
+}
+
+.join-field {
+	float: left;
+	margin-bottom: 5px;
+	padding: 0px;
+	width: 200px;
+}
+
+.join-label {
+	text-align: left;
+	width: 170px;
+	color: #807f7f;
+}
+
+.shareMsg {
+	margin-top: 10px;
+	font-weight: 600;
+}
+.shareMsg A {
+	font-size: 10px;
+	margin-left: 10px
+}
+
+.join-closed .join-handle-field {
+	color: #000000;
+	padding: 0px;
+	padding-left: 4px;
+	border: none;
+	border: 0px;
+	height: 18px;
+	width: 97px;
+	background: url(/triptoe/images/generator/domainField.gif) no-repeat left top;	
+}
+
+.join-opened .join-handle-field {
+	display:none;
+/*	margin-bottom: 5px;
+	padding: 0px;
+	width: 200px;*/
+}
+
+.join-opened {
+	background-color: #FFFFFF;
+	margin-left: -70px;
+	overflow: auto;
+	padding-top: 20px;
+	padding: 10px;
+	position: absolute;
+	z-index:1404;
+	width: 220px;
+	height: 280px;
+	background: url(/triptoe/images/generator/register-bg.png) no-repeat left top;	
+}
+
+.join-opened .join-button {
+	display: none;
+}
+
+.label {
+	float: left;
+	text-align: left;
+	width: 70px;
+	color: #807f7f;
+}
+
+.logged-in .for-not-loggedin {
+	display: none;
+}
+
+.login-field {
+	float: left;
+	color: #000000;
+	padding: 0px;
+	padding-left: 4px;
+	border: none;
+	border: 0px;
+	height: 18px;
+	width: 129px;
+	background: url(/triptoe/images/generator/login-field.gif) no-repeat left top;	
+}
+
+.login-field-empty {
+	color: #999999;
+	padding: 0px;
+	padding-left: 4px;
+	border: none;
+	border: 0px;
+	height: 18px;
+	width: 129px;
+	background: url(/triptoe/images/generator/login-field.gif) no-repeat left top;	
+}
+#login-form {
+	width: 200px;
+}
+
+.login-form {
+	float: left;
+	width: 207px;
+	padding-top:16px;
+	margin-left: 10px
+}
+
+.closeBtn {
+	cursor:pointer;
+	position:absolute;
+	width:30px;
+	height:25px;
+	margin-top:-7px;
+	background: transparent url(/triptoe/images/generator/popup/xs.gif) no-repeat bottom left;	
+}
+
+.not-logged-in .for-loggedin {
+	display: none;
+}
+
+.email-field {
+	color: #000000;
+	padding: 0px;
+	padding-left: 4px;
+	border: none;
+	border: 0px;
+	height: 18px;
+	width: 129px;
+	background: url(/triptoe/images/generator/login-field.gif) no-repeat left top;	
+}
+
+
+#registerForm {
+	padding:0px;
+	margin:0px;
+	width: 185px;
+}
+.join-opened #registerForm {
+	width: 200px;
+}
+
+.output-holder {
+	float: left;
+	height: auto;
+	overflow: auto;
+	width: 605px;
+}
+
+.preferencechoice { 
+	padding-bottom: 10px;
+	color: #716B4D;
+	width:275px;
+}
+
+.advancedOptions .preferencechoice { 
+	padding-top:10px;
+	padding-bottom: 10px;
+	padding-left:10px;
+	margin-bottom: 10px;
+	color: #716B4D;
+	width:265px;	
+	background: #f7f7f7
+}
+
+.advancedOptions .preferenceChoiceTop {
+	height: 3px;
+	width: 269px;
+	background: url(/triptoe/images/generator/moreOptionsTop.gif) no-repeat left top;		
+}
+.advancedOptions .preferenceChoiceMid {
+	width: 269px;
+	background: url(/triptoe/images/generator/moreOptionsMid.gif) repeat-y left top;		
+}
+.advancedOptions .preferenceChoiceBottom {
+	height: 3px;
+	width: 269px;
+	background: url(/triptoe/images/generator/moreOptionsBottom.gif) no-repeat left top;		
+}
+
+.preferencechoice .formElem {
+	float: left;
+}
+
+.preferencechoice .sliderlabel {
+	clear: both;
+	color: #716B4D;
+	float: left;
+	margin-right: 10px;
+	padding-top: 5px;
+	text-align: right;
+	width: 80px;
+	font-weight: 600;
+}
+
+.preferencechoice .fieldlabel {
+	clear: both;
+	color: #716B4D;
+	float: left;
+	margin-right: 22px;
+	padding-top: 5px;
+	text-align: right;
+	width: 80px;
+	font-weight: 600;
+}
+
+.advancedOptions .preferencechoice .fieldlabel {
+	clear: both;
+	color: #716B4D;
+	float: left;
+	padding-top: 5px;
+	margin-right: 5px;
+	text-align: right;
+	width: 80px;
+	font-weight: 600;
+}
+
+.preferencechoice .sliderSpacer {
+	clear: both;
+	height: 1px;
+	color: #4f4936;
+	font-weight: 600;
+	font-size:1px;
+	line-height:1px
+}
+
+.resultsHolder {
+	clear: both;
+}
+
+.titlemsg {
+	float: left;
+	margin: 0px;
+	height: 89px;
+	width: 220px;
+	padding-top: 30px;
+	text-align: center;
+	line-height: 20px; 
+	color: #807f7f; 
+	background: url(/triptoe/images/generator/middleBox.png) no-repeat left top;
+}
+
+.titlemsg-loggedIn {
+	float: left;
+	margin: 0px;
+	height: 89px;
+	width: 220px;
+	margin-left: 7px;	
+	padding-top: 30px;
+	text-align: center;
+	line-height: 20px; 
+	color: #807f7f; 
+}
+
+.titlemsg h1{
+	margin: 0px;
+	padding: 0px;
+}
+
+#contents {
+   background: url(../fondos/rightEdge.png) repeat-y right top;
+   position: absolute;
+   top: 93px;
+   width: 980px;
+}
+
+#controls {
+}
+.controls-top {
+	height:11px;
+	width: 980px;
+	font-size:1px;
+	line-height: 1px;
+	background: url(../fondos/topEdge.png) no-repeat left bottom;
+
+}
+.cornerCover{
+	position:absolute;
+	height:21px;
+	width: 27px;
+	background: url(../fondos/leftCorner.gif) no-repeat left top;
+}
+
+#controls-holder  {
+	background: url(../fondos/controlsBg.png) repeat-y left top;
+	overflow: auto;
+	width: 339px
+}
+
+.controls-opciones {
+	overflow: auto;
+	width: 339px;
+	height: 450px;
+        padding-left: 19px
+    
+}
+
+#controls-outer-holder {
+	background: url(../fondos/controlsBg.png) repeat-y left top;
+	float: left;
+	width: 339px;
+        
+}
+
+.submit-holder-small {
+	background: url(../fondos/submitBg.jpg) repeat-y left top;
+	width: 339px;
+	text-align: left;
+	padding-left: 40px;
+}
+.submit-holder {
+	background: url(../fondos/controlsBg.png) repeat-y left top;
+	width: 339px;
+	text-align: left;
+	padding-left: 40px;
+}
+#footer	{
+	bottom: 0px;
+	clear: both;
+	height: 45px;
+	position: absolute;
+	width: 980px;
+	z-index: 15;
+	background: url(../fondos/footer.png) repeat-y left top;
+	 text-align: left;
+}
+
+#footer1	{
+	height: 45px;
+	position: absolute;        
+	width: 980px;
+	background: url(../fondos/footer.png) repeat-x left top;
+}
+
+#general-header		{
+	height: 93px;
+	position: absolute;
+	top: 0;
+	width: 980px;
+	z-index: 10;
+} 
+
+#outer-frame {
+	margin-left: auto;
+	margin-right: auto;
+	width: 980px
+}
+
+#results {
+/*	background: url(../fondos/resultsBg.jpg) repeat-y left top;*/
+}
+
+#results-holder {
+	float: right;
+	overflow: auto;
+	width: 625px;
+        height: 500px;
+        margin-right:16px;
+	background: url(../fondos/results-bg.png) repeat-y left top;
+}
+
+.sendResults {
+	position:absolute;
+	margin-top:-280px;
+	margin-left:93px;
+	background-color: #FFFFFF;
+	overflow: auto;
+	padding-top: 20px;
+	padding: 10px;
+	width: 220px;
+	height: 280px;
+	z-index:1404;
+	background: url(/triptoe/images/generator/register-bg.png) no-repeat left top;		
+}
+
+.sendResults .field {
+	clear: both;
+	margin-bottom: 4px;
+	font-weight: 600;	
+	font-size:12px;
+}
+.sendResults INPUT {
+	font-weight: 300;	
+	width:220px;	
+}
+
+.introBox {
+	margin-top: 13px;
+	margin-left: 9px;
+	height: 252px;
+	width: 538px;
+	padding: 30px
+}
+
+.introArrow {
+	position:absolute;
+	z-index: 20;
+	margin-left:295px;
+	margin-top: 150px;
+	height: 35px;
+	width: 17px;
+	background: url(/triptoe/images/generator/introArrow.gif) no-repeat left top;		
+}
+
+.introBox .introPics {
+	margin-top: 10px;
+	height: 155px;
+	width: 540px;
+	background: url(/triptoe/images/generator/introPics.jpg) no-repeat left top;			
+}
+
+.slideshowControlBar {
+	background-color:#333333;
+	width:200px;
+	height:16px;
+	margin-left:auto;
+	margin-right:auto;
+	color: white;
+	font-size: 14px;
+}
+
+.slideshowLoading {
+	width: 100px;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+	color: #333333;
+	font-size: 14px;
+}
+.slideshowLoadingActual {
+	position:absolute;
+	margin-top: 20px;
+	padding: 10px;
+	border:1px solid #666666;
+	background: white;
+}
+
+.slideshowBottomBar {
+	margin-left:auto;
+	margin-right:auto;
+	width: 400px;
+	height: 10px;
+	background-color: #FFFFFF;
+	color:#999999;
+	font-size:8px;
+}
+.slideshowBottomBar A , .slideshowBottomBar a:active, .slideshowBottomBar a:visited, .slideshowBottomBar a:hover {
+	font-size:8px;
+	color:#888888;
+	text-decoration:underline;
+	cursor: pointer;
+}
+
+.slideshowControlBar A , .slideshowControlBar a:active, .slideshowControlBar a:visited, .slideshowControlBar a:hover {
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+}
+.slideshowControlBar a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.dojoComboBoxOptions {
+	text-align:left;
+	font-size: 10px;	
+	width: 350px !important;
+	margin-left: 0px;
+}
+
+.drowDownDatePickerTB {
+	width: 220px !important;
+	margin-left: -65px;
+}
+
+.sliderMain {
+	cursor: pointer;
+}
+
+.submitButton {
+	background: url(/triptoe/images/generator/submit.png) no-repeat left top;		
+	margin-top:2px;
+	width: 78px;
+	height: 31px;
+	cursor: pointer;
+	float: left;
+	text-align: center;
+	padding-top: 8px;
+}
+.submitButton a, .submitButton a:active, .submitButton a:visited, .submitButton a:hover{
+	color: #FFFFFF;
+}
+.autoRefresh {
+	margin-left: 10px;
+	float: left;
+	margin-top: 9px;
+	width: 90px;
+}
+.resetLink{
+	margin-left: 40px;
+	float: left;
+	margin-top: 9px;
+	width: 40px;
+}
+
+#includingFlights {
+	font-size: 10px;
+	color: #3ea311;
+}
+
+.durationDisplay {
+	font-size: 11px;
+	color: #3ea311;
+}
+.contiTable TD {
+	color: #716B4D;
+	padding-right: 5px;
+}
+
+
+.startingSliderBg {
+/*	width: 600px;
+	height: 372px; */
+	width: 407px;
+	height: 261px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align:left;
+	background: url(/triptoe/images/generator/startBg.gif) no-repeat left top;				
+}
+
+#startingSliderHolder {
+	width: 270px;
+	margin-left: 65px;
+}
+
+.startingMessage {
+	padding-top: 15px;
+	font-size: 16px;
+	margin-bottom: 15px;
+	color: #015b8f;
+	font-weight: 600;
+	text-align: center;
+	width: 400px;
+}
+
+
+.bubbleHelp {
+	position:absolute;
+	margin-top: -147px;
+	margin-left: 158px;
+	padding: 5px;
+	width: 148px;
+	height: 58px;
+	text-align: left;
+	clear: both;
+	background: url(/triptoe/images/generator/help/bubble.gif) no-repeat left top;				
+}
+
+#popupCover {
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:1401;
+}
+
+#startPopup {
+	position:absolute;
+	height:300px;
+	width:100%;
+	z-index:2;
+	margin-top: 180px;
+	text-align:center;
+}
+
+.contentWorld {
+	position:absolute;
+	height:100%;
+	width:100%;
+	z-index:1;
+	margin-left: 1px;
+	background: url(/triptoe/images/generator/worldBg2.jpg) no-repeat center top;	
+}
+
+.tripbaseHelp {
+	color: #333333;
+	font-size: 12px;
+}
+
+.tripbaseHelp H2 {
+	font-weight:600;
+	font-size: 15px;
+	color: #015b8f;
+}
+
+.tripbaseHelp P {
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 10px;
+}
+
+#usernameHtml {
+	color: #333333;
+	font-weight: 600;
+	font-size: 14px;
+	margin-right: 50px;
+}
+
+.fieldenter {
+	color: #999999 !important;
+}

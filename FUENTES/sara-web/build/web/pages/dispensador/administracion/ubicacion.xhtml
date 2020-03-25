@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:panelGroup id="panelInfoUbicacion">
+            <h:panelGrid columns="7" id="btnInfoUbicacion">
+                  <h:commandButton value="Nuevo" rendered="#{!infoUbicacionBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.nuevoRegistro()}" >
+                            <f:ajax render="panelInfoUbicacion" />
+                 </h:commandButton>
+                 <h:commandButton value="Modificar" rendered="#{!infoUbicacionBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.modificarRegistro()}" >
+                            <f:ajax render="panelInfoUbicacion" />
+                 </h:commandButton>
+                 <h:commandButton rendered="#{infoUbicacionBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.grabarRegistro()}" >
+                            <f:ajax render="panelInfoUbicacion panelPaginas" />
+                 </h:commandButton>
+                 <h:commandButton rendered="#{infoUbicacionBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.buscarRegistro()}"  >
+                            <f:ajax render="panelInfoUbicacion" />
+                 </h:commandButton>
+                 <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.anteriorRegistro()}"  >
+                            <f:ajax render="panelInfoUbicacion panelPaginas" />
+                 </h:commandButton>
+
+                 <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registroSeleccionado}" >
+                     <f:selectItems value="#{infoUbicacionBean.listaRegistros}" var="reg" itemValue="#{reg.idUbicacion}" itemLabel="#{reg.oficina} | #{reg.codigoUbicacion} | #{reg.direccion} " />
+                            <f:ajax render="panelInfoUbicacion" />
+                 </h:selectOneMenu>
+
+                 <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.buscarRegistro()}"  >
+                            <f:ajax render="panelInfoUbicacion panelPaginas" />
+                 </h:commandButton>
+
+                    <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{infoUbicacionBean.siguienteRegistro()}"  >
+                            <f:ajax render="panelInfoUbicacion panelPaginas" />
+                 </h:commandButton>
+            </h:panelGrid>
+            <div class="tituloSeccion2">Información Tipo Ubicacion</div>
+            <h:panelGrid id="datosInfoUbicacion" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Código</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.codigoUbicacion}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Ubicacion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registro.tipoUbicacion}">
+                         <f:selectItems  value="#{infoUbicacionBean.listaTipoUbicacion}"  var="tubi" itemValue="#{tubi.value}"  itemLabel="#{tubi.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>             
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Sucursal</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.sucursal}"  onkeypress="javascript:return solonumeros(event)"><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Codigo Oficina</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.oficina}" onkeypress="javascript:return solonumeros(event)" ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Codigo Ciudad</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoUbicacionBean.registro.codigoCiudad}"  >  
+                        <f:ajax render="@this"  />
+                        <f:convertNumber pattern="###,##0"  />
+                     </h:inputText>
+                 </h:panelGroup>
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre Ciudad</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.nombreciudad}"  ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+               <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Regional</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registro.regional}">
+                         <f:selectItems  value="#{infoUbicacionBean.listaRegional}"  var="regi" itemValue="#{regi.idRegional}"  itemLabel="#{regi.idRegional}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Zona</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registro.zona}">
+                         <f:selectItems  value="#{infoUbicacionBean.listaZona}"  var="zon" itemValue="#{zon.idZona}"  itemLabel="#{zon.idZona}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre Oficina</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.nombreoficina}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Direccion</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.direccion}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Telefono</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoUbicacionBean.registro.telefono}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Horario Normal</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{infoUbicacionBean.registro.horarionormal}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Horario Adicional</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoUbicacionBean.registro.horarioadicional}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Horario Sabado</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoUbicacionBean.registro.horariosabado}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Horario Domingo</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText  value="#{infoUbicacionBean.registro.horariodomingo}"  ><f:ajax render="@this"  /></h:inputText> 
+                 </h:panelGroup>
+                
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Oficina</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registro.tipooficina}">
+                         <f:selectItems  value="#{infoUbicacionBean.listaTipoOficina}"  var="tofi" itemValue="#{tofi.value}"  itemLabel="#{tofi.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Estado</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:selectOneMenu style="width: 173px;" value="#{infoUbicacionBean.registro.estado}">
+                         <f:selectItems  value="#{infoUbicacionBean.listaUbicacionActivo}"  var="est" itemValue="#{est.value}"  itemLabel="#{est.label}"  />  
+                         <f:ajax render="@this"  />
+                     </h:selectOneMenu>
+                 </h:panelGroup>                
+                 
+                 <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Dias Horario Normal</span>                    
+                </h:panelGroup>    
+                 
+                 <h:panelGroup class="ingresoTextoLargo" >                    
+                     <h:selectBooleanCheckbox value="#{infoUbicacionBean.registro.lunes}"      ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Lunes </label>
+                     <h:selectBooleanCheckbox value="#{infoUbicacionBean.registro.martes}"     ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Martes </label>
+                     <h:selectBooleanCheckbox value="#{infoUbicacionBean.registro.miercoles}"  ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Miercoles </label>
+                 </h:panelGroup>
+                <h:panelGroup>
+                                                   
+                    <span class="nombreCampo"></span>                    
+                </h:panelGroup>    
+                 
+                 <h:panelGroup class="ingresoTextoLargo" >                    
+                     <h:selectBooleanCheckbox value="#{infoUbicacionBean.registro.jueves}"     ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Jueves </label>
+                     <h:selectBooleanCheckbox value="#{infoUbicacionBean.registro.viernes}"    ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Viernes </label>
+                 </h:panelGroup>
+            </h:panelGrid>
+      </h:panelGroup>            
+</html>
+

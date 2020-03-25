@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+   
+    <h:panelGroup id="panelAdmUsuarios">
+            <h:panelGrid columns="7" id="btnAdmUsuarios">             
+
+                <h:commandButton value="Nuevo" rendered="#{!usuariosBean.mostrarBtnGrabar}" styleClass="botonAPPADM" actionListener="#{usuariosBean.nuevoUsuario()}" >
+                    <f:ajax render="panelAdmUsuarios" />
+                </h:commandButton>
+                <h:commandButton value="Modificar" rendered="#{!usuariosBean.mostrarBtnCancelar}" styleClass="botonAPPADM" actionListener="#{usuariosBean.modificarUsuario()}" >
+                    <f:ajax render="panelAdmUsuarios" />
+                </h:commandButton>
+                <h:commandButton rendered="#{usuariosBean.mostrarBtnGrabar}"  value="Grabar" styleClass="botonAPPADM" actionListener="#{usuariosBean.grabarUsuario()}" >
+                    <f:ajax render="panelAdmUsuarios panelPaginas" />
+                </h:commandButton>
+                <h:commandButton rendered="#{usuariosBean.mostrarBtnCancelar}" value="Cancelar" styleClass="botonAPPADM" actionListener="#{usuariosBean.buscarRegistro()}"  >
+                    <f:ajax render="panelAdmUsuarios" />
+                </h:commandButton>
+                <h:commandButton value="Borrar" styleClass="botonAPPADM" actionListener="#{usuariosBean.abrirModalBorrar()}"  >
+                    <f:ajax render="panelAdmUsuarios" />
+                </h:commandButton>
+                <h:commandButton value="Anterior" styleClass="botonAPPADM" actionListener="#{usuariosBean.anteriorUsuario()}"  >
+                    <f:ajax render="panelAdmUsuarios panelPaginas" />
+                </h:commandButton>
+                
+                <h:selectOneMenu style="width: 173px;"  value="#{usuariosBean.usuarioSeleccionado}" >
+                    <f:selectItems value="#{usuariosBean.listaUsuarios}" var="user" itemValue="#{user.value}" itemLabel="#{user.label}" />
+                    <f:ajax render="panelAdmUsuarios" />
+                </h:selectOneMenu>
+            
+                <h:commandButton value="Ir" styleClass="botonAPPADM" actionListener="#{usuariosBean.buscarRegistro()}"  >
+                    <f:ajax render="panelAdmUsuarios panelPaginas" />
+                </h:commandButton>
+                                                 
+                <h:commandButton value="Siguiente" styleClass="botonAPPADM" actionListener="#{usuariosBean.siguienteUsuario()}"  >
+                    <f:ajax render="panelAdmUsuarios panelPaginas" />
+                </h:commandButton>
+            </h:panelGrid>
+        
+            <div class="tituloSeccion2">Información usuarios de la aplicación</div>
+            <h:panelGrid id="datosAdmUsuarios" columns="2" class="ingresoDatos" columnClasses="ingresoDatos">
+                
+                <h:panelGroup>
+                     <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Usuario</span>                    
+                </h:panelGroup>                               
+                 <h:panelGroup class="ingresoTextoMedio" >
+                     <h:inputText value="#{usuariosBean.usuario}" size="18" ><f:ajax render="@this"  /></h:inputText>
+                 </h:panelGroup>
+                 
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Nombre</span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoLargo" >
+                    <h:inputText value="#{usuariosBean.nombre}" size="40" ><f:ajax render="@this"  /></h:inputText>                 
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Restringir IP</span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoLargo" >
+                    <h:inputText value="#{usuariosBean.restringirIp}" size="40" ><f:ajax render="@this"  /></h:inputText>                                  
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Token </span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoMedio" >
+                    <h:inputText value="#{usuariosBean.token}" size="18" ><f:ajax render="@this"  /></h:inputText>                
+                 </h:panelGroup>
+                
+                
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Clave Estatica </span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoMedio" >
+                    <h:inputText value="#{usuariosBean.claveEstatica}" size="18" ><f:ajax render="@this"  /></h:inputText>                  
+                 </h:panelGroup>
+                
+                <h:panelGroup>
+                    <div class="flechaItem"></div>                                
+                    <span class="nombreCampo">Tipo Usuario</span>
+                </h:panelGroup>
+                <h:panelGroup class="ingresoTextoLargo" >                    
+                    <h:selectBooleanCheckbox value="#{usuariosBean.tipoNormal}"  disabled="#{usuariosBean.bloquearTipoNormal}"><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Normal </label>
+                    <h:selectBooleanCheckbox value="#{usuariosBean.tipoAuditoria}" ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Auditoría </label>
+                    <h:selectBooleanCheckbox value="#{usuariosBean.tipoSistema}" disabled="#{usuariosBean.bloqueartipoSistema}"  ><f:ajax render="@this"  /></h:selectBooleanCheckbox><label > Sistema </label>
+                 </h:panelGroup>
+            </h:panelGrid>
+            <h:panelGroup layout="block" id="modalAdmUsuarios" styleClass="dialogDiv"  rendered="#{usuariosBean.mostrarModalBorrar}">
+                <h:panelGrid columns="1" styleClass="dialogDivBorrar">
+                        <label>Desea borrar el registro #{usuariosBean.usuario} ? </label>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="Aceptar" actionListener="#{usuariosBean.borrarUsuario()}">
+                                <f:ajax render="panelAdmUsuarios panelPaginas" />
+                            </h:commandButton>
+                            <h:commandButton value="Cancelar" actionListener="#{usuariosBean.cerraModalBorrar()}">
+                                <f:ajax render="panelAdmUsuarios" />
+                            </h:commandButton>
+
+                        </h:panelGrid>
+                </h:panelGrid>
+            </h:panelGroup>
+     </h:panelGroup> 
+</html>
+
