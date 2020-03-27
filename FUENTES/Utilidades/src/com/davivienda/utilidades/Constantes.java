@@ -2,7 +2,7 @@ package com.davivienda.utilidades;
 
 public class Constantes {
 
-    public static final String VERSION_APP = "12.2.7.7";
+    public static final String VERSION_APP = "12.2.8.0";
     public static final String LOGGER_APP = "SARA_App";
     public static final String LOGGER_ACCESO = "SARA_Acceso";
     public static final String SESSION_SECURITY_DTO = "SESSION_SECURITY_DTO";

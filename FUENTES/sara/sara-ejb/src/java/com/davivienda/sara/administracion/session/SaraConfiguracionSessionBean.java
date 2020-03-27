@@ -112,7 +112,7 @@ public class SaraConfiguracionSessionBean implements SaraConfiguracionSession
                 if (SaraConfiguracionSessionBean.mh == null) {
                     (SaraConfiguracionSessionBean.mh = new MemoryHandler(SaraConfiguracionSessionBean.fh, 2000, Level.ALL)).setLevel(nivelLog);
                 }
-                SaraConfiguracionSessionBean.configApp.loggerApp.info("<<< SARA 12.2.7.7 >>>");
+                SaraConfiguracionSessionBean.configApp.loggerApp.info("<<< SARA 12.2.8.0 >>>");
             }
             if (SaraConfiguracionSessionBean.fhAcceso != null && SaraConfiguracionSessionBean.mhAcceso == null) {
                 (SaraConfiguracionSessionBean.mhAcceso = new MemoryHandler(SaraConfiguracionSessionBean.fhAcceso, 2000, Level.ALL)).setLevel(nivelLog);
@@ -177,7 +177,7 @@ public class SaraConfiguracionSessionBean implements SaraConfiguracionSession
             this.destruirLoggerAplicacion();
         }
         catch (Exception ex) {
-            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.7.7 con ERROR " + ex.getMessage() + "  <<<");
+            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.8.0 con ERROR " + ex.getMessage() + "  <<<");
             ex.printStackTrace();
         }
     }
@@ -185,7 +185,7 @@ public class SaraConfiguracionSessionBean implements SaraConfiguracionSession
     private void destruirLoggerAplicacion() {
         try {
             SaraConfiguracionSessionBean.configApp.loggerApp.severe("Se da inicio al fin de la aplicaci\u00f3n ... ");
-            SaraConfiguracionSessionBean.configApp.loggerApp.severe(">>> Se termina la aplicaci\u00f3n SARA 12.2.7.7 <<<");
+            SaraConfiguracionSessionBean.configApp.loggerApp.severe(">>> Se termina la aplicaci\u00f3n SARA 12.2.8.0 <<<");
             Handler[] handlers = SaraConfiguracionSessionBean.configApp.loggerAcceso.getHandlers();
             for (int i = 0; i < handlers.length; ++i) {
                 final Handler handler = handlers[i];
@@ -206,10 +206,10 @@ public class SaraConfiguracionSessionBean implements SaraConfiguracionSession
         }
         catch (Exception ex) {
             SaraConfiguracionSessionBean.configApp.loggerApp.log(Level.SEVERE, "Finalizaci\u00f3n con error de la aplicaci\u00f3n ", ex);
-            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.7.7 con ERROR " + ex.getMessage() + "  <<<");
+            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.8.0 con ERROR " + ex.getMessage() + "  <<<");
         }
         finally {
-            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.7.7 <<<");
+            System.err.println(">>> Se termina la aplicaci\u00f3n SARA 12.2.8.0 <<<");
         }
     }
     
